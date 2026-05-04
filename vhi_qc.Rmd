@@ -12,12 +12,12 @@ library(readr)
 library(ggVennDiagram)
 library(patchwork)
 
-hvidb <- read_tsv("hvidb.tsv") %>% mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
+hvidb <- read_tsv("data/hvidb.tsv") %>% mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
 Organism_Interactor_human = as.character(Organism_Interactor_human))
 
-intact <- read_tsv("intact.tsv") 
+intact <- read_tsv("data/intact.tsv") 
 
-viruses <- read_tsv("virus_taxids.txt", col_names = FALSE)[[1]]
+viruses <- read_tsv("data/virus_taxids.txt", col_names = FALSE)[[1]]
 ```
 
 # Intact

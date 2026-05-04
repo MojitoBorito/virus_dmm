@@ -13,7 +13,7 @@ library(readr)
 
 ```{r}
 nodes <- read_delim(
-  "new_taxdump/nodes.dmp",
+  "data/new_taxdump/nodes.dmp",
   delim = "|",
   col_names = FALSE,
   trim_ws = TRUE,
@@ -74,8 +74,8 @@ lineage_corona <- lineage_corona[-1]
 ```
 
 ```{r}
-corona_proteins <- read_tsv("corona_proteins.tsv")
-hhv_proteins <- read_tsv("hhv_proteins.tsv")
+corona_proteins <- read_tsv("data/corona_proteins.tsv")
+hhv_proteins <- read_tsv("data/hhv_proteins.tsv")
 
 
 ```
