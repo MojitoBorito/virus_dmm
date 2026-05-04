@@ -1,0 +1,82 @@
+---
+title: "Data generation"
+author: "Mohit"
+date: "2026-04-24"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(readr)
+```
+
+
+```{r}
+nodes <- read_delim(
+  "data/new_taxdump/nodes.dmp",
+  delim = "|",
+  col_names = FALSE,
+  trim_ws = TRUE,
+  col_types = cols(.default = "c")
+) %>%
+  select(tax_id = X1, parent_tax_id = X2)
+
+nodes <- nodes %>%
+  mutate(
+    tax_id = trimws(tax_id),
+    parent_tax_id = trimws(parent_tax_id)
+  )
+
+root <- "10239"
+
+virus_taxids <- root
+repeat {
+  children <- nodes %>%
+    filter(parent_tax_id %in% virus_taxids) %>%
+    pull(tax_id)
+  
+  new_ids <- setdiff(children, virus_taxids)
+  
+  if (length(new_ids) == 0) break
+  
+  virus_taxids <- c(virus_taxids, new_ids)
+}
+
+virus_taxids <- sort(unique(virus_taxids))
+
+write_lines(virus_taxids, "virus_taxids.txt")
+
+length(virus_taxids)
+```
+
+```{r}
+start <- "10298"
+
+lineage <- start
+
+repeat {
+  parent <- nodes %>%
+    filter(tax_id == lineage[length(lineage)]) %>%
+    pull(parent_tax_id)
+
+  if (length(parent) == 0) {
+    stop("TaxID not found in nodes: ", start)
+  }
+
+  if (parent == lineage[length(lineage)]) break
+
+  lineage <- c(lineage, parent)
+}
+
+
+lineage_hhv <- lineage_hhv[-1]
+lineage_corona <- lineage_corona[-1]
+```
+
+```{r}
+corona_proteins <- read_tsv("data/corona_proteins.tsv")
+hhv_proteins <- read_tsv("data/hhv_proteins.tsv")
+
+
+```
+

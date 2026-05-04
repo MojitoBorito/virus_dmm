@@ -1,0 +1,278 @@
+---
+title: "VHI QC"
+author: "Mohit"
+date: "2026-04-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(ggVennDiagram)
+library(patchwork)
+
+hvidb <- read_tsv("data/hvidb.tsv") %>% mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
+Organism_Interactor_human = as.character(Organism_Interactor_human))
+
+intact <- read_tsv("data/intact.tsv") 
+
+viruses <- read_tsv("data/virus_taxids.txt", col_names = FALSE)[[1]]
+```
+
+# Intact
+
+```{r}
+intact <- intact %>% filter(`Taxid interactor A` != `Taxid interactor B`)
+
+hosts <- intact %>% mutate(
+  organism_a = str_extract(`Taxid interactor A`, "^taxid:\\d+") %>% str_extract("\\d+"),
+  organism_b = str_extract(`Taxid interactor B`, "^taxid:\\d+") %>% str_extract("\\d+"))
+
+homo_intact <- hosts %>% 
+  filter(xor(organism_a == "9606" , organism_b == "9606")) %>%
+  mutate(virus_taxid = ifelse(organism_a == "9606", organism_b, organism_a),
+         virus_protein = ifelse(organism_a == "9606", `ID(s) interactor B`, `#ID(s) interactor A`),
+         human_protein = ifelse(organism_a == "9606", `#ID(s) interactor A`, `ID(s) interactor B`)) %>%
+  filter(virus_taxid %in% viruses) %>%
+  filter(str_starts(virus_protein, "uniprotkb:"), str_starts(human_protein, "uniprotkb:")) %>%
+  mutate(virus_protein = str_remove(virus_protein, "^uniprotkb:"),
+         human_protein = str_remove(human_protein, "^uniprotkb:"))
+
+species <- append(hosts$organism_a, hosts$organism_b) 
+species_counts <- tibble(species = species) %>% count(species) 
+
+homo_intact %>% 
+  group_by(virus_taxid) %>%
+  summarise(taxon_id_frequency = n()) %>%
+  ggplot(aes(x = taxon_id_frequency)) + 
+  geom_histogram(color = "gray", fill = "steelblue", bins = 18, alpha = 0.4) + 
+  labs(x = "taxon id frequency", title = "Distribution of interactions with human per virus (IntAct)") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw() 
+
+species_counts %>% ggplot(aes(x = n)) + 
+  geom_histogram(color = "gray", fill = "steelblue", bins = 20, alpha = 0.4) + 
+  labs(x = "taxon id frequency", title = "Distribution of interactions with human per organism (IntAct)") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+print(paste("number of taxon ids in IntAct:", nrow(species_counts), "(contains organisms like mouse, rat and guinea pig)"))
+
+hosts %>%
+  filter(!organism_a %in% viruses & !organism_b %in% viruses) %>%
+  nrow()
+
+```
+
+```{r}
+homo_intact_unique <- homo_intact %>%
+  mutate(
+    miscore = as.numeric(
+      str_extract(`Confidence value(s)`, "(?<=intact-miscore:)\\d+\\.\\d+")
+    )
+  ) %>%
+  group_by(virus_taxid, human_protein, virus_protein) %>%
+  slice_max(miscore, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(organism_a, organism_b, virus_taxid, virus_protein, human_protein, miscore)
+
+print(paste("Number of virus taxon ids in in IntAct:", homo_intact_unique %>% select(virus_taxid) %>% distinct() %>% nrow()))
+print(paste("Total number of interactions between human and all viruses in IntAct:", nrow(homo_intact)))
+print(paste("Total number of unique interactions between human and all viruses in IntAct:", nrow(homo_intact_unique)))
+
+hhv_intact <- homo_intact_unique %>% filter(virus_taxid == "10298")
+corona_intact <- homo_intact_unique %>% filter(virus_taxid == "2697049")
+
+hhv_intact_seeds <- hhv_intact %>%
+  distinct(virus_protein) %>%
+  pull(virus_protein)
+
+hhv_intact_interactors <- hhv_intact %>% distinct(human_protein) %>% pull(human_protein)
+
+corona_intact_seeds <- corona_intact %>%
+  distinct(virus_protein) %>%
+  pull(virus_protein)
+
+corona_intact_interactors <- corona_intact %>% distinct(human_protein) %>% pull(human_protein)
+
+```
+
+```{r}
+homo_intact_unique %>%
+  group_by(virus_taxid) %>%
+  summarise(seeds = n_distinct(virus_protein)) %>%
+  ggplot(aes(x = seeds)) +
+  geom_histogram(bins = 18, color = "gray", fill = "steelblue", alpha = 0.4) + 
+  labs(title = "distribution of number of seeds genes per virus (IntAct)", x = "number of seed genes") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+homo_intact_unique %>% ggplot(aes(x = miscore)) +
+  geom_histogram(fill = "steelblue", color = "gray", bins = 20, alpha = 0.4) + 
+  labs(title = "mi score distribution in IntAct") + 
+  theme_bw()
+
+summary(homo_intact_unique$miscore)
+homo_intact %>% filter(str_detect(`Confidence value(s)`, "27.79"))
+```
+
+# HVIDB
+
+```{r}
+viruses_hvidb_n <- hvidb %>% distinct(Organism_Interactor_virus) %>% nrow()
+
+print(paste("Number of virus taxon ids in HVIDB:", viruses_hvidb_n))
+print(paste("Total number of interactions between human and all viruses in HVIDB:", nrow(hvidb)))
+print(paste("Total number of unique interactions between human and all viruses in HVIDB:", 
+            hvidb %>% distinct(Uniprot_human, Uniprot_virus, Organism_Interactor_virus) %>% nrow()))
+
+hhv_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "10298")
+hhv_hvidb_seeds <- hhv_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_virus)
+hhv_hvidb_interactors <- hhv_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
+
+corona_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "2697049")
+corona_hvidb_seeds <- corona_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_virus)
+corona_hvidb_interactors <- corona_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
+
+```
+
+
+```{r}
+summary_df_seeds <- tibble(
+  database = c("intact", "intact", "hvidb", "hvidb"),
+  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  count    = c(
+    n_distinct(hhv_intact$virus_protein),
+    n_distinct(corona_intact$virus_protein),
+    n_distinct(hhv_hvidb$Uniprot_virus),
+    n_distinct(corona_hvidb$Uniprot_virus)
+  )
+) %>% mutate(metric = "Seed proteins")
+
+summary_df_interactions <- tibble(
+  database = c("intact", "intact", "hvidb", "hvidb"),
+  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  count    = c(
+    nrow(hhv_intact),
+    nrow(corona_intact),
+    nrow(hhv_hvidb),
+    nrow(corona_hvidb)
+  )
+) %>% mutate(metric = "Interactions")
+
+summary_df_interactors <- tibble(
+  database = c("intact", "intact", "hvidb", "hvidb"),
+  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  count    = c(
+    n_distinct(hhv_intact$human_protein),
+    n_distinct(corona_intact$human_protein),
+    n_distinct(hhv_hvidb$Uniprot_human),
+    n_distinct(corona_hvidb$Uniprot_human)
+  )
+) %>% mutate(metric = "Human Interactors")
+
+df <- bind_rows(summary_df_seeds, summary_df_interactions, summary_df_interactors) %>%
+  mutate(
+    virus    = factor(virus, levels = c("HHV", "Corona")),
+    database = factor(database, levels = c("intact", "hvidb")),
+    metric   = factor(metric, levels = c("Seed proteins", "Interactions", "Human Interactors"))
+  )
+
+make_plot <- function(v, m) {
+  ggplot(filter(df, virus == v, metric == m),
+         aes(x = database, y = count, fill = database)) +
+    geom_col(color = "black", width = 0.7) +
+    guides(fill = "none") +
+    labs(title = paste(v, "-", m), x = "Database", y = "Count") + 
+    theme_bw(base_size = 6)
+}
+
+p_hhv_seed  <- make_plot("HHV",    "Seed proteins")
+p_cor_seed  <- make_plot("Corona", "Seed proteins")
+p_hhv_int   <- make_plot("HHV",    "Interactions")
+p_cor_int   <- make_plot("Corona", "Interactions")
+p_hhv_inter <- make_plot("HHV",    "Human Interactors")
+p_cor_inter <- make_plot("Corona", "Human Interactors")
+
+(p_hhv_seed | p_cor_seed) /
+(p_hhv_int  | p_cor_int)  /
+(p_hhv_inter| p_cor_inter)
+```
+
+```{r}
+hvidb %>% 
+  group_by(Organism_Interactor_virus) %>% 
+  summarise(taxon_id_frequency = n()) %>%
+  ggplot(aes(x = taxon_id_frequency)) + 
+  geom_histogram(color = "gray", fill = "steelblue", bins = 18, alpha = 0.4) + 
+  labs(x = "taxon id frequency", title = "Distribution of interactions with human per virus (HVIDB)")+ 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+hvidb %>% 
+  group_by(Organism_Interactor_virus) %>%
+  summarise(seeds = n_distinct(Uniprot_virus)) %>%
+  ggplot(aes(x = seeds)) +
+  geom_histogram(bins = 20, color = "gray", fill = "steelblue", alpha = 0.4) + 
+  labs(title = "distribution of number of seeds genes per virus (HVIDB)",
+       x = "number of seed genes") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+```
+
+# Intact vs HVIDB
+
+```{r}
+make_set <- function(df, human_col, virus_col) {
+  df %>%
+    select(all_of(c(human_col, virus_col))) %>%
+    filter(!is.na(.data[[human_col]]), !is.na(.data[[virus_col]])) %>%
+    distinct() %>%
+    transmute(key = paste(.data[[human_col]], .data[[virus_col]], sep = "||")) %>%
+    pull(key) %>%
+    unique()
+}
+
+hhv_intact_set <- make_set(hhv_intact, "human_protein", "virus_protein")
+hhv_hvidb_set <- make_set(hhv_hvidb, "Uniprot_human", "Uniprot_virus")
+
+
+corona_intact_set <- make_set(corona_intact, "human_protein", "virus_protein")
+corona_hvidb_set <- make_set(corona_hvidb, "Uniprot_human", "Uniprot_virus")
+
+```
+
+```{r}
+
+ggVennDiagram(list(intact = hhv_intact_set, hvidb = hhv_hvidb_set)) +
+  ggtitle("Human–Virus protein interaction overlap for Herpes Simplex")+ 
+  coord_cartesian(clip = "off")
+
+ggVennDiagram(list(intact = corona_intact_set, hvidb = corona_hvidb_set)) +
+  ggtitle("Human–Virus protein interaction overlap for Corona")+ 
+  coord_cartesian(clip = "off")
+
+```
+
+```{r}
+ggVennDiagram(list(intact = hhv_intact_seeds, hvidb = hhv_hvidb_seeds)) +
+  ggtitle("Virus seed gene overlap for Herpes Simplex")+ 
+  coord_cartesian(clip = "off")
+
+ggVennDiagram(list(intact = corona_intact_seeds, hvidb = corona_hvidb_seeds)) +
+  ggtitle("Virus seed gene overlap for Corona")+ 
+  coord_cartesian(clip = "off")
+
+```
+
+```{r}
+ggVennDiagram(list(intact = hhv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
+  ggtitle("Human interactors overlap for Herpes Simplex") + 
+  coord_cartesian(clip = "off")
+  
+ggVennDiagram(list(intact = corona_intact_interactors, hvidb = corona_hvidb_interactors)) + 
+  ggtitle("Human interactors overlap for Corona") + 
+  coord_cartesian(clip = "off")
+```
+
