@@ -27,7 +27,7 @@ nodes <- nodes %>%
     parent_tax_id = trimws(parent_tax_id)
   )
 
-root <- "10239"
+root <- "3418604"
 
 virus_taxids <- root
 repeat {
@@ -44,13 +44,14 @@ repeat {
 
 virus_taxids <- sort(unique(virus_taxids))
 
-write_lines(virus_taxids, "virus_taxids.txt")
 
 length(virus_taxids)
+
+corona_group <- virus_taxids
 ```
 
 ```{r}
-start <- "10298"
+start <- "2697049"
 
 lineage <- start
 
@@ -68,15 +69,37 @@ repeat {
   lineage <- c(lineage, parent)
 }
 
-
-lineage_hhv <- lineage_hhv[-1]
-lineage_corona <- lineage_corona[-1]
 ```
 
 ```{r}
 corona_proteins <- read_tsv("data/corona_proteins.tsv")
 hhv_proteins <- read_tsv("data/hhv_proteins.tsv")
 
+same_level_taxids <- function(taxid){
+  parents <- nodes %>% filter(tax_id == taxid) %>% pull(parent_tax_id)
+  parent <- parents[1]
+  
+  siblings <- nodes %>% filter(parent_tax_id == parent) %>% pull(tax_id)
+  return(siblings)
+}
+```
 
+```{r}
+hhv_group <- same_level_taxids("10298")
+corona_group <- same_level_taxids("2697049")
+
+ebola_group <- same_level_taxids("1570291")
+
+hpv_group <- same_level_taxids("333761")
+```
+
+
+```{r}
+human_ppi <- read_tsv("tests/pipeline_results/input/networks/string.human_physical_links_v12_0_min700.UniProtKB-AC.robust.tsv", col_names = FALSE)
+
+proteins <- append(human_ppi$X1, human_ppi$X2)
+proteins <- unique(proteins)
+
+homo_intact_unique %>% filter(!human_protein %in% proteins)
 ```
 

@@ -11,13 +11,27 @@ library(ggplot2)
 library(readr)
 library(ggVennDiagram)
 library(patchwork)
+library(ComplexUpset)
 
-hvidb <- read_tsv("data/hvidb.tsv") %>% mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
-Organism_Interactor_human = as.character(Organism_Interactor_human))
+hvidb <- read_tsv("data/hvidb.tsv") %>% 
+  mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
+         Organism_Interactor_human = as.character(Organism_Interactor_human))
+
+hvidb <- hvidb %>% mutate(Uniprot_virus = str_remove(Uniprot_virus, "-PRO_.*$"),
+                          Uniprot_human = str_remove(Uniprot_human, "-PRO_.*$"))
 
 intact <- read_tsv("data/intact.tsv") 
 
 viruses <- read_tsv("data/virus_taxids.txt", col_names = FALSE)[[1]]
+
+corona_proteins_all <- read_tsv("data/corona_proteins.tsv") 
+corona_proteins_swiss <- corona_proteins_all %>% filter(Reviewed == "reviewed")
+corona_proteins_trembl <- corona_proteins_all %>% filter(Reviewed != "reviewed")
+
+
+hhv_proteins_all <- read_tsv("data/hhv_proteins.tsv")
+hhv_proteins_swiss <- hhv_proteins_all %>% filter(Reviewed == "reviewed")
+hhv_proteins_trembl <- hhv_proteins_all %>% filter(Reviewed != "reviewed")
 ```
 
 # Intact
@@ -37,7 +51,9 @@ homo_intact <- hosts %>%
   filter(virus_taxid %in% viruses) %>%
   filter(str_starts(virus_protein, "uniprotkb:"), str_starts(human_protein, "uniprotkb:")) %>%
   mutate(virus_protein = str_remove(virus_protein, "^uniprotkb:"),
-         human_protein = str_remove(human_protein, "^uniprotkb:"))
+         human_protein = str_remove(human_protein, "^uniprotkb:"),
+         virus_protein = str_remove(virus_protein, "-PRO_.*$"),
+         human_protein = str_remove(human_protein, "-PRO_.*$"))
 
 species <- append(hosts$organism_a, hosts$organism_b) 
 species_counts <- tibble(species = species) %>% count(species) 
@@ -49,13 +65,16 @@ homo_intact %>%
   geom_histogram(color = "gray", fill = "steelblue", bins = 18, alpha = 0.4) + 
   labs(x = "taxon id frequency", title = "Distribution of interactions with human per virus (IntAct)") + 
   geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
-  theme_bw() 
+  theme_bw()
+
+ggsave("plots/virphi_dist_intact.png", dpi = 500)
 
 species_counts %>% ggplot(aes(x = n)) + 
   geom_histogram(color = "gray", fill = "steelblue", bins = 20, alpha = 0.4) + 
   labs(x = "taxon id frequency", title = "Distribution of interactions with human per organism (IntAct)") + 
   geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
   theme_bw()
+ggsave("plots/phi_dist_intact.png", dpi = 500)
 
 print(paste("number of taxon ids in IntAct:", nrow(species_counts), "(contains organisms like mouse, rat and guinea pig)"))
 
@@ -104,17 +123,27 @@ homo_intact_unique %>%
   summarise(seeds = n_distinct(virus_protein)) %>%
   ggplot(aes(x = seeds)) +
   geom_histogram(bins = 18, color = "gray", fill = "steelblue", alpha = 0.4) + 
-  labs(title = "distribution of number of seeds genes per virus (IntAct)", x = "number of seed genes") + 
+  labs(title = "Distribution of number of seeds genes per virus (IntAct)", x = "number of seed genes") + 
   geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
   theme_bw()
+ggsave("plots/seed_dist_intact.png", dpi = 500)
+
+homo_intact_unique %>%
+  group_by(virus_taxid) %>%
+  summarise(seeds = n_distinct(human_protein)) %>%
+  ggplot(aes(x = seeds)) +
+  geom_histogram(bins = 18, color = "gray", fill = "steelblue", alpha = 0.4) + 
+  labs(title = "Distribution of number of human interactors per virus (IntAct)", x = "number of human interactors") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+ggsave("plots/inter_dist_intact.png", dpi = 500)
 
 homo_intact_unique %>% ggplot(aes(x = miscore)) +
   geom_histogram(fill = "steelblue", color = "gray", bins = 20, alpha = 0.4) + 
   labs(title = "mi score distribution in IntAct") + 
   theme_bw()
+ggsave("plots/mi_dist_intact.png", dpi = 500)
 
-summary(homo_intact_unique$miscore)
-homo_intact %>% filter(str_detect(`Confidence value(s)`, "27.79"))
 ```
 
 # HVIDB
@@ -138,6 +167,47 @@ corona_hvidb_interactors <- corona_hvidb %>% distinct(Uniprot_human) %>% pull(Un
 ```
 
 
+
+
+```{r}
+hvidb %>% 
+  group_by(Organism_Interactor_virus) %>% 
+  summarise(taxon_id_frequency = n()) %>%
+  ggplot(aes(x = taxon_id_frequency)) + 
+  geom_histogram(color = "gray", fill = "steelblue", bins = 18, alpha = 0.4) + 
+  labs(x = "taxon id frequency", title = "Distribution of interactions with human per virus (HVIDB)")+ 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+ggsave("plots/phi_dist_hvidb.png", dpi = 500)
+
+hvidb %>% 
+  group_by(Organism_Interactor_virus) %>%
+  summarise(seeds = n_distinct(Uniprot_virus)) %>%
+  ggplot(aes(x = seeds)) +
+  geom_histogram(bins = 20, color = "gray", fill = "steelblue", alpha = 0.4) + 
+  labs(title = "Distribution of number of seeds genes per virus (HVIDB)",
+       x = "number of seed genes") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+ggsave("plots/seed_dist_hvidb.png", dpi = 500)
+
+hvidb %>% 
+  group_by(Organism_Interactor_virus) %>%
+  summarise(seeds = n_distinct(Uniprot_human)) %>%
+  ggplot(aes(x = seeds)) +
+  geom_histogram(bins = 20, color = "gray", fill = "steelblue", alpha = 0.4) + 
+  labs(title = "Distribution of number of human interactors per virus (HVIDB)",
+       x = "number of seed genes") + 
+  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
+  theme_bw()
+
+ggsave("plots/inter_dist_hvidb.png", dpi = 500)
+```
+
+# Intact vs HVIDB
+
 ```{r}
 summary_df_seeds <- tibble(
   database = c("intact", "intact", "hvidb", "hvidb"),
@@ -148,7 +218,7 @@ summary_df_seeds <- tibble(
     n_distinct(hhv_hvidb$Uniprot_virus),
     n_distinct(corona_hvidb$Uniprot_virus)
   )
-) %>% mutate(metric = "Seed proteins")
+) %>% mutate(metric = "Seed genes")
 
 summary_df_interactions <- tibble(
   database = c("intact", "intact", "hvidb", "hvidb"),
@@ -176,7 +246,7 @@ df <- bind_rows(summary_df_seeds, summary_df_interactions, summary_df_interactor
   mutate(
     virus    = factor(virus, levels = c("HHV", "Corona")),
     database = factor(database, levels = c("intact", "hvidb")),
-    metric   = factor(metric, levels = c("Seed proteins", "Interactions", "Human Interactors"))
+    metric   = factor(metric, levels = c("Seed genes", "Interactions", "Human Interactors"))
   )
 
 make_plot <- function(v, m) {
@@ -188,8 +258,8 @@ make_plot <- function(v, m) {
     theme_bw(base_size = 6)
 }
 
-p_hhv_seed  <- make_plot("HHV",    "Seed proteins")
-p_cor_seed  <- make_plot("Corona", "Seed proteins")
+p_hhv_seed  <- make_plot("HHV",    "Seed genes")
+p_cor_seed  <- make_plot("Corona", "Seed genes")
 p_hhv_int   <- make_plot("HHV",    "Interactions")
 p_cor_int   <- make_plot("Corona", "Interactions")
 p_hhv_inter <- make_plot("HHV",    "Human Interactors")
@@ -198,30 +268,9 @@ p_cor_inter <- make_plot("Corona", "Human Interactors")
 (p_hhv_seed | p_cor_seed) /
 (p_hhv_int  | p_cor_int)  /
 (p_hhv_inter| p_cor_inter)
+
+ggsave("plots/bar_combi.png", dpi = 500)
 ```
-
-```{r}
-hvidb %>% 
-  group_by(Organism_Interactor_virus) %>% 
-  summarise(taxon_id_frequency = n()) %>%
-  ggplot(aes(x = taxon_id_frequency)) + 
-  geom_histogram(color = "gray", fill = "steelblue", bins = 18, alpha = 0.4) + 
-  labs(x = "taxon id frequency", title = "Distribution of interactions with human per virus (HVIDB)")+ 
-  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
-  theme_bw()
-
-hvidb %>% 
-  group_by(Organism_Interactor_virus) %>%
-  summarise(seeds = n_distinct(Uniprot_virus)) %>%
-  ggplot(aes(x = seeds)) +
-  geom_histogram(bins = 20, color = "gray", fill = "steelblue", alpha = 0.4) + 
-  labs(title = "distribution of number of seeds genes per virus (HVIDB)",
-       x = "number of seed genes") + 
-  geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
-  theme_bw()
-```
-
-# Intact vs HVIDB
 
 ```{r}
 make_set <- function(df, human_col, virus_col) {
@@ -248,31 +297,164 @@ corona_hvidb_set <- make_set(corona_hvidb, "Uniprot_human", "Uniprot_virus")
 ggVennDiagram(list(intact = hhv_intact_set, hvidb = hhv_hvidb_set)) +
   ggtitle("Human–Virus protein interaction overlap for Herpes Simplex")+ 
   coord_cartesian(clip = "off")
+ggsave("plots/hhv_phi_venn.png", dpi = 500)
 
 ggVennDiagram(list(intact = corona_intact_set, hvidb = corona_hvidb_set)) +
   ggtitle("Human–Virus protein interaction overlap for Corona")+ 
   coord_cartesian(clip = "off")
+ggsave("plots/corona_phi_venn.png", dpi = 500)
 
 ```
 
 ```{r}
-ggVennDiagram(list(intact = hhv_intact_seeds, hvidb = hhv_hvidb_seeds)) +
-  ggtitle("Virus seed gene overlap for Herpes Simplex")+ 
-  coord_cartesian(clip = "off")
+ggVennDiagram(list(intact = hhv_intact_seeds, 
+                   hvidb = hhv_hvidb_seeds, 
+                   trEMBL = hhv_proteins_trembl$Entry, 
+                   SwissProt = hhv_proteins_swiss$Entry),
+              label = "count") +
+  ggtitle("Virus seed gene overlap for Herpes Simplex") + 
+  coord_cartesian(clip = "off")+
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
+ggsave("plots/hhv_seed_venn.png", dpi = 500)
 
-ggVennDiagram(list(intact = corona_intact_seeds, hvidb = corona_hvidb_seeds)) +
+ggVennDiagram(list(intact = corona_intact_seeds, 
+                   hvidb = corona_hvidb_seeds,
+                   trEMBL = corona_proteins_trembl$Entry,
+                   SwissProt = corona_proteins_swiss$Entry),
+              label = "count") +
   ggtitle("Virus seed gene overlap for Corona")+ 
-  coord_cartesian(clip = "off")
+  coord_cartesian(clip = "off") + 
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
+ggsave("plots/corona_seed_venn.png", dpi = 500)
 
 ```
+```{r}
+setdiff(hhv_hvidb_seeds, hhv_proteins_all$Entry)
+```
+
 
 ```{r}
 ggVennDiagram(list(intact = hhv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
   ggtitle("Human interactors overlap for Herpes Simplex") + 
   coord_cartesian(clip = "off")
+ggsave("plots/hhv_inter_venn.png", dpi = 500)
   
 ggVennDiagram(list(intact = corona_intact_interactors, hvidb = corona_hvidb_interactors)) + 
   ggtitle("Human interactors overlap for Corona") + 
   coord_cartesian(clip = "off")
+ggsave("plots/corona_inter_venn.png", dpi = 500)
 ```
+
+
+```{r}
+# INTACT corona
+
+INTACT_corona_group_interactions <- homo_intact_unique %>% 
+  filter(virus_taxid %in% corona_group) %>% 
+  mutate(interaction = paste0(virus_protein, "||", human_protein)) %>%
+  distinct(virus_taxid, interaction) 
+
+INTACT_corona_group_interactions_wide <- INTACT_corona_group_interactions %>%
+  mutate(present = TRUE) %>%
+  pivot_wider(
+    id_cols      = interaction,
+    names_from   = virus_taxid,
+    values_from  = present,
+    values_fill  = FALSE
+  )
+
+INTACT_set_cols_corona <- setdiff(names(INTACT_corona_group_interactions_wide), "interaction")
+
+upset(INTACT_corona_group_interactions_wide, 
+      intersect = INTACT_set_cols_corona,
+      name = "virus_taxid",
+      base_annotations = list(
+    "Intersection size" = intersection_size()
+  )) 
+ggsave("plots/upset_corona_intact.png", dpi = 500)
+
+#HVIDB corona
+
+HVIDB_corona_group_interactions <- hvidb %>% 
+  filter(Organism_Interactor_virus %in% corona_group) %>% 
+  mutate(interaction = paste0(Uniprot_virus, "||", Uniprot_human)) %>%
+  distinct(Organism_Interactor_virus, interaction) 
+
+HVIDB_corona_group_interactions_wide <- HVIDB_corona_group_interactions %>%
+  mutate(present = TRUE) %>%
+  pivot_wider(
+    id_cols      = interaction,
+    names_from   = Organism_Interactor_virus,
+    values_from  = present,
+    values_fill  = FALSE
+  )
+
+HVIDB_set_cols_corona <- setdiff(names(HVIDB_corona_group_interactions_wide), "interaction")
+
+upset(HVIDB_corona_group_interactions_wide, 
+      intersect = HVIDB_set_cols_corona,
+      name = "virus_taxid",
+      base_annotations = list(
+    "Intersection size" = intersection_size()
+  )) 
+ggsave("plots/upset_corona_hvidb.png", dpi = 500)
+
+```
+
+
+```{r}
+# INTACT HHV
+
+INTACT_hpv_group_interactions <- homo_intact_unique %>% 
+  filter(virus_taxid %in% hpv_group) %>% 
+  mutate(interaction = paste0(virus_protein, "||", human_protein)) %>%
+  distinct(virus_taxid, interaction) 
+
+INTACT_hpv_group_interactions_wide <- INTACT_hpv_group_interactions %>%
+  mutate(present = TRUE) %>%
+  pivot_wider(
+    id_cols      = interaction,
+    names_from   = virus_taxid,
+    values_from  = present,
+    values_fill  = FALSE
+  )
+
+INTACT_set_cols_hhv <- setdiff(names(INTACT_hpv_group_interactions_wide), "interaction")
+
+upset(INTACT_hpv_group_interactions_wide, 
+      intersect = INTACT_set_cols_hhv,
+      name = "virus_taxid",
+      base_annotations = list(
+    "Intersection size" = intersection_size()
+  )) 
+ggsave("plots/upset_hhv_intact.png", dpi = 500)
+
+#HVIDB HHV
+
+HVIDB_hpv_group_interactions <- hvidb %>% 
+  filter(Organism_Interactor_virus %in% hpv_group) %>% 
+  mutate(interaction = paste0(Uniprot_virus, "||", Uniprot_human)) %>%
+  distinct(Organism_Interactor_virus, interaction) 
+
+HVIDB_hpv_group_interactions_wide <- HVIDB_hpv_group_interactions %>%
+  mutate(present = TRUE) %>%
+  pivot_wider(
+    id_cols      = interaction,
+    names_from   = Organism_Interactor_virus,
+    values_from  = present,
+    values_fill  = FALSE
+  )
+
+HVIDB_set_cols_hhv <- setdiff(names(HVIDB_hpv_group_interactions_wide), "interaction")
+
+upset(HVIDB_hpv_group_interactions_wide, 
+      intersect = HVIDB_set_cols_hhv,
+      name = "virus_taxid",
+      base_annotations = list(
+    "Intersection size" = intersection_size()
+  )) 
+ggsave("plots/upset_hhv_hvidb.png", dpi = 500)
+
+```
+
 
