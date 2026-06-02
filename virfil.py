@@ -19,14 +19,14 @@ def get_virfil_data(tax_id, database_name, database_file, human_file, output_dir
 
     interactions_to_add = interactions[['virus_protein', 'human_protein']].copy()
     interactions_to_add = interactions_to_add.rename(columns={
-        'virus_protein': 'protein1',
-        'human_protein': 'protein2'
+        'virus_protein': 'protein_a',
+        'human_protein': 'protein_b'
     })
     ppi_plus_virus = pd.concat([human_ppi, interactions_to_add], ignore_index=True)
     
-    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus.tsv", sep='\t', index=False)
-    virus_seeds.to_csv(f"{output_dir}/virus_seeds.tsv", sep='\t', index=False, header=False)
-    human_seeds.to_csv(f"{output_dir}/human_seeds.tsv", sep='\t', index=False, header=False)
+    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus.csv", index=False, header=False)
+    virus_seeds.to_csv(f"{output_dir}/virus_seeds.txt", index=False, header=False)
+    human_seeds.to_csv(f"{output_dir}/human_seeds.txt", index=False, header=False)
 
 
 
@@ -107,8 +107,3 @@ if __name__ == "__main__":
 
     get_virfil_data(args.tax_id, args.database_name, args.database_file, args.human_file, args.output_dir)
 
-"""get_virfil_data("10298", 
-                "intact", 
-                "data/intact.tsv", 
-                "tests/pipeline_results/input/networks/string.human_physical_links_v12_0_min700.UniProtKB-AC.robust.tsv", 
-                "test_cache")"""

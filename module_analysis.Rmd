@@ -1,0 +1,161 @@
+---
+title: "Module analysis"
+author: "Mohit"
+date: "2026-05-18"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+corona_topology <- read_tsv("tests/corona_both_combi/mqc_summaries/topology_mqc.tsv")
+
+hsv_topology <- read_tsv("tests/hsv_both_combi/mqc_summaries/topology_mqc.tsv")
+
+pd <- position_dodge(width = 0.5)
+```
+
+```{r}
+
+corona_topology <- corona_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         fill_group = interaction(seed, dataset, sep = "_"))
+
+hsv_topology <- hsv_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         fill_group = interaction(seed, dataset, sep = "_"))
+
+```
+
+```{r}
+hsv_topology %>%
+  mutate(
+    group = interaction(seed, dataset, sep = "_")
+  ) %>%
+  ggplot(aes(
+    x = method,
+    y = nodes,
+    fill = group,
+    shape = group
+  )) +
+  # lines connecting human/virus within each dataset
+  geom_line(
+    aes(group = interaction(dataset, method)),
+    position = pd,
+    color = "grey40"
+  ) +
+  # points dodged by dataset
+  geom_point(
+    position = pd,
+    size = 3,
+    color = "black",
+    aes(group = dataset)
+  ) +
+  scale_fill_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = "darkblue",
+      "human_intact" = "lightblue",
+      "virus_hvidb" = "darkblue",
+      "virus_intact" = "lightblue"
+    )
+  ) +
+  scale_shape_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = 22,
+      "human_intact" = 22,
+      "virus_hvidb" = 24,
+      "virus_intact" = 24
+    )
+  ) +
+  theme_bw() + 
+  theme(legend.position = "bottom",
+        legend.text  = element_text(size = 8),
+        legend.title = element_text(size = 9))
+
+ggsave("plots/hsv_module.jpeg", width = 6, height = 4)
+```
+
+
+```{r}
+
+corona_topology %>%
+  mutate(
+    group = interaction(seed, dataset, sep = "_")
+  ) %>%
+  ggplot(aes(
+    x = method,
+    y = nodes,
+    fill = group,
+    shape = group
+  )) +
+  # lines connecting human/virus within each dataset
+  geom_line(
+    aes(group = interaction(dataset, method)),
+    position = pd,
+    color = "grey40"
+  ) +
+  # points dodged by dataset
+  geom_point(
+    position = pd,
+    size = 3,
+    color = "black",
+    aes(group = dataset)
+  ) +
+  scale_fill_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = "darkred",
+      "human_intact" = "red",
+      "virus_hvidb" = "darkred",
+      "virus_intact" = "red"
+    )
+  ) +
+  scale_shape_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = 22,
+      "human_intact" = 22,
+      "virus_hvidb" = 24,
+      "virus_intact" = 24
+    )
+  ) +
+  theme_bw() + 
+  theme(legend.position = "bottom",
+        legend.text  = element_text(size = 8),
+        legend.title = element_text(size = 9))
+
+ggsave("plots/corona_module.jpeg", width = 6, height = 4)
+```
+
+

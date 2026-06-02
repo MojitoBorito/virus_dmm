@@ -87,19 +87,21 @@ same_level_taxids <- function(taxid){
 ```{r}
 hhv_group <- same_level_taxids("10298")
 corona_group <- same_level_taxids("2697049")
-
+taxid <- "2697049"
 ebola_group <- same_level_taxids("1570291")
 
 hpv_group <- same_level_taxids("333761")
 ```
 
-
 ```{r}
-human_ppi <- read_tsv("tests/pipeline_results/input/networks/string.human_physical_links_v12_0_min700.UniProtKB-AC.robust.tsv", col_names = FALSE)
+ppi <- read_tsv("data/string.human_physical_links_v12_0_min700.UniProtKB-AC.robust.tsv", col_names = FALSE)
 
-proteins <- append(human_ppi$X1, human_ppi$X2)
-proteins <- unique(proteins)
+interactors<- unique(append(ppi$X1, ppi$X2))
 
-homo_intact_unique %>% filter(!human_protein %in% proteins)
+length(setdiff(corona_intact_interactors, interactors))
+
+length(corona_intact_interactors)
+length(interactors)
 ```
+
 

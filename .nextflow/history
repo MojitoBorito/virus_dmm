@@ -1,0 +1,1 @@
+2026-05-11 15:46:26	8.2s	magical_stone	ERR	59aa5e03a9a366e7a5057fcbf88b45e5bc33340e	fad141fd-7b4b-4d1c-bdbf-994726242ad3	nextflow run nf-core/diseasemodulediscovery -r dev -profile docker --network ../data/out_hsv_intact/ppi_plus_virus.tsv --seeds ../data/out_hsv_intact/virus_seeds.tsv --id_space uniprot --outdir results_hsv_intact

@@ -32,6 +32,8 @@ corona_proteins_trembl <- corona_proteins_all %>% filter(Reviewed != "reviewed")
 hhv_proteins_all <- read_tsv("data/hhv_proteins.tsv")
 hhv_proteins_swiss <- hhv_proteins_all %>% filter(Reviewed == "reviewed")
 hhv_proteins_trembl <- hhv_proteins_all %>% filter(Reviewed != "reviewed")
+
+nrow(corona_proteins_all)
 ```
 
 # Intact
@@ -210,19 +212,19 @@ ggsave("plots/inter_dist_hvidb.png", dpi = 500)
 
 ```{r}
 summary_df_seeds <- tibble(
-  database = c("intact", "intact", "hvidb", "hvidb"),
-  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
+  virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
     n_distinct(hhv_intact$virus_protein),
     n_distinct(corona_intact$virus_protein),
     n_distinct(hhv_hvidb$Uniprot_virus),
     n_distinct(corona_hvidb$Uniprot_virus)
   )
-) %>% mutate(metric = "Seed genes")
+) %>% mutate(metric = "Viral Interactors")
 
 summary_df_interactions <- tibble(
-  database = c("intact", "intact", "hvidb", "hvidb"),
-  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
+  virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
     nrow(hhv_intact),
     nrow(corona_intact),
@@ -232,8 +234,8 @@ summary_df_interactions <- tibble(
 ) %>% mutate(metric = "Interactions")
 
 summary_df_interactors <- tibble(
-  database = c("intact", "intact", "hvidb", "hvidb"),
-  virus    = c("HHV", "Corona", "HHV", "Corona"),
+  database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
+  virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
     n_distinct(hhv_intact$human_protein),
     n_distinct(corona_intact$human_protein),
@@ -244,9 +246,9 @@ summary_df_interactors <- tibble(
 
 df <- bind_rows(summary_df_seeds, summary_df_interactions, summary_df_interactors) %>%
   mutate(
-    virus    = factor(virus, levels = c("HHV", "Corona")),
-    database = factor(database, levels = c("intact", "hvidb")),
-    metric   = factor(metric, levels = c("Seed genes", "Interactions", "Human Interactors"))
+    virus    = factor(virus, levels = c("HSV-1", "SARS-CoV-2")),
+    database = factor(database, levels = c("IntAct", "HVIDB")),
+    metric   = factor(metric, levels = c("Viral Interactors", "Interactions", "Human Interactors"))
   )
 
 make_plot <- function(v, m) {
@@ -255,22 +257,59 @@ make_plot <- function(v, m) {
     geom_col(color = "black", width = 0.7) +
     guides(fill = "none") +
     labs(title = paste(v, "-", m), x = "Database", y = "Count") + 
-    theme_bw(base_size = 6)
+    theme_bw(base_size = 6) + 
+    scale_fill_manual(
+  values = if (v == "HSV-1") {
+    c("IntAct" = "#0C5697", "HVIDB" = "#68B2F3")
+  } else {
+    c("IntAct" = "#C60C12", "HVIDB" = "#F6656A")
+  }
+)
 }
 
-p_hhv_seed  <- make_plot("HHV",    "Seed genes")
-p_cor_seed  <- make_plot("Corona", "Seed genes")
-p_hhv_int   <- make_plot("HHV",    "Interactions")
-p_cor_int   <- make_plot("Corona", "Interactions")
-p_hhv_inter <- make_plot("HHV",    "Human Interactors")
-p_cor_inter <- make_plot("Corona", "Human Interactors")
+p_hhv_seed  <- make_plot("HSV-1",    "Viral Interactors")
+p_cor_seed  <- make_plot("SARS-CoV-2", "Viral Interactors")
+p_hhv_int   <- make_plot("HSV-1",    "Interactions")
+p_cor_int   <- make_plot("SARS-CoV-2", "Interactions")
+p_hhv_inter <- make_plot("HSV-1",    "Human Interactors")
+p_cor_inter <- make_plot("SARS-CoV-2", "Human Interactors")
 
-(p_hhv_seed | p_cor_seed) /
+bar_plot <- (p_hhv_seed | p_cor_seed) /
 (p_hhv_int  | p_cor_int)  /
 (p_hhv_inter| p_cor_inter)
 
-ggsave("plots/bar_combi.png", dpi = 500)
+bar_plot_hori <- (p_hhv_seed | p_hhv_int | p_hhv_inter) / (p_cor_seed | p_cor_int | p_cor_inter)
+
+ggsave("plots/bar_combi.jpeg", bar_plot, dpi = 2400, height = 5, width = 4)
+
+ggsave("plots/bar_combi_hori.jpeg", bar_plot_hori, dpi = 2400, height = 4, width = 6)
 ```
+
+```{r}
+make_row <- function(v) {
+  d <- df %>% filter(virus == v)
+
+  ggplot(d, aes(x = database, y = count, fill = database)) +
+    geom_col(color = "black", width = 0.7) +
+    facet_wrap(~ metric, nrow = 1, scales = "fixed") +  
+    geom_text(aes(label = count), vjust = -0.5, size = 2) +
+    labs(title = v, x = "Database", y = "Count") +
+    theme_bw(base_size = 7.5) +
+    scale_fill_manual(values =
+      if (v == "HSV-1") c("IntAct" = "#0C5697", "HVIDB" = "#68B2F3")
+      else c("IntAct" = "#C60C12", "HVIDB" = "#F6656A")
+    ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) + 
+    theme(legend.position = "None")
+}
+
+row_hsv  <- make_row("HSV-1")
+row_sars <- make_row("SARS-CoV-2")
+
+bar_plot_hori_new <- row_hsv / row_sars
+ggsave("plots/bar_combi_new.jpeg", bar_plot_hori_new, dpi = 2400, height = 4, width = 6)
+```
+
 
 ```{r}
 make_set <- function(df, human_col, virus_col) {
@@ -296,36 +335,32 @@ corona_hvidb_set <- make_set(corona_hvidb, "Uniprot_human", "Uniprot_virus")
 
 ggVennDiagram(list(intact = hhv_intact_set, hvidb = hhv_hvidb_set)) +
   ggtitle("Human–Virus protein interaction overlap for Herpes Simplex")+ 
-  coord_cartesian(clip = "off")
+  coord_cartesian(clip = "off")+ 
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
 ggsave("plots/hhv_phi_venn.png", dpi = 500)
 
 ggVennDiagram(list(intact = corona_intact_set, hvidb = corona_hvidb_set)) +
   ggtitle("Human–Virus protein interaction overlap for Corona")+ 
-  coord_cartesian(clip = "off")
+  coord_cartesian(clip = "off")+ 
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
 ggsave("plots/corona_phi_venn.png", dpi = 500)
 
 ```
 
 ```{r}
-ggVennDiagram(list(intact = hhv_intact_seeds, 
-                   hvidb = hhv_hvidb_seeds, 
-                   trEMBL = hhv_proteins_trembl$Entry, 
+ggVennDiagram(list(IntAct = hhv_intact_seeds, 
+                   HVIDB = hhv_hvidb_seeds, 
                    SwissProt = hhv_proteins_swiss$Entry),
               label = "count") +
-  ggtitle("Virus seed gene overlap for Herpes Simplex") + 
-  coord_cartesian(clip = "off")+
   scale_fill_gradient(low = "lightblue", high = "steelblue")
-ggsave("plots/hhv_seed_venn.png", dpi = 500)
+ggsave("plots/hhv_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
 
-ggVennDiagram(list(intact = corona_intact_seeds, 
-                   hvidb = corona_hvidb_seeds,
-                   trEMBL = corona_proteins_trembl$Entry,
+ggVennDiagram(list(IntAct = corona_intact_seeds, 
+                   HVIDB = corona_hvidb_seeds,
                    SwissProt = corona_proteins_swiss$Entry),
               label = "count") +
-  ggtitle("Virus seed gene overlap for Corona")+ 
-  coord_cartesian(clip = "off") + 
-  scale_fill_gradient(low = "lightblue", high = "steelblue")
-ggsave("plots/corona_seed_venn.png", dpi = 500)
+  scale_fill_gradient(low = "#FC5F64", high = "darkred")
+ggsave("plots/corona_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
 
 ```
 ```{r}
@@ -336,12 +371,14 @@ setdiff(hhv_hvidb_seeds, hhv_proteins_all$Entry)
 ```{r}
 ggVennDiagram(list(intact = hhv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
   ggtitle("Human interactors overlap for Herpes Simplex") + 
-  coord_cartesian(clip = "off")
+  coord_cartesian(clip = "off")+ 
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
 ggsave("plots/hhv_inter_venn.png", dpi = 500)
   
 ggVennDiagram(list(intact = corona_intact_interactors, hvidb = corona_hvidb_interactors)) + 
   ggtitle("Human interactors overlap for Corona") + 
-  coord_cartesian(clip = "off")
+  coord_cartesian(clip = "off")+ 
+  scale_fill_gradient(low = "lightblue", high = "steelblue")
 ggsave("plots/corona_inter_venn.png", dpi = 500)
 ```
 
@@ -351,7 +388,7 @@ ggsave("plots/corona_inter_venn.png", dpi = 500)
 
 INTACT_corona_group_interactions <- homo_intact_unique %>% 
   filter(virus_taxid %in% corona_group) %>% 
-  mutate(interaction = paste0(virus_protein, "||", human_protein)) %>%
+  mutate(interaction = human_protein) %>%
   distinct(virus_taxid, interaction) 
 
 INTACT_corona_group_interactions_wide <- INTACT_corona_group_interactions %>%
@@ -377,7 +414,7 @@ ggsave("plots/upset_corona_intact.png", dpi = 500)
 
 HVIDB_corona_group_interactions <- hvidb %>% 
   filter(Organism_Interactor_virus %in% corona_group) %>% 
-  mutate(interaction = paste0(Uniprot_virus, "||", Uniprot_human)) %>%
+  mutate(interaction = Uniprot_human) %>%
   distinct(Organism_Interactor_virus, interaction) 
 
 HVIDB_corona_group_interactions_wide <- HVIDB_corona_group_interactions %>%
@@ -403,11 +440,11 @@ ggsave("plots/upset_corona_hvidb.png", dpi = 500)
 
 
 ```{r}
-# INTACT HHV
+# INTACT HPV
 
 INTACT_hpv_group_interactions <- homo_intact_unique %>% 
   filter(virus_taxid %in% hpv_group) %>% 
-  mutate(interaction = paste0(virus_protein, "||", human_protein)) %>%
+  mutate(interaction = human_protein) %>%
   distinct(virus_taxid, interaction) 
 
 INTACT_hpv_group_interactions_wide <- INTACT_hpv_group_interactions %>%
@@ -429,11 +466,11 @@ upset(INTACT_hpv_group_interactions_wide,
   )) 
 ggsave("plots/upset_hhv_intact.png", dpi = 500)
 
-#HVIDB HHV
+#HVIDB HPV
 
 HVIDB_hpv_group_interactions <- hvidb %>% 
   filter(Organism_Interactor_virus %in% hpv_group) %>% 
-  mutate(interaction = paste0(Uniprot_virus, "||", Uniprot_human)) %>%
+  mutate(interaction = Uniprot_human) %>%
   distinct(Organism_Interactor_virus, interaction) 
 
 HVIDB_hpv_group_interactions_wide <- HVIDB_hpv_group_interactions %>%
@@ -456,5 +493,7 @@ upset(HVIDB_hpv_group_interactions_wide,
 ggsave("plots/upset_hhv_hvidb.png", dpi = 500)
 
 ```
+
+
 
 
