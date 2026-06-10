@@ -104,6 +104,7 @@ print(paste("Total number of unique interactions between human and all viruses i
 
 hhv_intact <- homo_intact_unique %>% filter(virus_taxid == "10298")
 corona_intact <- homo_intact_unique %>% filter(virus_taxid == "2697049")
+hiv_intact <- homo_intact_unique %>% filter(virus_taxid == "11676")
 
 hhv_intact_seeds <- hhv_intact %>%
   distinct(virus_protein) %>%
@@ -165,6 +166,8 @@ hhv_hvidb_interactors <- hhv_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_
 corona_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "2697049")
 corona_hvidb_seeds <- corona_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_virus)
 corona_hvidb_interactors <- corona_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
+
+hhv_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "11676")
 
 ```
 

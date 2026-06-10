@@ -13,6 +13,33 @@ corona_topology <- read_tsv("tests/corona_both_combi/mqc_summaries/topology_mqc.
 
 hsv_topology <- read_tsv("tests/hsv_both_combi/mqc_summaries/topology_mqc.tsv")
 
+gprofile_reader <- function(type, path) {
+  files <- list.files(
+  path = path,
+  pattern = paste0(type, "\\.sub_enriched_pathways\\.tsv$"),
+  recursive = TRUE,
+  full.names = TRUE
+)
+
+transformed_names <- basename(files) %>%
+  str_remove("\\.gprofiler2.*") %>%  
+  str_replace("^([^.]+)\\.(.+)\\.([^.]+)$", "\\1_\\3")
+
+datalist <- files %>%
+  set_names(transformed_names) %>%
+  map(~ read_tsv(.x))
+
+data_list_combi <- datalist %>% imap_dfr(~ .x %>% mutate(source = .y))
+
+return(data_list_combi)
+}
+
+corona_kegg_combi <- gprofile_reader("KEGG", "tests/corona_both_combi/evaluation/gprofiler/")
+
+hsv_kegg_combi <- gprofile_reader("KEGG", "tests/hsv_both_combi/evaluation/gprofiler/")
+
+hiv_kegg_combi <- gprofile_reader("KEGG", "tests/hiv_both_combi/evaluation/gprofiler/")
+
 pd <- position_dodge(width = 0.5)
 ```
 
@@ -158,4 +185,43 @@ corona_topology %>%
 ggsave("plots/corona_module.jpeg", width = 6, height = 4)
 ```
 
+
+```{r}
+corona_kegg_combi %>% 
+  filter(Pathway_code == "KEGG:05171") %>%
+  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
+  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
+  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+  geom_col(color = "black") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  scale_fill_gradient(low = "#C60C12", high = "#F6656A") + 
+  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+       x = "Enriched Fraction")
+```
+
+```{r}
+hsv_kegg_combi %>%
+  filter(Pathway_code == "KEGG:05168") %>%
+  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
+  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
+  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+  geom_col(color = "black") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  scale_fill_gradient(low = "steelblue", high = "lightblue") + 
+  labs(title = "Modules which identified HSV-1 disease pathway",
+       x = "Enriched Fraction")
+```
+
+```{r}
+hiv_kegg_combi %>%
+  filter(Pathway_code == "KEGG:05170") %>%
+  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
+  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
+  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+  geom_col(color = "black") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  scale_fill_gradient(low = "darkgreen", high = "lightgreen") + 
+  labs(title = "Modules which identified HIV-1 disease pathway",
+       x = "Enriched Fraction")
+```
 

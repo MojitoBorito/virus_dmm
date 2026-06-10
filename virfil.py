@@ -24,10 +24,9 @@ def get_virfil_data(tax_id, database_name, database_file, human_file, output_dir
     })
     ppi_plus_virus = pd.concat([human_ppi, interactions_to_add], ignore_index=True)
     
-    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus.csv", index=False, header=False)
-    virus_seeds.to_csv(f"{output_dir}/virus_seeds.txt", index=False, header=False)
-    human_seeds.to_csv(f"{output_dir}/human_seeds.txt", index=False, header=False)
-
+    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus_{database_name}.csv", index=False, header=False)
+    virus_seeds.to_csv(f"{output_dir}/virus_seeds_{database_name}.txt", index=False, header=False)
+    human_seeds.to_csv(f"{output_dir}/human_seeds_{database_name}.txt", index=False, header=False)
 
 
 def parse_intact(database_file):
