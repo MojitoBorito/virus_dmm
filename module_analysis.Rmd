@@ -8,10 +8,12 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(ggplot2)
+library(colorspace)
 
-corona_topology <- read_tsv("tests/corona_both_combi/mqc_summaries/topology_mqc.tsv")
+corona_topology <- read_tsv("combi_out_ot/covid/mqc_summaries/topology_mqc.tsv")
 
-hsv_topology <- read_tsv("tests/hsv_both_combi/mqc_summaries/topology_mqc.tsv")
+hsv_topology <- read_tsv("combi_out_ot/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_topology <- read_tsv("combi_out_ot/hiv/mqc_summaries/topology_mqc.tsv")
 
 gprofile_reader <- function(type, path) {
   files <- list.files(
@@ -34,28 +36,43 @@ data_list_combi <- datalist %>% imap_dfr(~ .x %>% mutate(source = .y))
 return(data_list_combi)
 }
 
-corona_kegg_combi <- gprofile_reader("KEGG", "tests/corona_both_combi/evaluation/gprofiler/")
+corona_kegg_combi <- gprofile_reader("KEGG", "combi_out_ot/covid/evaluation/gprofiler/")
 
-hsv_kegg_combi <- gprofile_reader("KEGG", "tests/hsv_both_combi/evaluation/gprofiler/")
+hsv_kegg_combi <- gprofile_reader("KEGG", "combi_out_ot/hsv/evaluation/gprofiler/")
 
-hiv_kegg_combi <- gprofile_reader("KEGG", "tests/hiv_both_combi/evaluation/gprofiler/")
+hiv_kegg_combi <- gprofile_reader("KEGG", "combi_out_ot/hiv/evaluation/gprofiler/")
 
 pd <- position_dodge(width = 0.5)
+
+hiv_hvidb_human_interactors <- read_tsv("data/out_hiv_hvidb/human_seeds_hvidb.txt", col_names = FALSE)
+hiv_intact_human_interactors <- read_tsv("data/out_hiv_intact/human_seeds_intact.txt", col_names = FALSE)
 ```
 
 ```{r}
 
 corona_topology <- corona_topology %>% 
   mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
          method = str_extract(sample, "[^\\.]+$"),
          dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
-         fill_group = interaction(seed, dataset, sep = "_"))
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_"))
 
-hsv_topology <- hsv_topology %>% 
+hsv_topology <- hiv_topology %>% 
   mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
          method = str_extract(sample, "[^\\.]+$"),
          dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
-         fill_group = interaction(seed, dataset, sep = "_"))
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_"))
+
+hiv_topology <- hiv_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_"))
 
 ```
 
@@ -88,6 +105,7 @@ hsv_topology %>%
     labels = c(
       "human_hvidb" = "human, HVIDB",
       "human_intact" = "human, IntAct",
+      "human_open_targets" = "human, open targets",
       "virus_hvidb" = "virus, HVIDB",
       "virus_intact" = "virus, IntAct"
     ),
@@ -95,7 +113,8 @@ hsv_topology %>%
       "human_hvidb" = "darkblue",
       "human_intact" = "lightblue",
       "virus_hvidb" = "darkblue",
-      "virus_intact" = "lightblue"
+      "virus_intact" = "lightblue",
+      "human_open_targets" = "blue"
     )
   ) +
   scale_shape_manual(
@@ -103,12 +122,14 @@ hsv_topology %>%
     labels = c(
       "human_hvidb" = "human, HVIDB",
       "human_intact" = "human, IntAct",
+      "human_open_targets" = "human, open targets",
       "virus_hvidb" = "virus, HVIDB",
       "virus_intact" = "virus, IntAct"
     ),
     values = c(
       "human_hvidb" = 22,
       "human_intact" = 22,
+      "human_open_targets" = 22,
       "virus_hvidb" = 24,
       "virus_intact" = 24
     )
@@ -152,14 +173,16 @@ corona_topology %>%
     labels = c(
       "human_hvidb" = "human, HVIDB",
       "human_intact" = "human, IntAct",
+       "human_open_targets" = "human, open targets",
       "virus_hvidb" = "virus, HVIDB",
       "virus_intact" = "virus, IntAct"
     ),
     values = c(
       "human_hvidb" = "darkred",
-      "human_intact" = "red",
+      "human_intact" = "#FFB8B8",
       "virus_hvidb" = "darkred",
-      "virus_intact" = "red"
+      "virus_intact" = "#FFB8B8",
+      "human_open_targets" = "red"
     )
   ) +
   scale_shape_manual(
@@ -167,12 +190,14 @@ corona_topology %>%
     labels = c(
       "human_hvidb" = "human, HVIDB",
       "human_intact" = "human, IntAct",
+       "human_open_targets" = "human, open targets",
       "virus_hvidb" = "virus, HVIDB",
       "virus_intact" = "virus, IntAct"
     ),
     values = c(
       "human_hvidb" = 22,
       "human_intact" = 22,
+      "human_open_targets" = 22,
       "virus_hvidb" = 24,
       "virus_intact" = 24
     )
@@ -185,43 +210,211 @@ corona_topology %>%
 ggsave("plots/corona_module.jpeg", width = 6, height = 4)
 ```
 
+```{r}
+hiv_topology %>%
+  mutate(
+    group = interaction(seed, dataset, sep = "_")
+  ) %>%
+  ggplot(aes(
+    x = method,
+    y = nodes,
+    fill = group,
+    shape = group
+  )) +
+  # lines connecting human/virus within each dataset
+  geom_line(
+    aes(group = interaction(dataset, method)),
+    position = pd,
+    color = "grey40"
+  ) +
+  # points dodged by dataset
+  geom_point(
+    position = pd,
+    size = 3,
+    color = "black",
+    aes(group = dataset)
+  ) +
+  scale_fill_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+       "human_open_targets" = "human, open targets",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = "darkgreen",
+      "human_intact" = "lightgreen",
+      "virus_hvidb" = "darkgreen",
+      "virus_intact" = "lightgreen",
+      "human_open_targets" = "#00A300"
+    )
+  ) +
+  scale_shape_manual(
+    name = "Seed/Dataset",
+    labels = c(
+      "human_hvidb" = "human, HVIDB",
+      "human_intact" = "human, IntAct",
+       "human_open_targets" = "human, open targets",
+      "virus_hvidb" = "virus, HVIDB",
+      "virus_intact" = "virus, IntAct"
+    ),
+    values = c(
+      "human_hvidb" = 22,
+      "human_intact" = 22,
+      "human_open_targets" = 22,
+      "virus_hvidb" = 24,
+      "virus_intact" = 24
+    )
+  ) +
+  theme_bw() + 
+  theme(legend.position = "bottom",
+        legend.text  = element_text(size = 8),
+        legend.title = element_text(size = 9))
+
+ggsave("plots/hiv_module.jpeg", width = 6, height = 4)
+```
 
 ```{r}
-corona_kegg_combi %>% 
-  filter(Pathway_code == "KEGG:05171") %>%
-  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
-  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
-  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+corona_combos <- corona_kegg_combi %>%
+    mutate(method = str_remove(source, "human_seeds_(hvidb|intact)\\_|virus_seeds_(hvidb|intact)\\_|covid_targets\\_")) %>%
+    mutate(dataset = ifelse(str_detect(source, "hvidb"), "HVIDB", NA)) %>%
+    mutate(dataset = ifelse(str_detect(source, "intact"), "IntAct", dataset)) %>%
+    mutate(dataset = ifelse(str_detect(source, "targets_uniprot"), "open targets", dataset)) %>%
+    mutate(seed = ifelse(str_detect(source, "human_seeds"), "human int.", "viral int.")) %>%
+    mutate(seed = ifelse(str_detect(source, "targets_uniprot"), "open targets", seed)) %>%
+    mutate(seed = ifelse(seed == "open targets", "open targets", paste(dataset, seed))) %>%
+    distinct(method, seed)
+  
+full_combos <- tidyr::crossing(method = corona_combos$method, seed = corona_combos$seed)
+
+get_kegg_data <- function(dataset, pathway_code){
+  dataset_pathway <- dataset %>%
+    mutate(method = str_remove(source, "human_seeds_(hvidb|intact)\\_|virus_seeds_(hvidb|intact)\\_|\\w+_targets\\_")) %>%
+    mutate(dataset = ifelse(str_detect(source, "hvidb"), "HVIDB", NA)) %>%
+    mutate(dataset = ifelse(str_detect(source, "intact"), "IntAct", dataset)) %>%
+    mutate(dataset = ifelse(str_detect(source, "targets_uniprot"), "open targets", dataset)) %>%
+    mutate(seed = ifelse(str_detect(source, "human_seeds"), "human int.", "viral int.")) %>%
+    mutate(seed = ifelse(str_detect(source, "targets_uniprot"), "open targets", seed)) %>%
+    mutate(seed = ifelse(seed == "open targets", "open targets", paste(dataset, seed))) %>%
+    filter(Pathway_code == pathway_code)
+  
+  pathway_complete <- full_combos %>%
+    left_join(dataset_pathway, by = c("method", "seed")) %>%
+    mutate(across(where(is.numeric), ~replace_na(.x, 0))) %>%
+    mutate(Padj = ifelse(Padj == 0, 1, Padj))
+  
+  return(pathway_complete)
+}
+```
+
+
+
+```{r}
+corona_pathway <- get_kegg_data(corona_kegg_combi, "KEGG:05171")
+
+corona_pathway %>%
+  ggplot(aes(x = Fraction_DE, y = method, fill = (Padj < 0.01))) +
   geom_col(color = "black") +
   facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
-  scale_fill_gradient(low = "#C60C12", high = "#F6656A") + 
+  scale_fill_manual(values = c("TRUE" = "#C60C12", "FALSE" = "#F6656A"), name = "Padj < 0.01") + 
   labs(title = "Modules which identified SARS-CoV-2 disease pathway",
-       x = "Enriched Fraction")
+       x = "Enriched Fraction") + 
+  theme_bw()
+
+ggsave("plots/covid_pathway.jpeg", dpi = 300, width = 12, height = 7)
+
+corona_pathway %>%
+  ggplot(aes(x = -log10(Padj), y = method)) + 
+  geom_col(color = "black", fill = "red") + 
+  geom_vline(aes(xintercept = -log10(0.01)), linetype = "dashed") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  labs(title = "Modules which identified SARS-CoV-2 disease pathway") + 
+  theme_bw()
+ggsave("plots/covid_padj.jpeg", dpi = 300, width = 12, height = 7)
 ```
 
 ```{r}
-hsv_kegg_combi %>%
-  filter(Pathway_code == "KEGG:05168") %>%
-  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
-  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
-  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+hsv_pathway <- get_kegg_data(hsv_kegg_combi, "KEGG:05168")
+
+hsv_pathway %>%
+  ggplot(aes(x = Fraction_DE, y = method, fill = factor(Padj < 0.01, levels = c(TRUE, FALSE)))) +
   geom_col(color = "black") +
   facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
-  scale_fill_gradient(low = "steelblue", high = "lightblue") + 
-  labs(title = "Modules which identified HSV-1 disease pathway",
-       x = "Enriched Fraction")
+  scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "lightblue"), name = "Padj < 0.01") + 
+  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+       x = "Enriched Fraction") + 
+  theme_bw()
+ggsave("plots/hsv_pathway.jpeg", dpi = 300, width = 12, height = 7)
+
+hsv_pathway %>%
+  ggplot(aes(x = -log10(Padj), y = method)) + 
+  geom_col(color = "black", fill = "#31ABE8") + 
+  geom_vline(aes(xintercept = -log10(0.01)), linetype = "dashed") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  labs(title = "Modules which identified HSV-1 disease pathway") + 
+  theme_bw()
+ggsave("plots/hsv_padj.jpeg", dpi = 300, width = 12, height = 7)
 ```
 
 ```{r}
-hiv_kegg_combi %>%
-  filter(Pathway_code == "KEGG:05170") %>%
-  mutate(seed = ifelse(str_detect(source, "human_seeds"), "human interactors", "viral interactors")) %>%
-  mutate(source = str_remove(source, "human_seeds\\_|virus_seeds\\_")) %>%
-  ggplot(aes(x = Fraction_DE, y = source, fill = Padj)) +
+hiv_pathway <- get_kegg_data(hiv_kegg_combi, "KEGG:05170")
+
+hiv_pathway %>%
+  ggplot(aes(x = Fraction_DE, y = method, fill = (Padj < 0.01))) +
   geom_col(color = "black") +
   facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
-  scale_fill_gradient(low = "darkgreen", high = "lightgreen") + 
-  labs(title = "Modules which identified HIV-1 disease pathway",
-       x = "Enriched Fraction")
+  scale_fill_manual(values = c("TRUE" = "darkgreen", "FALSE" = "lightgreen"), name = "Padj < 0.01") + 
+  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+       x = "Enriched Fraction") + 
+  theme_bw()
+ggsave("plots/hiv_pathway.jpeg", dpi = 300, width = 12, height = 7)
+
+hiv_pathway %>%
+  ggplot(aes(x = -log10(Padj), y = method)) + 
+  geom_col(color = "black", fill = "#00D100") + 
+  geom_vline(aes(xintercept = -log10(0.01)), linetype = "dashed") +
+  facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
+  labs(title = "Modules which identified HIV-1 disease pathway") + 
+  theme_bw()
+ggsave("plots/hiv_padj.jpeg", dpi = 300, width = 12, height = 7)
 ```
+
+
+```{r}
+combined_pathway <- bind_rows(
+  corona_pathway %>% mutate(virus = "SARS-CoV-2"),
+  hsv_pathway    %>% mutate(virus = "HSV-1"),
+  hiv_pathway    %>% mutate(virus = "HIV-1")
+) %>%
+  mutate(virus = factor(virus, levels = c("SARS-CoV-2", "HSV-1", "HIV-1")))
+
+virus_colors <- c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100")
+
+combined_pathway %>%
+  ggplot(aes(x = -log10(Padj), y = method, fill = virus)) + 
+  geom_col(color = "black") + 
+  geom_vline(aes(xintercept = -log10(0.01)), linetype = "dashed") +
+  facet_grid(seed ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  labs(title = "Modules which identified viral disease pathways") + 
+  theme_bw()
+ggsave("plots/combined_padj.jpeg", dpi = 300, width = 12, height = 7)
+
+
+combined_pathway %>%
+  ggplot(aes(x = Fraction_DE, y = method, fill = virus)) +
+  geom_col(color = "black") +
+  facet_grid(seed ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  labs(title = "Modules which identified viral disease pathways", x = "Enriched Fraction") + 
+  theme_bw()
+
+ggsave("plots/combined_pathway.jpeg", dpi = 300, width = 12, height = 7)
+```
+
+
+
+
 

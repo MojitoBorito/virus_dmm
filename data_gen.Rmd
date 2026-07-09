@@ -8,6 +8,11 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(readr)
+library(biomaRt)
+
+covid_targets <- read_tsv("data/covid_19_targets.tsv")
+hiv_targets <- read_tsv("data/hiv_targets.tsv")
+hsv_targets <- read_tsv("data/hsv_targets.tsv")
 ```
 
 
@@ -104,4 +109,175 @@ length(corona_intact_interactors)
 length(interactors)
 ```
 
+```{r}
+covid_targets %>% ggplot(aes(x = globalScore)) +
+  geom_histogram(fill = "steelblue", color = "black") +
+  scale_y_log10()
+
+hsv_targets %>% ggplot(aes(x = globalScore)) +
+  geom_histogram(fill = "steelblue", color = "black") +
+  scale_y_log10()
+
+hiv_targets %>% ggplot(aes(x = globalScore)) +
+  geom_histogram(fill = "steelblue", color = "black") +
+  scale_y_log10()
+
+quantile(hsv_targets$globalScore)
+hsv_targets %>% filter(globalScore >= 0.1)
+
+quantile(covid_targets$globalScore)
+covid_targets %>% filter(globalScore >= 0.1)
+```
+
+```{r}
+filter_by_percentile <- function(df, score_col, percentile = 0.75) {
+  threshold <- quantile(df[[score_col]], percentile, na.rm = TRUE)
+  df %>% filter(.data[[score_col]] >= threshold)
+}
+
+```
+
+
+```{r}
+mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+
+hiv_targets_uniport <- getBM(
+  attributes = c("hgnc_symbol", "uniprotswissprot", "uniprotsptrembl"),
+  filters    = "hgnc_symbol",
+  values     = hiv_targets$symbol,
+  mart       = mart
+)
+
+covid_targets_uniprot <- getBM(
+  attributes = c("hgnc_symbol", "uniprotswissprot", "uniprotsptrembl"),
+  filters    = "hgnc_symbol",
+  values     = covid_targets$symbol,
+  mart       = mart
+)
+
+hsv_targets_uniprot <- getBM(
+  attributes = c("hgnc_symbol", "uniprotswissprot", "uniprotsptrembl"),
+  filters    = "hgnc_symbol",
+  values     = hsv_targets$symbol,
+  mart       = mart
+)
+
+
+```
+
+
+```{r}
+filter_data <- function(dataset){
+  new_dataset <- dataset %>% 
+    mutate(uniprot = ifelse(is.na(uniprotswissprot), uniprotsptrembl, uniprotswissprot))
+  ids <- new_dataset %>% 
+    distinct(uniprot) %>% 
+    filter(!is.na(uniprot), uniprot != "") %>% 
+    pull(uniprot) 
+  return(ids)
+}
+
+
+join_filter <- function(dataset, original){
+  new_dataset <- dataset %>%
+    mutate(across(c(uniprotswissprot, uniprotsptrembl), ~ na_if(., ""))) %>%
+    group_by(hgnc_symbol) %>%
+    summarise(
+      uniprot = coalesce(first(na.omit(uniprotswissprot)), first(na.omit(uniprotsptrembl))),
+      .groups = "drop"
+    ) %>%
+    distinct(hgnc_symbol, uniprot)
+
+  out <- inner_join(original, new_dataset, by = c("symbol" = "hgnc_symbol")) 
+  out <- out %>% arrange(desc(globalScore)) %>% distinct(uniprot, .keep_all = TRUE)
+  return(out)
+}
+
+
+hiv_new <- join_filter(hiv_targets_uniport, hiv_targets)
+hsv_new <- join_filter(hsv_targets_uniprot, hsv_targets)
+covid_new <- join_filter(covid_targets_uniprot, covid_targets)
+```
+
+```{r}
+hiv_50 <- hiv_new %>% slice_max(globalScore, n = 50, with_ties = FALSE)
+hiv_100 <- hiv_new %>% slice_max(globalScore, n = 100, with_ties = FALSE)
+
+hsv_50 <- hsv_new %>% slice_max(globalScore, n = 50, with_ties = FALSE)
+hsv_100 <- hsv_new %>% slice_max(globalScore, n = 100, with_ties = FALSE)
+
+covid_50 <- covid_new %>% slice_max(globalScore, n = 50, with_ties = FALSE)
+covid_100 <- covid_new %>% slice_max(globalScore, n = 100, with_ties = FALSE)
+
+covid_same <- covid_new %>% slice_max(globalScore, n = 15, with_ties = FALSE)
+hsv_same <- hsv_new %>% slice_max(globalScore, n = 2, with_ties = FALSE)
+hiv_same <- hiv_new %>% slice_max(globalScore, n = 5, with_ties = FALSE)
+```
+
+
+```{r}
+write(hiv_new, file = "data/hiv_targets_uniprot_filtered.tsv")
+write(covid_new, file = "data/covid_targets_uniprot_filtered.tsv")
+write(hsv_new, file = "data/hsv_targets_uniprot_filtered.tsv")
+
+write(hiv_50$uniprot, file = "data/top_50/hiv_targets.txt")
+write(hsv_50$uniprot, file = "data/top_50/hsv_targets.txt")
+write(covid_50$uniprot, file = "data/top_50/covid_targets.txt")
+
+write(hiv_100$uniprot, file = "data/top_100/hiv_targets.txt")
+write(hsv_100$uniprot, file = "data/top_100/hsv_targets.txt")
+write(covid_100$uniprot, file = "data/top_100/covid_targets.txt")
+
+write(hiv_same$uniprot, file = "data/same_n/hiv_targets.txt")
+write(hsv_same$uniprot, file = "data/same_n/hsv_targets.txt")
+write(covid_same$uniprot, file = "data/same_n/covid_targets.txt")
+
+```
+
+
+
+```{r}
+get_cdf_targets <- function(ot_df, disease_name = "a disease"){
+  q_cutoffs <- tibble(
+    pct = c(0.5, 0.75, 0.95),
+    cutoff = quantile(ot_df$globalScore, pct, na.rm = TRUE),
+    label = paste0(pct * 100, "th pct")) %>%
+    arrange(cutoff) %>%
+    mutate(y_pos = seq(0.75, 0.45, length.out = n()))  # spread labels vertically
+  
+  sorted_scores <- sort(ot_df$globalScore, decreasing = TRUE)
+    top_n_cutoffs <- tibble(
+      n = c(200, 150, 100, 50),
+      cutoff = sorted_scores[c(200, 150, 100, 50)],
+      label = paste0("top ", n)) %>%
+    arrange(cutoff) %>%
+    mutate(y_pos = seq(0.99, 0.8, length.out = n()))
+  
+  cdf_plot <- ot_df %>%
+    ggplot(aes(x = globalScore)) + 
+    stat_ecdf(aes(y = 1 - after_stat(y))) +
+    geom_vline(data = q_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dashed", color = "red") +
+    geom_text(data = q_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "red", size = 3) +
+    geom_vline(data = top_n_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dotted", color = "blue") +
+    geom_text(data = top_n_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "blue", size = 3) +
+    labs(title = paste("Complementary cumulative distribution of global Score for", disease_name),
+         y = "Fraction of interactions with global Score ≥ x") + 
+    theme_bw()
+  
+  return(cdf_plot)
+}
+
+get_cdf_targets(covid_targets, "SARS-Cov-2")
+ggsave("plots/cdf_ot_covid.jpeg", dpi=300)
+get_cdf_targets(hsv_targets, "HSV-1")
+ggsave("plots/cdf_ot_hsv.jpeg", dpi=300)
+get_cdf_targets(hiv_targets, "HIV-1")
+ggsave("plots/cdf_ot_hiv.jpeg", dpi=300)
+```
 

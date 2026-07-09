@@ -12,6 +12,8 @@ library(readr)
 library(ggVennDiagram)
 library(patchwork)
 library(ComplexUpset)
+library(ggrepel)
+library(RColorBrewer)
 
 hvidb <- read_tsv("data/hvidb.tsv") %>% 
   mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
@@ -34,6 +36,8 @@ hhv_proteins_swiss <- hhv_proteins_all %>% filter(Reviewed == "reviewed")
 hhv_proteins_trembl <- hhv_proteins_all %>% filter(Reviewed != "reviewed")
 
 nrow(corona_proteins_all)
+
+homo_intact %>% filter(virus_taxid == "2697049")
 ```
 
 # Intact
@@ -102,15 +106,15 @@ print(paste("Number of virus taxon ids in in IntAct:", homo_intact_unique %>% se
 print(paste("Total number of interactions between human and all viruses in IntAct:", nrow(homo_intact)))
 print(paste("Total number of unique interactions between human and all viruses in IntAct:", nrow(homo_intact_unique)))
 
-hhv_intact <- homo_intact_unique %>% filter(virus_taxid == "10298")
+hsv_intact <- homo_intact_unique %>% filter(virus_taxid == "10298")
 corona_intact <- homo_intact_unique %>% filter(virus_taxid == "2697049")
 hiv_intact <- homo_intact_unique %>% filter(virus_taxid == "11676")
 
-hhv_intact_seeds <- hhv_intact %>%
+hsv_intact_seeds <- hsv_intact %>%
   distinct(virus_protein) %>%
   pull(virus_protein)
 
-hhv_intact_interactors <- hhv_intact %>% distinct(human_protein) %>% pull(human_protein)
+hsv_intact_interactors <- hsv_intact %>% distinct(human_protein) %>% pull(human_protein)
 
 corona_intact_seeds <- corona_intact %>%
   distinct(virus_protein) %>%
@@ -147,7 +151,26 @@ homo_intact_unique %>% ggplot(aes(x = miscore)) +
   theme_bw()
 ggsave("plots/mi_dist_intact.png", dpi = 500)
 
+
 ```
+
+
+```{r}
+filtered_intact <- homo_intact_unique %>%
+  group_by(virus_taxid) %>%
+  filter_by_percentile("miscore", 0.95) %>%
+  ungroup()
+
+filtered_intact %>% filter(virus_taxid == "2697049")
+
+homo_intact_unique %>% 
+  filter(virus_taxid == "2697049") %>%
+  ggplot(aes(x = miscore)) +
+  geom_histogram(fill = "steelblue", color = "gray", bins = 10, alpha = 0.4) + 
+  labs(title = "mi score distribution in IntAct") + 
+  theme_bw()
+```
+
 
 # HVIDB
 
@@ -167,7 +190,7 @@ corona_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "2697049")
 corona_hvidb_seeds <- corona_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_virus)
 corona_hvidb_interactors <- corona_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
 
-hhv_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "11676")
+hiv_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "11676")
 
 ```
 
@@ -218,7 +241,7 @@ summary_df_seeds <- tibble(
   database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
   virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
-    n_distinct(hhv_intact$virus_protein),
+    n_distinct(hsv_intact$virus_protein),
     n_distinct(corona_intact$virus_protein),
     n_distinct(hhv_hvidb$Uniprot_virus),
     n_distinct(corona_hvidb$Uniprot_virus)
@@ -229,7 +252,7 @@ summary_df_interactions <- tibble(
   database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
   virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
-    nrow(hhv_intact),
+    nrow(hsv_intact),
     nrow(corona_intact),
     nrow(hhv_hvidb),
     nrow(corona_hvidb)
@@ -240,7 +263,7 @@ summary_df_interactors <- tibble(
   database = c("IntAct", "IntAct", "HVIDB", "HVIDB"),
   virus    = c("HSV-1", "SARS-CoV-2", "HSV-1", "SARS-CoV-2"),
   count    = c(
-    n_distinct(hhv_intact$human_protein),
+    n_distinct(hsv_intact$human_protein),
     n_distinct(corona_intact$human_protein),
     n_distinct(hhv_hvidb$Uniprot_human),
     n_distinct(corona_hvidb$Uniprot_human)
@@ -325,7 +348,7 @@ make_set <- function(df, human_col, virus_col) {
     unique()
 }
 
-hhv_intact_set <- make_set(hhv_intact, "human_protein", "virus_protein")
+hsv_intact_set <- make_set(hsv_intact, "human_protein", "virus_protein")
 hhv_hvidb_set <- make_set(hhv_hvidb, "Uniprot_human", "Uniprot_virus")
 
 
@@ -336,7 +359,7 @@ corona_hvidb_set <- make_set(corona_hvidb, "Uniprot_human", "Uniprot_virus")
 
 ```{r}
 
-ggVennDiagram(list(intact = hhv_intact_set, hvidb = hhv_hvidb_set)) +
+ggVennDiagram(list(intact = hsv_intact_set, hvidb = hhv_hvidb_set)) +
   ggtitle("Human–Virus protein interaction overlap for Herpes Simplex")+ 
   coord_cartesian(clip = "off")+ 
   scale_fill_gradient(low = "lightblue", high = "steelblue")
@@ -351,7 +374,7 @@ ggsave("plots/corona_phi_venn.png", dpi = 500)
 ```
 
 ```{r}
-ggVennDiagram(list(IntAct = hhv_intact_seeds, 
+ggVennDiagram(list(IntAct = hsv_intact_seeds, 
                    HVIDB = hhv_hvidb_seeds, 
                    SwissProt = hhv_proteins_swiss$Entry),
               label = "count") +
@@ -372,7 +395,7 @@ setdiff(hhv_hvidb_seeds, hhv_proteins_all$Entry)
 
 
 ```{r}
-ggVennDiagram(list(intact = hhv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
+ggVennDiagram(list(intact = hsv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
   ggtitle("Human interactors overlap for Herpes Simplex") + 
   coord_cartesian(clip = "off")+ 
   scale_fill_gradient(low = "lightblue", high = "steelblue")
@@ -467,7 +490,7 @@ upset(INTACT_hpv_group_interactions_wide,
       base_annotations = list(
     "Intersection size" = intersection_size()
   )) 
-ggsave("plots/upset_hhv_intact.png", dpi = 500)
+ggsave("plots/upset_hsv_intact.png", dpi = 500)
 
 #HVIDB HPV
 
@@ -499,4 +522,103 @@ ggsave("plots/upset_hhv_hvidb.png", dpi = 500)
 
 
 
+```{r}
+corona_intact %>%
+  ggplot(aes(x = miscore)) + 
+  stat_ecdf(aes(y = 1 - after_stat(y))) + 
+  theme_bw()
+```
+```{r}
+get_cdf_intact <- function(intact_df, disease_name = "a disease"){
+  q_cutoffs <- tibble(
+  pct = c(0.5, 0.75, 0.95),
+  cutoff = quantile(intact_df$miscore, pct, na.rm = TRUE),
+  label = paste0(pct * 100, "th pct")
+) %>%
+  arrange(cutoff) %>%
+  mutate(y_pos = seq(0.75, 0.45, length.out = n()))  # spread labels vertically
+  
+  sorted_scores <- sort(intact_df$miscore, decreasing = TRUE)
+  top_n_cutoffs <- tibble(
+    n = c(200, 150, 100, 50),
+    cutoff = sorted_scores[c(200, 150, 100, 50)],
+    label = paste0("top ", n)
+  ) %>%
+  arrange(cutoff) %>%
+  mutate(y_pos = seq(0.99, 0.8, length.out = n()))
+  
+  cdf_plot <- intact_df %>%
+    ggplot(aes(x = miscore)) + 
+    stat_ecdf(aes(y = 1 - after_stat(y))) +
+    geom_vline(data = q_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dashed", color = "red") +
+    geom_text(data = q_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "red", size = 3) +
+    geom_vline(data = top_n_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dotted", color = "blue") +
+    geom_text(data = top_n_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "blue", size = 3) +
+    labs(title = paste("Complementary cumulative distribution of MI scores for", disease_name),
+         y = "Fraction of interactions with MIscore ≥ x") + 
+    theme_bw()
+  
+  return(cdf_plot)
+}
+
+get_cdf_intact(corona_intact, "SARS-CoV-2")
+get_cdf_intact(hsv_intact, "HSV-1")
+get_cdf_intact(hiv_intact, "HIV-1")
+
+intact_df <- corona_intact
+
+```
+
+
+```{r}
+
+get_cdf_intact <- function(intact_df, disease_name = "a disease"){
+  q_cutoffs <- tibble(
+    pct = c(0.5, 0.75, 0.95),
+    cutoff = quantile(intact_df$miscore, pct, na.rm = TRUE),
+    label = paste0(pct * 100, "th pct")) %>%
+    arrange(cutoff) %>%
+    mutate(y_pos = seq(0.75, 0.45, length.out = n()))  # spread labels vertically
+  
+  sorted_scores <- sort(intact_df$miscore, decreasing = TRUE)
+    top_n_cutoffs <- tibble(
+      n = c(200, 150, 100, 50),
+      cutoff = sorted_scores[c(200, 150, 100, 50)],
+      label = paste0("top ", n)) %>%
+    arrange(cutoff) %>%
+    mutate(y_pos = seq(0.99, 0.8, length.out = n()))
+  
+  cdf_plot <- intact_df %>%
+    ggplot(aes(x = miscore)) + 
+    stat_ecdf(aes(y = 1 - after_stat(y))) +
+    geom_vline(data = q_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dashed", color = "red") +
+    geom_text(data = q_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "red", size = 3) +
+    geom_vline(data = top_n_cutoffs, aes(xintercept = cutoff), 
+               linetype = "dotted", color = "blue") +
+    geom_text(data = top_n_cutoffs, 
+              aes(x = cutoff, y = y_pos, label = label),
+              angle = 90, vjust = -0.5, color = "blue", size = 3) +
+    labs(title = paste("Complementary cumulative distribution of MI Score for", disease_name),
+         y = "Fraction of interactions with MI Score ≥ x") + 
+    theme_bw()
+  
+  return(cdf_plot)
+}
+
+get_cdf_intact(corona_intact, "SARS-CoV-2")
+ggsave("plots/cdf_intact_covid.jpeg", dpi=300)
+get_cdf_intact(hsv_intact, "HSV-1")
+ggsave("plots/cdf_intact_hsv.jpeg", dpi=300)
+get_cdf_intact(hiv_intact, "HIV-1")
+ggsave("plots/cdf_intact_hiv.jpeg", dpi=300)
+```
 

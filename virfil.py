@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-import pandas as pd
+import pandas as pd # type: ignore
 import argparse
 
-def get_virfil_data(tax_id, database_name, database_file, human_file, output_dir):
+def get_virfil_data(tax_id, database_name, database_file, human_file, output_dir, threshold=None, percentile=None, top=None, same=False):
     interaction_db = pd.DataFrame()
 
     if database_name == 'intact':
-        interaction_db = parse_intact(database_file)
+        interaction_db = parse_intact(database_file, threshold, percentile, top, same)
     elif database_name == 'hvidb':
         interaction_db = parse_hvidb(database_file)
     else:
@@ -29,7 +29,7 @@ def get_virfil_data(tax_id, database_name, database_file, human_file, output_dir
     human_seeds.to_csv(f"{output_dir}/human_seeds_{database_name}.txt", index=False, header=False)
 
 
-def parse_intact(database_file):
+def parse_intact(database_file, threshold=None, percentile=None, top = None, same=False):
     intact = pd.read_csv(database_file, sep='\t')
 
     intact = intact[intact['Taxid interactor A'] != intact['Taxid interactor B']].copy()
@@ -63,13 +63,49 @@ def parse_intact(database_file):
         .astype(float)
     )
 
+    human_intact = human_intact.sort_values(by='miscore', ascending=False).copy()
+
     human_intact = human_intact.drop_duplicates(
         subset = ['human_protein', 'virus_protein', 'virus_taxid'],
         keep = 'first'
     )
 
+    if percentile is not None: 
+        human_intact = filter_intact_by_percentile(human_intact, percentile)
+    elif threshold is not None:
+        human_intact = human_intact[human_intact["miscore"] >= threshold].copy()
+    elif top is not None:
+        top_human = (
+            human_intact.groupby(['virus_taxid', 'human_protein'])['miscore']
+            .max()
+            .reset_index()
+            .sort_values(['virus_taxid', 'miscore'], ascending=[True, False])
+            .groupby('virus_taxid')
+            .head(top)
+        )
+
+        human_intact = human_intact.merge(
+            top_human[['virus_taxid', 'human_protein']],
+            on=['virus_taxid', 'human_protein'],
+            how='inner'
+        )
+    elif same:
+        human_intact = human_intact.drop_duplicates(
+            subset = ['virus_taxid', 'virus_protein'],
+            keep = 'first'
+        )
+
     human_intact = human_intact[['virus_taxid', 'virus_protein', 'human_protein']].copy()
 
+    return human_intact
+
+
+def filter_intact_by_percentile(human_intact, percentile=None):
+    if percentile is not None:
+        threshold = human_intact.groupby("virus_taxid")["miscore"].transform(
+            lambda x: x.quantile(percentile)
+        )
+        human_intact = human_intact[human_intact["miscore"] >= threshold].copy()
     return human_intact
 
 
@@ -102,7 +138,19 @@ if __name__ == "__main__":
     cmd.add_argument('--database_file', type=str, required=True, help='Path to the interaction database file')
     cmd.add_argument('--human_file', type=str, required=True, help='Path to the human PPI file')
     cmd.add_argument('--output_dir', type=str, required=True, help='Directory to save the output files')
+    cmd.add_argument('--threshold', type=float, default=None, help='Confidence score threshold for filtering interactions (applicable for IntAct)')
+    cmd.add_argument('--percentile', type=float, default=None, help='Percentile for filtering interactions (applicable for IntAct)')
+    cmd.add_argument('--top', type=int, default=None, help='Top N human proteins per virus for filtering interactions (applicable for IntAct)')
+    cmd.add_argument('--same', action='store_true', help='Flag to extract same number of virus and human seeds')
     args = cmd.parse_args()
 
-    get_virfil_data(args.tax_id, args.database_name, args.database_file, args.human_file, args.output_dir)
+    get_virfil_data(args.tax_id, 
+                    args.database_name, 
+                    args.database_file, 
+                    args.human_file, 
+                    args.output_dir, 
+                    args.threshold, 
+                    args.percentile,
+                    args.top,
+                    args.same)
 
