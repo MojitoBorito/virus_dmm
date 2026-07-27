@@ -1,0 +1,48 @@
+---
+title: "Drug Candidates"
+author: "Mohit"
+date: "2026-07-21"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+get_predictions <- function(path, ending){
+  file_paths <- sort(list.files(path, pattern = paste0("\\.", ending, "$"), full.names = TRUE))
+  file_names <- sub(paste0("\\.", ending, "$"), "", basename(file_paths))
+  data_list <- lapply(file_paths, read_csv)
+  names(data_list) <- file_names
+  combi <- data_list %>% imap_dfr(~ .x %>% mutate(source = .y)) %>% mutate(label = tolower(label))
+  return(combi)
+}
+
+corona_all <- get_predictions("combi_out_ot/covid/drug_prioritization/drugstone/", "trustrank.csv")
+hsv_all <- get_predictions("combi_out_ot/hsv/drug_prioritization/drugstone/", "trustrank.csv")
+hiv_all <- get_predictions("combi_out_ot/hiv/drug_prioritization/drugstone/", "trustrank.csv")
+
+
+corona_filtered <- get_predictions("filtered_outputs/corona/drug_prioritization/drugstone/", "trustrank.csv")
+hsv_filtered <- get_predictions("filtered_outputs/hsv/drug_prioritization/drugstone/", "trustrank.csv")
+hiv_filtered <- get_predictions("filtered_outputs/hiv/drug_prioritization/drugstone/", "trustrank.csv")
+```
+
+```{r}
+corona_licensed <- c("remdesivir", "ritonavir", "nirmatrelvir", "molnupiravir", "sotrovimab", "corticosteroids", "tocilizumab", "sarilumab", "anakinra", "canakinumab", "baricitinib", "tofacitinib", "vilobelimab", "ensitrelvir")
+corona_claude_drugs <- c("remdesivir", "molnupiravir", "nirmatrelvir", "ritonavir", "favipiravir")
+
+hiv_fda <- c("abacavir", "emtricitabine", "lamivudine", "zidovudine", "doravirine", "efavirenz", "etravitine", "nevirapine", "rilpivirine", "cabotegravir", "dolutegravir", "raltegravir", "atazanavir", "darunavir", "fosamprenavir", "ritonavir", "tipranavir", "enfuvirtide", "maraviroc", "fostemsavir", "lenacapavir", "cobicistat")
+hiv_claude_drugs <- c("zidovudine", "lamivudine", "efavirenz", "dolutegravir", "tenofovir", "raltegravir", "darunavir")
+
+hsv_licensed <- c("acyclovir", "penciclovir", "ganciclovir", "cidofovir", "letermovir")
+hsv_developing <- c("brincidofovir", "maribavir", "valomaciclovir", "pritelivir", "amenamevir")
+hsv_claude_drugs <- c("acyclovir", "valacyclovir", "famciclovir", "penciclovir")
+
+```
+
+```{r}
+corona_filtered %>% filter(label == "ritonavir")
+```
+
+

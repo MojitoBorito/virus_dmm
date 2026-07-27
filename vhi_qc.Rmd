@@ -36,15 +36,11 @@ hhv_proteins_swiss <- hhv_proteins_all %>% filter(Reviewed == "reviewed")
 hhv_proteins_trembl <- hhv_proteins_all %>% filter(Reviewed != "reviewed")
 
 nrow(corona_proteins_all)
-
-homo_intact %>% filter(virus_taxid == "2697049")
 ```
 
 # Intact
 
 ```{r}
-intact <- intact %>% filter(`Taxid interactor A` != `Taxid interactor B`)
-
 hosts <- intact %>% mutate(
   organism_a = str_extract(`Taxid interactor A`, "^taxid:\\d+") %>% str_extract("\\d+"),
   organism_b = str_extract(`Taxid interactor B`, "^taxid:\\d+") %>% str_extract("\\d+"))
@@ -84,9 +80,11 @@ ggsave("plots/phi_dist_intact.png", dpi = 500)
 
 print(paste("number of taxon ids in IntAct:", nrow(species_counts), "(contains organisms like mouse, rat and guinea pig)"))
 
-hosts %>%
-  filter(!organism_a %in% viruses & !organism_b %in% viruses) %>%
-  nrow()
+hosts %>% filter(organism_a == "10298", organism_b == "10298")
+
+hosts %>% filter(organism_a == "2697049", organism_b == "2697049")
+
+hosts %>% filter(organism_a == "11676", organism_b == "11676")
 
 ```
 

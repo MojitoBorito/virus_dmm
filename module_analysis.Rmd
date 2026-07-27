@@ -355,7 +355,7 @@ hsv_pathway %>%
   geom_col(color = "black") +
   facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
   scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "lightblue"), name = "Padj < 0.01") + 
-  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+  labs(title = "Modules which identified HSV-1 disease pathway",
        x = "Enriched Fraction") + 
   theme_bw()
 ggsave("plots/hsv_pathway.jpeg", dpi = 300, width = 12, height = 7)
@@ -378,7 +378,7 @@ hiv_pathway %>%
   geom_col(color = "black") +
   facet_grid(seed ~ ., scales = "free_y", space = "free_y") + 
   scale_fill_manual(values = c("TRUE" = "darkgreen", "FALSE" = "lightgreen"), name = "Padj < 0.01") + 
-  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+  labs(title = "Modules which identified HIV-1 disease pathway",
        x = "Enriched Fraction") + 
   theme_bw()
 ggsave("plots/hiv_pathway.jpeg", dpi = 300, width = 12, height = 7)
@@ -439,7 +439,7 @@ corona_filter_pathway %>%
        x = "Enriched Fraction") + 
   theme_bw()
 
-ggsave("plots/covid__filter_pathway.jpeg", dpi = 300, width = 12, height = 7)
+ggsave("plots/covid_filter_pathway.jpeg", dpi = 300, width = 12, height = 7)
 
 corona_filter_pathway %>%
   ggplot(aes(x = -log10(Padj), y = method)) + 
@@ -459,7 +459,7 @@ hsv_filter_pathway %>%
   geom_col(color = "black") +
   facet_grid(seed ~ filter, scales = "free_y", space = "free_y") + 
   scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = "lightblue"), name = "Padj < 0.01") + 
-  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+  labs(title = "Modules which identified HSV-1 disease pathway",
        x = "Enriched Fraction") + 
   theme_bw()
 ggsave("plots/hsv_filter_pathway.jpeg", dpi = 300, width = 12, height = 7)
@@ -482,7 +482,7 @@ hiv_filter_pathway %>%
   geom_col(color = "black") +
   facet_grid(seed ~ filter, scales = "free_y", space = "free_y") + 
   scale_fill_manual(values = c("TRUE" = "darkgreen", "FALSE" = "lightgreen"), name = "Padj < 0.01") + 
-  labs(title = "Modules which identified SARS-CoV-2 disease pathway",
+  labs(title = "Modules which identified HIV-1 disease pathway",
        x = "Enriched Fraction") + 
   theme_bw()
 ggsave("plots/hiv_filter_pathway.jpeg", dpi = 300, width = 12, height = 7)
