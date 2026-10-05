@@ -1,8 +1,0 @@
-mkdir -p failed for path /home/mambauser/.cache/matplotlib: [Errno 13] Permission denied: '/home/mambauser/.cache/matplotlib'
-Matplotlib created a temporary cache directory at /tmp/matplotlib-ctl12uht because there was an issue with the default path ({configdir}); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-[DEBUG] args=Namespace(file_in=PosixPath('ppi_plus_virus_intact.corona_standard.gt'), tool='firstneighbor', module=PosixPath('corona_expansion_filter.ppi_plus_virus_intact.corona_standard.firstneighbor.gt'), seeds=PosixPath('corona_expansion_filter.ppi_plus_virus_intact.corona_standard.tsv'), blacklist=PosixPath('blacklist_intact.top_50.txt'), output='corona_expansion_filter.ppi_plus_virus_intact.corona_standard.firstneighbor.gt', log_level='DEBUG')
-[DEBUG] stem='ppi_plus_virus_intact.corona_standard'
-[DEBUG] extension='.gt'
-[DEBUG] g=<Graph object, undirected, with 11297 vertices and 82187 edges, 1 internal vertex property, at 0x730dcd1d1910>
-[DEBUG] seeds={'P0DTC4', 'P0DTC2', 'P0DTC8', 'P0DTC3', 'P0DTC1', 'P0DTD3', 'P0DTC9', 'P0DTD1', 'P0DTC5', 'A0A663DJA2', 'P0DTC6'}
-First neighbor module, no filtering needed.

@@ -1,4 +1,0 @@
-mkdir -p failed for path /home/mambauser/.cache/matplotlib: [Errno 13] Permission denied: '/home/mambauser/.cache/matplotlib'
-Matplotlib created a temporary cache directory at /tmp/matplotlib-3heit4cb because there was an issue with the default path ({configdir}); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-[DEBUG] args=Namespace(network=PosixPath('check/ppi_plus_virus_intact.corona_standard.gt'), prefix='corona_expansion_filter.ppi_plus_virus_intact.corona_standard', seeds=PosixPath('check/corona_expansion_filter.txt'), log_level='DEBUG', blacklist=PosixPath('blacklist_intact.top_50.txt'))
-[DEBUG] seeds=['P0DTC2', 'P0DTD1', 'P0DTC4', 'P0DTC9', 'P0DTC5', 'P0DTC6', 'P0DTC8', 'P0DTC3', 'P0DTC1', 'P0DTD3', 'A0A663DJA2']

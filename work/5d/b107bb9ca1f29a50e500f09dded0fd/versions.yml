@@ -1,4 +1,0 @@
-"NFCORE_DISEASEMODULEDISCOVERY:DISEASEMODULEDISCOVERY:SAVEMODULES":
-    python: "3.12.13"
-    graph-tool: "2.77"
-    pandas: "2.2.3"
