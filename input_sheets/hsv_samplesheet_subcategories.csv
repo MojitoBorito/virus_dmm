@@ -1,0 +1,15 @@
+seeds,network,blacklist
+./data/subcategories/hsv/replication_transcription_intact_virus.txt,./data/subcategories/hsv/ppi_plus_virus_intact.csv,./data/subcategories/hsv/virus_seeds_intact.txt
+./data/subcategories/hsv/uncategorised_intact_virus.txt,./data/subcategories/hsv/ppi_plus_virus_intact.csv,./data/subcategories/hsv/virus_seeds_intact.txt
+./data/subcategories/hsv/uncategorised_hvidb_virus.txt,./data/subcategories/hsv/ppi_plus_virus_hvidb.csv,./data/subcategories/hsv/virus_seeds_hvidb.txt
+./data/subcategories/hsv/egress_envelopment_hvidb_virus.txt,./data/subcategories/hsv/ppi_plus_virus_hvidb.csv,./data/subcategories/hsv/virus_seeds_hvidb.txt
+./data/subcategories/hsv/assembly_packaging_hvidb_virus.txt,./data/subcategories/hsv/ppi_plus_virus_hvidb.csv,./data/subcategories/hsv/virus_seeds_hvidb.txt
+./data/subcategories/hsv/replication_transcription_hvidb_virus.txt,./data/subcategories/hsv/ppi_plus_virus_hvidb.csv,./data/subcategories/hsv/virus_seeds_hvidb.txt
+./data/subcategories/hsv/entry_uncoating_hvidb_virus.txt,./data/subcategories/hsv/ppi_plus_virus_hvidb.csv,./data/subcategories/hsv/virus_seeds_hvidb.txt
+./data/subcategories/hsv/uncategorised_intact_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/entry_uncoating_intact_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/replication_transcription_intact_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/replication_transcription_hvidb_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/uncategorised_hvidb_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/entry_uncoating_hvidb_human.txt,./data/string_700.tsv,
+./data/subcategories/hsv/egress_envelopment_hvidb_human.txt,./data/string_700.tsv,

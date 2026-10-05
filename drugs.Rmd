@@ -5,9 +5,12 @@ date: "2026-07-21"
 output: html_document
 ---
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(ggplot2)
+library(patchwork)
+library(yardstick)
+library(ggh4x)
 
 get_predictions <- function(path, ending){
   file_paths <- sort(list.files(path, pattern = paste0("\\.", ending, "$"), full.names = TRUE))
@@ -15,34 +18,495 @@ get_predictions <- function(path, ending){
   data_list <- lapply(file_paths, read_csv)
   names(data_list) <- file_names
   combi <- data_list %>% imap_dfr(~ .x %>% mutate(source = .y)) %>% mutate(label = tolower(label))
+  colnames(combi)[[1]] <- "Drug"
   return(combi)
 }
 
-corona_all <- get_predictions("combi_out_ot/covid/drug_prioritization/drugstone/", "trustrank.csv")
+process_all <- function(dataset){
+  methods <- c("diamond", "domino", "no_tool", "rwr", "robust", "robust_bias_aware", "firstneighbor")
+  method_pattern <- paste0("(", paste(methods, collapse = "|"), ")$")
+  dataset %>% 
+    mutate(organism = ifelse(str_detect(source, "virus"), "virus", "human")) %>%
+    mutate(dataset = case_when(
+      str_detect(source, "hvidb") ~ "HVIDB",
+      str_detect(source, "intact") ~ "IntAct", 
+      .default = "Open Targets"
+    )) %>%
+    mutate(method = str_extract(source, method_pattern))
+}
+
+process_filtered <- function(dataset){
+  methods <- c("diamond", "domino", "no_tool", "rwr", "robust", "robust_bias_aware", "firstneighbor")
+  method_pattern <- paste0("(", paste(methods, collapse = "|"), ")$")
+  dataset %>%
+    mutate(organism = ifelse(str_detect(source, "virus"), "virus", "human")) %>%
+    mutate(dataset = case_when(
+      str_detect(source, "hvidb") ~ "HVIDB",
+      str_detect(source, "intact") ~ "IntAct", 
+      .default = "Open Targets"
+    )) %>%
+    mutate(filter = case_when(
+      str_detect(source, "top_100") ~ "top_100",
+      str_detect(source, "top_50") ~ "top_50",
+      str_detect(source, "same_n") ~ "same_n"
+    ))%>%
+    mutate(method = str_extract(source, method_pattern))
+}
+
+drugs_bca <- read_csv("data/DrugVirus.csv")
+drugs_bcc <- read_tsv("data/DrugVirus_combi.tsv")
+
+corona_all <- get_predictions("combi_out_ot/corona/drug_prioritization/drugstone/", "trustrank.csv")
 hsv_all <- get_predictions("combi_out_ot/hsv/drug_prioritization/drugstone/", "trustrank.csv")
 hiv_all <- get_predictions("combi_out_ot/hiv/drug_prioritization/drugstone/", "trustrank.csv")
 
 
-corona_filtered <- get_predictions("filtered_outputs/corona/drug_prioritization/drugstone/", "trustrank.csv")
-hsv_filtered <- get_predictions("filtered_outputs/hsv/drug_prioritization/drugstone/", "trustrank.csv")
-hiv_filtered <- get_predictions("filtered_outputs/hiv/drug_prioritization/drugstone/", "trustrank.csv")
-```
+corona_filtered <- get_predictions("new_filtered_outputs/corona/drug_prioritization/drugstone/", "trustrank.csv")
+hsv_filtered <- get_predictions("new_filtered_outputs/hsv/drug_prioritization/drugstone/", "trustrank.csv")
+hiv_filtered <- get_predictions("new_filtered_outputs/hiv/drug_prioritization/drugstone/", "trustrank.csv")
 
-```{r}
-corona_licensed <- c("remdesivir", "ritonavir", "nirmatrelvir", "molnupiravir", "sotrovimab", "corticosteroids", "tocilizumab", "sarilumab", "anakinra", "canakinumab", "baricitinib", "tofacitinib", "vilobelimab", "ensitrelvir")
-corona_claude_drugs <- c("remdesivir", "molnupiravir", "nirmatrelvir", "ritonavir", "favipiravir")
-
-hiv_fda <- c("abacavir", "emtricitabine", "lamivudine", "zidovudine", "doravirine", "efavirenz", "etravitine", "nevirapine", "rilpivirine", "cabotegravir", "dolutegravir", "raltegravir", "atazanavir", "darunavir", "fosamprenavir", "ritonavir", "tipranavir", "enfuvirtide", "maraviroc", "fostemsavir", "lenacapavir", "cobicistat")
-hiv_claude_drugs <- c("zidovudine", "lamivudine", "efavirenz", "dolutegravir", "tenofovir", "raltegravir", "darunavir")
-
-hsv_licensed <- c("acyclovir", "penciclovir", "ganciclovir", "cidofovir", "letermovir")
-hsv_developing <- c("brincidofovir", "maribavir", "valomaciclovir", "pritelivir", "amenamevir")
-hsv_claude_drugs <- c("acyclovir", "valacyclovir", "famciclovir", "penciclovir")
 
 ```
 
 ```{r}
-corona_filtered %>% filter(label == "ritonavir")
+make_druggability_plot <- function(data,
+                                    id_col,
+                                    category_cols,
+                                    rank_col = NULL,
+                                    id_order = NULL,
+                                    rank_low_is_better = TRUE) {
+
+  cat_labels <- names(category_cols)
+  tier_rank  <- setNames(seq_along(cat_labels), cat_labels)
+
+  if (!is.null(id_order)) {
+    ids <- unique(id_order)
+  } else if (!is.null(rank_col)) {
+    rank_sort <- data %>%
+      select(id = all_of(id_col), rank = all_of(rank_col)) %>%
+      distinct(id, .keep_all = TRUE) %>%
+      filter(!is.na(rank)) %>%
+      arrange(desc(rank))
+    ids <- unique(rank_sort$id)
+    leftover <- setdiff(unique(data[[id_col]]), ids)
+    ids <- c(ids, leftover)
+  } else {
+    ids <- unique(data[[id_col]])
+  }
+
+  long <- data %>%
+    select(id = all_of(id_col), all_of(category_cols)) %>%
+    rename(!!!setNames(category_cols, cat_labels)) %>%
+    pivot_longer(cols = all_of(cat_labels), names_to = "category", values_to = "raw") %>%
+    mutate(checked = !is.na(raw) & raw != FALSE & raw != 0 & trimws(as.character(raw)) != "")
+
+  long <- long %>%
+    mutate(rank_val = tier_rank[category]) %>%
+    group_by(id) %>%
+    mutate(highlight = checked & rank_val == suppressWarnings(min(rank_val[checked], na.rm = TRUE))) %>%
+    ungroup() %>%
+    mutate(
+      highlight = replace_na(highlight, FALSE),
+      id       = factor(id, levels = ids),
+      category = factor(category, levels = rev(cat_labels))
+    ) %>%
+    filter(!is.na(id))
+
+  p_main <- ggplot(long, aes(x = id, y = category)) +
+    geom_tile(aes(fill = highlight), color = "grey90", linewidth = 0.6) +
+    geom_text(data = filter(long, checked), label = "\u2713", size = 3.4) +
+    scale_fill_manual(values = c(`TRUE` = "grey85", `FALSE` = "white"), guide = "none") +
+    scale_x_discrete(position = "top") +
+    labs(x = NULL, y = NULL) +
+    theme_minimal(base_size = 11) +
+    theme(
+      axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5, size = 8),
+      axis.text.y = element_text(hjust = 1, size = 9),
+      axis.ticks  = element_blank(),
+      plot.margin = margin(5, 5, 0, 5)
+    )
+
+  legend_df <- tibble(
+    x = c(1, 3.1),
+    y = 1,
+    label = c("highest evidence\nlevel", "category supported"),
+    type  = c("square", "check")
+  )
+  p_legend <- ggplot(legend_df, aes(x = x, y = y)) +
+    geom_tile(data = filter(legend_df, type == "square"),
+              fill = "grey85", width = 0.2, height = 0.35, color = "white") +
+    geom_text(data = filter(legend_df, type == "check"), label = "\u2713", size = 4) +
+    geom_text(aes(x = x + 0.15, label = label), hjust = 0, size = 3.2, lineheight = 0.9) +
+    xlim(0.5, 5.5) + ylim(0.5, 1.5) +
+    theme_void() +
+    theme(plot.margin = margin(0, 5, 2, 5))
+
+  combined <- p_main / p_legend
+  combined + plot_layout(heights = c(length(cat_labels), 0.6))
+}
 ```
 
+```{r}
+corona_drugs <- drugs_bca %>% filter(Virus == "SARS-CoV-2")
+hsv_drugs <- drugs_bca %>% filter(Virus == "HSV-1")
+hiv_drugs <- drugs_bca %>% filter(Virus == "HIV-1")
+
+drugvirus_category_cols <- c(
+  "Approved"                = "Approved",
+  "Phase IV"                = "Phase IV",
+  "Phase III"               = "Phase III",
+  "Phase II"                = "Phase II",
+  "Phase I"                 = "Phase I",
+  "Animal model" = "Animal model",
+  "Primary cells/organoids" = "Primary cells/organoids",
+  "Cell lines" = "Cell lines"
+)
+
+corona_drugs_approved <- corona_drugs %>% filter(Approved == "*")
+hiv_drugs_approved <- hiv_drugs %>% filter(Approved == "*")
+hsv_drugs_approved <- hsv_drugs %>% filter(Approved == "*")
+
+corona_drugs_clinical <- corona_drugs %>% 
+  filter(Approved == "*" | `Phase IV` == "*" | `Phase III` == "*" | `Phase II` == "*" | `Phase I` == "*")
+hiv_drugs_clinical <- hiv_drugs %>% 
+  filter(Approved == "*" | `Phase IV` == "*" | `Phase III` == "*" | `Phase II` == "*" | `Phase I` == "*")
+hsv_drugs_clinical <- hsv_drugs %>% 
+  filter(Approved == "*" | `Phase IV` == "*" | `Phase III` == "*" | `Phase II` == "*" | `Phase I` == "*")
+```
+
+
+```{r}
+corona_all <- process_all(corona_all) %>% mutate(filter = "unfiltered")
+hiv_all <- process_all(hiv_all) %>% mutate(filter = "unfiltered")
+hsv_all <- process_all(hsv_all) %>% mutate(filter = "unfiltered")
+
+corona_filtered <- process_filtered(corona_filtered)
+hsv_filtered <- process_filtered(hsv_filtered)
+hiv_filtered <- process_filtered(hiv_filtered)
+
+corona_all <- corona_all %>%
+  mutate(
+    is_bca = Drug %in% corona_drugs$Drug,
+    is_bca_approved = Drug %in% corona_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% corona_drugs_clinical$Drug
+  )
+hiv_all <- hiv_all %>%
+  mutate(
+    is_bca = Drug %in% hiv_drugs$Drug,
+    is_bca_approved = Drug %in% hiv_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% hiv_drugs_clinical$Drug
+  )
+hsv_all <- hsv_all %>%
+  mutate(
+    is_bca = Drug %in% hsv_drugs$Drug,
+    is_bca_approved = Drug %in% hsv_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% hsv_drugs_clinical$Drug
+  )
+
+corona_filtered <- corona_filtered %>%
+  mutate(
+    is_bca = Drug %in% corona_drugs$Drug,
+    is_bca_approved = Drug %in% corona_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% corona_drugs_clinical$Drug
+  )
+hiv_filtered <- hiv_filtered %>%
+  mutate(
+    is_bca = Drug %in% hiv_drugs$Drug,
+    is_bca_approved = Drug %in% hiv_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% hiv_drugs_clinical$Drug
+  )
+hsv_filtered <- hsv_filtered %>%
+  mutate(
+    is_bca = Drug %in% hsv_drugs$Drug,
+    is_bca_approved = Drug %in% hsv_drugs_approved$Drug,
+    is_bca_clinical = Drug %in% hsv_drugs_clinical$Drug
+  )
+
+
+all_data <- bind_rows(
+  corona_all %>% mutate(virus = "SARS-CoV-2"),
+  hiv_all %>% mutate(virus = "HIV-1"),
+  hsv_all %>% mutate(virus = "HSV-1"),
+  corona_filtered %>% mutate(virus = "SARS-CoV-2"),
+  hiv_filtered %>% mutate(virus = "HIV-1"),
+  hsv_filtered %>% mutate(virus = "HSV-1")
+)
+```
+
+```{r}
+intersect_predictions <- function(predictions, known_drugs){
+  predictions %>%
+    inner_join(known_drugs, by = "Drug", suffix = c("_pred", "_known"))
+}
+
+all_hits <- bind_rows(
+  intersect_predictions(corona_all, corona_drugs) %>% mutate(disease = "SARS-CoV-2"),
+  intersect_predictions(hsv_all,    hsv_drugs)    %>% mutate(disease = "HSV-1"),
+  intersect_predictions(hiv_all,    hiv_drugs)    %>% mutate(disease = "HIV-1")
+)
+
+all_nested <- all_hits %>%
+  group_by(disease, organism, dataset) %>%
+  nest() %>%
+  mutate(
+    data = map(data, ~ arrange(.x, desc(score)))
+  )
+
+filtered_hits <- bind_rows(
+  intersect_predictions(corona_filtered, corona_drugs) %>% mutate(disease = "SARS-CoV-2"),
+  intersect_predictions(hsv_filtered,    hsv_drugs)    %>% mutate(disease = "HSV-1"),
+  intersect_predictions(hiv_filtered,    hiv_drugs)    %>% mutate(disease = "HIV-1")
+)
+
+filtered_nested <- filtered_hits %>%
+  group_by(disease, organism, dataset, filter) %>%
+  nest() %>%
+  mutate(
+    data = map(data, ~ arrange(.x, desc(score)))
+  )
+```
+
+
+```{r}
+all_nested <- all_nested %>%
+  mutate(plot = pmap(
+    list(data, disease, organism, dataset),
+    function(data, disease, organism, dataset){
+     make_druggability_plot(data = data, 
+                             id_col = "Drug", 
+                             category_cols = drugvirus_category_cols, 
+                             rank_col = "score",
+                             id_order = data$Drug[order(-data$score)])
+        title <- paste(disease, organism, dataset, sep = "_")
+        ggsave(paste0("plots/drugs/map/", title, ".png"), dpi = 300, width = 5, height = 5)
+    }
+  ))
+
+filtered_nested <- filtered_nested %>%
+  mutate(plot = pmap(
+    list(data, disease, organism, dataset, filter),
+    function(data, disease, organism, dataset, filter){
+      make_druggability_plot(data = data, 
+                             id_col = "Drug", 
+                             category_cols = drugvirus_category_cols, 
+                             rank_col = "score",
+                             id_order = data$Drug[order(-data$score)])
+      title <- paste(disease, organism, dataset, filter, sep = "_")
+      ggsave(paste0("plots/drugs/map/", title, ".png"), dpi = 300, width = 5, height = 5)
+    }
+  ))
+
+
+```
+
+```{r}
+total_bca_by_virus <- c(
+  "SARS-CoV-2" = nrow(corona_drugs),
+  "HIV-1" = nrow(hiv_drugs),
+  "HSV-1" = nrow(hsv_drugs)
+)
+
+recall_results_pooled_all <- all_data %>%
+  group_by(virus, filter, organism, dataset) %>%
+  distinct(Drug, is_bca) %>% 
+  summarise(recovered = sum(is_bca == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus[virus])
+
+recall_results_all <- all_data %>%
+  group_by(virus, filter, method, organism, dataset) %>%
+  distinct(Drug, is_bca) %>% 
+  summarise(recovered = sum(is_bca == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus[virus])
+
+```
+
+```{r}
+total_bca_by_virus_approved <- c(
+  "SARS-CoV-2" = nrow(corona_drugs_approved),
+  "HIV-1" = nrow(hiv_drugs_approved),
+  "HSV-1" = nrow(hsv_drugs_approved)
+)
+
+recall_results_pooled_approved <- all_data %>%
+  group_by(virus, filter, organism, dataset) %>%
+  distinct(Drug, is_bca_approved) %>% 
+  summarise(recovered = sum(is_bca_approved == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus_approved[virus])
+
+recall_results_approved <- all_data %>%
+  group_by(virus, filter, method, organism, dataset) %>%
+  distinct(Drug, is_bca_approved) %>% 
+  summarise(recovered = sum(is_bca_approved == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus_approved[virus])
+
+```
+
+```{r}
+total_bca_by_virus_clinical <- c(
+  "SARS-CoV-2" = nrow(corona_drugs_clinical),
+  "HIV-1" = nrow(hiv_drugs_clinical),
+  "HSV-1" = nrow(hsv_drugs_clinical)
+)
+
+recall_results_pooled_clinical <- all_data %>%
+  group_by(virus, filter, organism, dataset) %>%
+  distinct(Drug, is_bca_clinical) %>% 
+  summarise(recovered = sum(is_bca_clinical == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus_clinical[virus])
+
+recall_results_clinical <- all_data %>%
+  group_by(virus, filter, method, organism, dataset) %>%
+  distinct(Drug, is_bca_clinical) %>% 
+  summarise(recovered = sum(is_bca_clinical == TRUE), .groups = "drop") %>%
+  mutate(recall = recovered / total_bca_by_virus_clinical[virus])
+
+```
+
+```{r}
+recall_pooled <- bind_rows(
+  recall_results_pooled_clinical %>% mutate(set = "Clinical Trial"),
+  recall_results_pooled_approved %>% mutate(set = "Approved"),
+  recall_results_pooled_all  %>% mutate(set = "All"),
+)
+
+recall_all <- bind_rows(
+  recall_results_clinical %>% mutate(set = "Clinical Trial"),
+  recall_results_approved %>% mutate(set = "Approved"),
+  recall_results_all  %>% mutate(set = "All"),
+)
+
+methods <- c("diamond", "domino", "no_tool", "rwr", "robust", "robust_bias_aware", "firstneighbor")
+viruses <- c("SARS-CoV-2", "HIV-1", "HSV-1")
+sets <- c("Clinical Trial", "Approved", "All") 
+combis_map <- tibble(
+  organism = c("human", "human", "human", "human", "virus", "virus", "human", "human" , "human"),
+  dataset = c("HVIDB", "IntAct", "IntAct", "IntAct", "HVIDB", "IntAct", "Open Targets", "Open Targets" , "Open Targets"),
+  filter = c("unfiltered", "top_100", "top_50", "same_n", "unfiltered", "unfiltered", "top_100", "top_50", "same_n")
+)
+
+full_combos <- tidyr::crossing(
+  virus = viruses,
+  set = sets,
+  combis_map
+)
+
+full_combos_methods <- tidyr::crossing(
+  virus = viruses,
+  set = sets,
+  method = methods,
+  combis_map
+)
+joiner = c("virus", "set", "organism", "dataset", "filter")
+joiner_method = c("virus", "set", "organism", "dataset", "filter", "method")
+
+recall_pooled_filtererd <- full_combos %>% 
+  left_join(recall_pooled, by = joiner) %>% 
+  mutate(recall = ifelse(is.na(recall), 0, recall)) %>%
+  mutate(set = factor(set, levels = c("All", "Clinical Trial", "Approved")))
+
+recall_filtered <- full_combos_methods %>% 
+  left_join(recall_all, by = joiner_method) %>% 
+  mutate(recall = ifelse(is.na(recall), 0, recall)) %>%
+  mutate(set = factor(set, levels = c("All", "Clinical Trial", "Approved")))
+```
+
+
+```{r}
+virus_colors <- c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100")
+
+recall_pooled_filtererd %>%
+  mutate(organism = recode_values(organism, "human" ~ "Human Seeds", "virus" ~ "Viral Seeds")) %>%
+  mutate(filter = recode_values(filter, "unfiltered" ~ "initial", default = filter)) %>%
+  mutate(filter = factor(filter, levels = c("initial", "same_n", "top_50", "top_100"))) %>%
+  ggplot(aes(x = recall, y = set, fill = virus)) + 
+  geom_col(color = "black") +
+  geom_text(data = ~ filter(.x, recovered != 0),
+            aes(label = recovered), hjust = -0.3) +  
+  facet_nested(organism + dataset + filter ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  scale_x_continuous(expand = expansion(mult = c(0.03, 0.19))) +
+  theme_bw() + 
+  labs(y = "Method", x = "Recall") 
+ggsave("plots/drugs/recall_pooled.png", dpi = 300, height = 6, width = 6)
+
+
+```
+
+
+```{r}
+recall_all_ot <- recall_filtered %>% filter(dataset == "Open Targets")
+recall_all_hvidb <- recall_filtered %>% filter(dataset == "HVIDB")
+recall_all_intact <- recall_filtered %>% filter(dataset == "IntAct")
+
+recall_all_ot %>%
+  mutate(organism = recode_values(organism, "human" ~ "Human Seeds", "virus" ~ "Viral Seeds")) %>%
+  mutate(filter = recode_values(filter, "unfiltered" ~ "initial", default = filter)) %>%
+  mutate(filter = factor(filter, levels = c("initial", "same_n", "top_50", "top_100"))) %>%
+  ggplot(aes(x = recall, y = method, fill = virus)) + 
+  geom_col(color = "black") +
+  facet_nested(organism + dataset + filter + set ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  theme_bw() + 
+  labs(y = "Method", x = "Recall") 
+ggsave("plots/drugs/recall_pooled_all_ot.png", dpi = 300, height = 8, width = 7)
+
+recall_all_hvidb %>%
+  mutate(organism = recode_values(organism, "human" ~ "Human Seeds", "virus" ~ "Viral Seeds")) %>%
+  mutate(filter = recode_values(filter, "unfiltered" ~ "initial", default = filter)) %>%
+  mutate(filter = factor(filter, levels = c("initial", "same_n", "top_50", "top_100"))) %>%
+  ggplot(aes(x = recall, y = method, fill = virus)) + 
+  geom_col(color = "black") +
+  facet_nested(organism + set ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  theme_bw() + 
+  labs(y = "Method", x = "Recall") +
+  scale_x_continuous(
+      breaks = scales::pretty_breaks(n = 3),
+      expand = expansion(mult = c(0.05, 0.23))
+    )
+ggsave("plots/drugs/recall_pooled_all_hvidb.png", dpi = 300, height = 6, width = 5.5)
+
+recall_all_intact %>%
+  mutate(organism = recode_values(organism, "human" ~ "Human Seeds", "virus" ~ "Viral Seeds")) %>%
+  mutate(filter = recode_values(filter, "unfiltered" ~ "initial", default = filter)) %>%
+  mutate(filter = factor(filter, levels = c("initial", "same_n", "top_50", "top_100"))) %>%
+  ggplot(aes(x = recall, y = method, fill = virus)) + 
+  geom_col(color = "black") +
+  facet_nested(organism + filter + set ~ virus, scales = "free_y", space = "free_y") + 
+  scale_fill_manual(values = virus_colors, guide = "none") +
+  theme_bw() + 
+  labs(y = "Method", x = "Recall") + 
+  scale_x_continuous(
+      breaks = scales::pretty_breaks(n = 3),
+      expand = expansion(mult = c(0.05, 0.23))
+    )
+ggsave("plots/drugs/recall_pooled_all_intact.png", dpi = 300, height = 10, width = 7)
+```
+
+```{r}
+drug_counts <- tibble(
+  virus  = rep(c("SARS-CoV-2", "HIV-1", "HSV-1"), each = 3),
+  status = rep(c("All", "Approved", "Clinical\nTrial"), times = 3),
+  n = c(
+    nrow(corona_drugs), nrow(corona_drugs_approved), nrow(corona_drugs_clinical),
+    nrow(hiv_drugs), nrow(hiv_drugs_approved),    nrow(hiv_drugs_clinical),
+    nrow(hsv_drugs), nrow(hsv_drugs_approved),    nrow(hsv_drugs_clinical)
+  )
+)%>%
+  mutate(status = factor(status, levels = c("All", "Clinical\nTrial", "Approved")))
+
+ggplot(drug_counts, aes(x = status, y = n, fill = virus)) +
+  geom_col(position = "dodge", width = 0.7, color = "black") +
+  geom_text(aes(label = n), vjust = -0.4) +
+  scale_fill_manual(values = virus_colors) +
+  labs(x = NULL, y = "Number of drugs") +
+  facet_wrap(virus ~ .) + 
+  theme_bw() + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.22))) +
+  theme(
+    legend.position = "None",
+    strip.text = element_text(size = 13)
+  )
+ggsave("plots/drugs/drug_counts.png", dpi = 300, width = 6, height = 3)
+```
 

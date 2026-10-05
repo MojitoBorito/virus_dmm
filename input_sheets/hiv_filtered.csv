@@ -1,0 +1,10 @@
+seeds,network,blacklist
+./data/no_human/same_n/hiv/hiv_targets.same_n.txt,./data/string_700.tsv,
+./data/standard_filtered/same_n/hiv/human_seeds_intact.same_n.txt,./data/string_700.tsv,
+./data/standard_filtered/same_n/hiv/virus_seeds_intact.same_n.txt,./data/standard_filtered/same_n/hiv/ppi_plus_virus_intact.same_n.csv,./data/standard_filtered/same_n/hiv/blacklist_intact.same_n.txt
+./data/no_human/top_50/hiv/hiv_targets.top_50.txt,./data/string_700.tsv,
+./data/standard_filtered/top_50/hiv/human_seeds_intact.top_50.txt,./data/string_700.tsv,
+./data/standard_filtered/top_50/hiv/virus_seeds_intact.top_50.txt,./data/standard_filtered/top_50/hiv/ppi_plus_virus_intact.top_50.csv,./data/standard_filtered/top_50/hiv/blacklist_intact.top_50.txt
+./data/no_human/top_100/hiv/hiv_targets.top_100.txt,./data/string_700.tsv,
+./data/standard_filtered/top_100/hiv/human_seeds_intact.top_100.txt,./data/string_700.tsv,
+./data/standard_filtered/top_100/hiv/virus_seeds_intact.top_100.txt,./data/standard_filtered/top_100/hiv/ppi_plus_virus_intact.top_100.csv,./data/standard_filtered/top_100/hiv/blacklist_intact.top_100.txt

@@ -1,0 +1,896 @@
+---
+title: "Topology analysis"
+author: "Mohit"
+date: "2026-09-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggh4x)
+library(ggplot2)
+
+pd <- position_dodge(width = 0.5)
+
+corona_topology <- read_tsv("combi_out_ot/corona/mqc_summaries/topology_mqc.tsv")
+hsv_topology <- read_tsv("combi_out_ot/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_topology <- read_tsv("combi_out_ot/hiv/mqc_summaries/topology_mqc.tsv")
+
+corona_filter <- read_tsv("new_filtered_outputs/corona/mqc_summaries/topology_mqc.tsv")
+hsv_filter <- read_tsv("new_filtered_outputs/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_filter <- read_tsv("new_filtered_outputs/hiv/mqc_summaries/topology_mqc.tsv")
+
+corona_categories <- read_tsv("category_filter/corona/mqc_summaries/topology_mqc.tsv")
+hsv_categories <- read_tsv("category_filter/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_categories <- read_tsv("category_filter/hiv/mqc_summaries/topology_mqc.tsv")
+
+corona_categories_viral <- read_tsv("viral_categories/corona/mqc_summaries/topology_mqc.tsv")
+hsv_categories_viral <- read_tsv("viral_categories/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_categories_viral <- read_tsv("viral_categories/hiv/mqc_summaries/topology_mqc.tsv")
+
+corona_human_strats <- read_tsv("human_strats/corona/mqc_summaries/topology_mqc.tsv") %>% filter(str_detect(sample, "top_100"))
+hsv_human_strats <- read_tsv("human_strats/hsv/mqc_summaries/topology_mqc.tsv") %>% filter(str_detect(sample, "top_100"))
+hiv_human_strats <- read_tsv("human_strats/hiv/mqc_summaries/topology_mqc.tsv") %>% filter(str_detect(sample, "top_100"))
+
+corona_subcategory <- read_tsv("subcategories_outputs/corona/mqc_summaries/topology_mqc.tsv")
+hsv_subcategory <- read_tsv("subcategories_outputs/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_subcategory <- read_tsv("subcategories_outputs/hiv/mqc_summaries/topology_mqc.tsv")
+
+corona_interactions <- read_tsv("interaction_filter_outputs/corona/mqc_summaries/topology_mqc.tsv")
+hsv_interactions <- read_tsv("interaction_filter_outputs/hsv/mqc_summaries/topology_mqc.tsv")
+hiv_interactions <- read_tsv("interaction_filter_outputs/hiv/mqc_summaries/topology_mqc.tsv")
+```
+
+```{r}
+corona_topology <- corona_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_"))
+
+hsv_topology <- hsv_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_"))
+
+hiv_topology <- hiv_topology %>% 
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_"))
+
+```
+
+```{r}
+corona_filter <- corona_filter %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+
+hsv_filter <- hsv_filter %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+
+hiv_filter <- hiv_filter %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+```
+
+```{r}
+categories <- c("expansion", "interaction_type", "clinical", "interactive")
+
+corona_viral_strats <- corona_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet)) %>%
+  filter(is.na(facet)) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "standard") ~ "standard",
+    .default = "viral edges"
+  ))
+
+hsv_viral_strats <- hsv_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet)) %>%
+  filter(is.na(facet)) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "standard") ~ "standard",
+    .default = "viral edges"
+  ))
+
+hiv_viral_strats <- hiv_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet)) %>%
+  filter(is.na(facet)) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "standard") ~ "standard",
+    .default = "viral edges"
+  ))
+  
+```
+
+
+```{r}
+corona_human_strats <- corona_human_strats %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "string_700") ~ "standard",
+    .default = "viral edges"
+  )) %>%
+  bind_rows(corona_viral_strats)
+
+hsv_human_strats <- hsv_human_strats %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "string_700") ~ "standard",
+    .default = "viral edges"
+  )) %>%
+  bind_rows(hsv_viral_strats)
+
+hiv_human_strats <- hiv_human_strats %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>%
+  mutate(facet = case_when(
+    str_detect(sample, "human_int") ~ "viral+human edges",
+    str_detect(sample, "string_700") ~ "standard",
+    .default = "viral edges"
+  )) %>%
+  bind_rows(hiv_viral_strats)
+  
+```
+
+
+```{r}
+categories <- c("expansion", "interaction_type", "clinical", "interactive")
+
+corona_categories_viral_sub <- corona_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset)) %>%
+  filter(!is.na(facet))
+
+hsv_categories_viral_sub <- hsv_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset)) %>%
+  filter(!is.na(facet))
+
+hiv_categories_viral_sub <- hiv_categories_viral %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "tractability",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset)) %>%
+  filter(!is.na(facet))
+```
+
+
+```{r}
+categories <- c("expansion", "interaction_type", "clinical", "interactive")
+
+corona_categories <- corona_categories %>%
+  mutate(seed = ifelse(startsWith(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  bind_rows(corona_categories_viral_sub) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "Tractability",
+                             "interaction_type" ~ "Interaction Type",
+                             "clinical" ~ "Clinical",
+                             "expansion" ~ "Expansion Method",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset))
+
+hsv_categories <- hsv_categories %>%
+  mutate(seed = ifelse(startsWith(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  bind_rows(hsv_categories_viral_sub) %>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "Tractability",
+                             "interaction_type" ~ "Interaction Type",
+                             "clinical" ~ "Clinical",
+                             "expansion" ~ "Expansion Method",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset))
+
+hiv_categories <- hiv_categories %>%
+  mutate(seed = ifelse(startsWith(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(categories, collapse = "|"))) %>%
+  bind_rows(hiv_categories_viral_sub)%>%
+  mutate(facet = recode_values(facet,
+                             "interactive" ~ "Tractability",
+                             "interaction_type" ~ "Interaction Type",
+                             "clinical" ~ "Clinical",
+                             "expansion" ~ "Expansion Method",
+                             default = facet),
+         dataset = recode_values(dataset,
+                               "open_targets" ~ "Open Targets",
+                               "intact" ~ "IntAct",
+                               default = dataset))
+
+```
+
+```{r}
+subcategories <- c("entry_uncoating", "replication_transcription", "assembly_packaging", 
+                  "egress_envelopment", "immune_evasion", "uncategorised")
+
+corona_subcategory <- corona_subcategory %>%
+  mutate(seed = ifelse(str_detect(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(subcategories, collapse = "|")))
+
+hsv_subcategory <- hsv_subcategory %>%
+  mutate(seed = ifelse(str_detect(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(subcategories, collapse = "|")))
+
+hiv_subcategory <- hiv_subcategory %>%
+  mutate(seed = ifelse(str_detect(sample, "virus"), "virus", "human"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, paste(subcategories, collapse = "|")))
+```
+
+```{r}
+corona_interactions <- corona_interactions %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+
+hsv_interactions <- hsv_interactions %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+
+hiv_interactions <- hiv_interactions %>%
+  mutate(seed = ifelse(startsWith(sample, "human"), "human", "virus"),
+         seed = ifelse(str_detect(sample, "targets"), "human", seed),
+         method = str_extract(sample, "[^\\.]+$"),
+         dataset = ifelse(str_detect(sample, "hvidb"), "hvidb", "intact" ),
+         dataset = ifelse(str_detect(sample, "targets"), "open_targets", dataset),
+         fill_group = paste(seed, dataset, sep = "_")) %>%
+  mutate(group = interaction(seed, dataset, sep = "_")) %>% 
+  mutate(facet = str_extract(sample, "^[^.]+\\.([^.]+)\\.", group = 1),
+         facet = fct_relevel(facet, "top_100", after = Inf))
+```
+
+
+```{r}
+plot_topology <- function(data,
+                           fill_values,
+                           shape_values = c(
+                             "human_hvidb" = 22,
+                             "human_intact" = 22,
+                             "human_open_targets" = 22,
+                             "virus_hvidb" = 24,
+                             "virus_intact" = 24
+                           ),
+                           labels = c(
+                             "human_hvidb" = "human, HVIDB",
+                             "human_intact" = "human, IntAct",
+                             "human_open_targets" = "human, Open Targets",
+                             "virus_hvidb" = "virus, HVIDB",
+                             "virus_intact" = "virus, IntAct"
+                           ),
+                           legend_name = "Seed/Dataset",
+                           position_dodge_width = 0.8,
+                           output_file = NULL,
+                           width = 7.29,
+                           height = 4.5,
+                          virus_facet=FALSE) {
+
+  pd <- position_dodge(width = position_dodge_width)
+
+  p <- data %>%
+    ggplot(aes(x = method, y = nodes, fill = group, shape = group)) +
+    geom_line(
+      aes(group = interaction(dataset, method)),
+      position = pd,
+      color = "grey40"
+    ) +
+    geom_point(
+      position = pd,
+      size = 3,
+      color = "black",
+      aes(group = dataset)
+    ) +
+    scale_fill_manual(name = legend_name, labels = labels, values = fill_values) +
+    scale_shape_manual(name = legend_name, labels = labels, values = shape_values) +
+    coord_flip() +
+    theme_bw() +
+    theme(
+      legend.position = "bottom",
+      legend.text  = element_text(size = 10),
+      legend.title = element_text(size = 11),
+  axis.text  = element_text(size = 12),
+  axis.title = element_text(size = 13)
+    )+
+  guides(
+    fill = guide_legend(nrow = 3, byrow = TRUE),
+    shape = guide_legend(nrow = 3, byrow = TRUE)
+  ) + 
+    labs(x = "Method", y = "Nodes") +
+    scale_y_continuous(
+      labels = scales::label_number(scale_cut = scales::cut_short_scale()))
+  
+  if(virus_facet){
+    p <- p + facet_wrap(. ~ virus)
+  }
+  
+  if (!is.null(output_file)) {
+    ggsave(output_file, plot = p, height = height, width = width)
+  }
+  p
+}
+```
+
+```{r}
+plot_topology_facet <- function(data,
+                           fill_values,
+                           shape_values = c(
+                             "human_hvidb" = 22,
+                             "human_intact" = 22,
+                             "human_open_targets" = 22,
+                             "virus_hvidb" = 24,
+                             "virus_intact" = 24
+                           ),
+                           labels = c(
+                             "human_hvidb" = "human, HVIDB",
+                             "human_intact" = "human, IntAct",
+                             "human_open_targets" = "human, Open Targets",
+                             "virus_hvidb" = "virus, HVIDB",
+                             "virus_intact" = "virus, IntAct"
+                           ),
+                           legend_name = "Seed/Dataset",
+                           position_dodge_width = 0.5,
+                           output_file = NULL,
+                           width = 7.29,
+                           height = 4.5,
+                           nrow = 1,
+                           ncol = 3) {
+
+  pd <- position_dodge(width = position_dodge_width)
+  
+  data <- data %>%
+  group_by(dataset, method, facet) %>%
+  mutate(n_points = dplyr::n()) %>%
+  ungroup()
+
+  p <- data %>%
+    ggplot(aes(x = method, y = nodes, fill = group, shape = group)) +
+    geom_line(
+      aes(group = interaction(dataset, method)),
+      position = pd,
+      color = "grey40"
+    ) +
+    geom_point(
+      position = pd,
+      size = 3,
+      color = "black",
+      aes(group = dataset)
+    ) +
+    facet_wrap(. ~ facet, ncol = ncol, scales = "free_x") + 
+    scale_fill_manual(name = legend_name, labels = labels, values = fill_values) +
+    scale_shape_manual(name = legend_name, labels = labels, values = shape_values) +
+    theme_bw() +
+    theme(
+      legend.position = "bottom",
+      legend.text  = element_text(size = 10),
+      legend.title = element_text(size = 11),
+  axis.text  = element_text(size = 12),
+  axis.title = element_text(size = 13),
+  strip.text = element_text(size = 13)
+    ) + 
+    labs(x = "Method", y = "Nodes")  +
+    coord_flip(clip = "off") +
+    scale_y_continuous(
+      labels = scales::label_number(scale_cut = scales::cut_short_scale()),
+      breaks = scales::pretty_breaks(n = 3),
+      expand = expansion(mult = c(0.05, 0.23))
+    ) + 
+  guides(
+    fill = guide_legend(nrow = nrow, byrow = TRUE),
+    shape = guide_legend(nrow = nrow, byrow = TRUE)
+  )
+  
+
+  if (!is.null(output_file)) {
+    ggsave(output_file, plot = p, height = height, width = width)
+  }
+  p
+}
+```
+
+
+```{r}
+plot_topology_facet2 <- function(data,
+                           fill_values,
+                           shape_values = c(
+                             "human_hvidb" = 22,
+                             "human_intact" = 22,
+                             "human_open_targets" = 22,
+                             "virus_hvidb" = 24,
+                             "virus_intact" = 24
+                           ),
+                           labels = c(
+                             "human_hvidb" = "human, HVIDB",
+                             "human_intact" = "human, IntAct",
+                             "human_open_targets" = "human, Open Targets",
+                             "virus_hvidb" = "virus, HVIDB",
+                             "virus_intact" = "virus, IntAct"
+                           ),
+                           legend_name = "Seed/Dataset",
+                           position_dodge_width = 0.5,
+                           output_file = NULL,
+                           width = 7.29,
+                           height = 4.5,
+                           facet_col = 2,
+                           nrow = 1) {
+
+  pd <- position_dodge(width = position_dodge_width)
+  
+  data <- data %>%
+  group_by(dataset, method, facet) %>%
+  mutate(n_points = dplyr::n()) %>%
+  ungroup()
+  
+  p <- data %>%
+    ggplot(aes(x = method, y = nodes, fill = group, shape = group)) +
+    geom_line(
+      aes(group = interaction(dataset, method)),
+      position = pd,
+      color = "grey40"
+    ) +
+    geom_point(
+      position = pd,
+      size = 3,
+      color = "black",
+      aes(group = dataset)
+    ) +
+    facet_wrap2(. ~ dataset+facet, ncol = facet_col, scales = "free_x") + 
+    scale_fill_manual(name = legend_name, labels = labels, values = fill_values) +
+    scale_shape_manual(name = legend_name, labels = labels, values = shape_values) +
+    coord_flip() +
+    theme_bw() +
+    theme(
+      legend.position = "bottom",
+      legend.text  = element_text(size = 10),
+      legend.title = element_text(size = 11),
+  axis.text  = element_text(size = 12),
+  axis.title = element_text(size = 13),
+  strip.text = element_text(size = 13)
+    )+ 
+    labs(x = "Method", y = "Nodes")+ 
+    scale_y_continuous(
+      labels = scales::label_number(scale_cut = scales::cut_short_scale()),
+      breaks = scales::pretty_breaks(n = 3),
+      expand = expansion(mult = c(0.05, 0.2))
+    )+ 
+  guides(
+    fill = guide_legend(nrow = nrow, byrow = TRUE),
+    shape = guide_legend(nrow = nrow, byrow = TRUE)
+  )
+
+  if (!is.null(output_file)) {
+    ggsave(output_file, plot = p, height = height, width = width)
+  }
+  p
+}
+```
+
+```{r}
+plot_topology(
+  data = hsv_topology,
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module.jpeg",
+  height = 5,
+  width = 6
+)
+
+plot_topology(
+  data = corona_topology,
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module.jpeg",
+  height = 5,
+  width = 6
+)
+
+plot_topology(
+  data = hiv_topology,
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module.jpeg",
+  height = 5,
+  width = 6
+)
+```
+
+
+```{r}
+plot_topology_facet(
+  data = hsv_filter %>% mutate(facet = forcats::fct_recode(facet, top_2 = "same_n")),
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module_filter.jpeg",
+  position_dodge_width = 0.7,
+  height = 5,
+  width = 6,
+  nrow = 2
+)
+
+plot_topology_facet(
+  data = corona_filter %>% mutate(facet = forcats::fct_recode(facet, top_15 = "same_n")),
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module_filter.jpeg",
+  position_dodge_width = 0.7,
+  height = 5,
+  width = 6,
+  nrow = 2
+)
+
+plot_topology_facet(
+  data = hiv_filter %>% mutate(facet = forcats::fct_recode(facet, top_5 = "same_n")),
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module_filter.jpeg",
+  position_dodge_width = 0.7,
+  height = 5,
+  width = 6,
+  nrow = 2
+)
+
+ 
+```
+
+```{r}
+plot_topology_facet(
+  data = hsv_human_strats%>% mutate(facet = ifelse(facet == "viral+human edges", "viral+human\nedges", facet)),
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module_nw_strats.jpeg",
+  height = 5,
+  width = 6
+)
+
+plot_topology_facet(
+  data = corona_human_strats %>% mutate(facet = ifelse(facet == "viral+human edges", "viral+human\nedges", facet)),
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module_nw_strats.jpeg",
+  height = 5,
+  width = 6
+)
+
+plot_topology_facet(
+  data = hiv_human_strats%>% mutate(facet = ifelse(facet == "viral+human edges", "viral+human\nedges", facet)),
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module_nw_strats.jpeg",
+  height = 5,
+  width = 6
+)
+
+```
+
+
+```{r}
+plot_topology_facet2(
+  data = hsv_categories,
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module_categories.jpeg",
+  height = 5, width = 6,
+  nrow = 2
+)
+
+plot_topology_facet2(
+  data = corona_categories,
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module_categories.jpeg",
+  height = 5, width = 6,
+  nrow = 2
+)
+
+plot_topology_facet2(
+  data = hiv_categories,
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module_categories.jpeg",
+  height = 5, width = 6,
+  nrow = 2
+)
+```
+
+```{r}
+plot_topology_facet(
+  data = hsv_subcategory,
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module_sub.jpeg",
+  position_dodge_width = 0.85,
+  height = 6,
+  width = 8.5,
+  nrow = 2
+)
+
+plot_topology_facet(
+  data = corona_subcategory,
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module_sub.jpeg",
+  position_dodge_width = 0.85,
+  height = 6,
+  width = 8.5,
+  nrow = 2
+)
+
+plot_topology_facet(
+  data = hiv_subcategory,
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module_sub.jpeg",
+  position_dodge_width = 0.85,
+  height = 6,
+  width = 8.5,
+  nrow = 2
+)
+```
+
+
+```{r}
+plot_topology_facet(
+  data = hsv_interactions,
+  fill_values = c(
+    "human_hvidb" = "lightblue", "human_intact" = "blue",
+    "virus_hvidb" = "lightblue", "virus_intact" = "blue",
+    "human_open_targets" = "navy"
+  ),
+  output_file = "plots/lollipop/hsv_module_int.jpeg",
+  position_dodge_width = 0.7,
+  width = 6,
+  height = 5, 
+  nrow = 2, 
+  ncol = 2
+)
+
+plot_topology_facet(
+  data = corona_interactions,
+  fill_values = c(
+    "human_hvidb" = "#FFB8B8", "human_intact" = "red",
+    "virus_hvidb" = "#FFB8B8", "virus_intact" = "red",
+    "human_open_targets" = "darkred"
+  ),
+  output_file = "plots/lollipop/corona_module_int.jpeg",
+  position_dodge_width = 0.7,
+  width = 6,
+  height = 5, 
+  nrow = 2, 
+  ncol = 2
+)
+
+plot_topology_facet(
+  data = hiv_interactions,
+  fill_values = c(
+    "human_hvidb" = "lightgreen", "human_intact" = "#00A300",
+    "virus_hvidb" = "lightgreen", "virus_intact" = "#00A300",
+    "human_open_targets" = "darkgreen"
+  ),
+  output_file = "plots/lollipop/hiv_module_int.jpeg",
+  position_dodge_width = 0.7,
+  width = 6,
+  height = 5, 
+  nrow = 2, 
+  ncol = 2
+)
+```

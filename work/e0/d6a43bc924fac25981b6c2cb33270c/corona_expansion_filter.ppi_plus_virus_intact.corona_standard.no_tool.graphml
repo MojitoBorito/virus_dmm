@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+
+  <!-- property keys -->
+  <key id="key0" for="graph" attr.name="_Graph__save__efilter" attr.type="boolean" />
+  <key id="key1" for="edge" attr.name="_Graph__save__efilter" attr.type="boolean" />
+  <key id="key2" for="graph" attr.name="_Graph__save__vfilter" attr.type="boolean" />
+  <key id="key3" for="node" attr.name="_Graph__save__vfilter" attr.type="boolean" />
+  <key id="key4" for="node" attr.name="component_id" attr.type="int" />
+  <key id="key5" for="node" attr.name="degree_in_full_network" attr.type="int" />
+  <key id="key6" for="node" attr.name="degree_in_module" attr.type="int" />
+  <key id="key7" for="node" attr.name="is_seed" attr.type="boolean" />
+  <key id="key8" for="node" attr.name="name" attr.type="string" />
+  <key id="key9" for="node" attr.name="spd" attr.type="float" />
+
+  <graph id="G" edgedefault="undirected" parse.nodeids="canonical" parse.edgeids="canonical" parse.order="nodesfirst">
+
+   <!-- graph properties -->
+   <data key="key0">0</data>
+   <data key="key2">0</data>
+
+   <!-- vertices -->
+
+   <!-- edges -->
+
+  </graph>
+</graphml>

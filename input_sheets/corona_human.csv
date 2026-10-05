@@ -1,0 +1,4 @@
+seeds,network,blacklist
+./data/no_human/top_100/corona/human_seeds_intact.top_100.txt,./data/no_human/top_100/corona/ppi_plus_virus_intact.top_100.csv,./data/no_human/top_100/corona/blacklist_intact.top_100.txt
+./data/no_human/top_100/corona/human_seeds_intact.top_100.txt,./data/human/top_100/corona/ppi_plus_virus_intact.top_100.human_int.csv,./data/no_human/top_100/corona/blacklist_intact.top_100.txt
+./data/no_human/top_100/corona/human_seeds_intact.top_100.txt,./data/string_700.tsv,

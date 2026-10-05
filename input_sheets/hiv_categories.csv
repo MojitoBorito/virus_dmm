@@ -1,0 +1,5 @@
+seeds,network
+./data/categories/hiv/hiv_expansion_filter.txt,./data/string_700.tsv
+./data/categories/hiv/hiv_interaction_type_filter.txt,./data/string_700.tsv
+./data/categories/hiv/hiv_targets_clinical_filter.txt,./data/string_700.tsv
+./data/categories/hiv/hiv_targets_interactive_filter.txt,./data/string_700.tsv

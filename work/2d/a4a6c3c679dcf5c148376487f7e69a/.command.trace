@@ -1,0 +1,17 @@
+nextflow.trace/v2
+realtime=3850
+%cpu=990
+cpu_model=12th Gen Intel(R) Core(TM) i5-12450H
+rchar=50263254
+wchar=660300
+syscr=6370
+syscw=107
+read_bytes=0
+write_bytes=675840
+%mem=7
+vmem=2275328
+rss=234108
+peak_vmem=2298104
+peak_rss=234108
+vol_ctxt=9
+inv_ctxt=276

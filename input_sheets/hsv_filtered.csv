@@ -1,0 +1,10 @@
+seeds,network,blacklist
+./data/no_human/same_n/hsv/hsv_targets.same_n.txt,./data/string_700.tsv,
+./data/standard_filtered/same_n/hsv/human_seeds_intact.same_n.txt,./data/string_700.tsv,
+./data/standard_filtered/same_n/hsv/virus_seeds_intact.same_n.txt,./data/standard_filtered/same_n/hsv/ppi_plus_virus_intact.same_n.csv,./data/standard_filtered/same_n/hsv/blacklist_intact.same_n.txt
+./data/no_human/top_50/hsv/hsv_targets.top_50.txt,./data/string_700.tsv,
+./data/standard_filtered/top_50/hsv/human_seeds_intact.top_50.txt,./data/string_700.tsv,
+./data/standard_filtered/top_50/hsv/virus_seeds_intact.top_50.txt,./data/standard_filtered/top_50/hsv/ppi_plus_virus_intact.top_50.csv,./data/standard_filtered/top_50/hsv/blacklist_intact.top_50.txt
+./data/no_human/top_100/hsv/hsv_targets.top_100.txt,./data/string_700.tsv,
+./data/standard_filtered/top_100/hsv/human_seeds_intact.top_100.txt,./data/string_700.tsv,
+./data/standard_filtered/top_100/hsv/virus_seeds_intact.top_100.txt,./data/standard_filtered/top_100/hsv/ppi_plus_virus_intact.top_100.csv,./data/standard_filtered/top_100/hsv/blacklist_intact.top_100.txt

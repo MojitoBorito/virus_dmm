@@ -170,5 +170,10 @@ BA
 *.txt
 tests
 combi_out_ot
-*.csv
 filtered_outputs
+interaction_filter_outputs
+human_strats
+new_filtered_outputs
+subcategories_outputs
+viral_categories
+category_filter

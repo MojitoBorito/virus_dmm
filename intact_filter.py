@@ -1,22 +1,36 @@
 #!/usr/bin/env python3
 
-import pandas as pd # type: ignore
+from matplotlib import cm
+import pandas as pd
 import argparse
+import numpy as np
 
-def get_virfil_data(tax_id, database_file, human_file, output_dir, top_interactors = None, same=False, top_interactions=False):
-    interactions, human_seeds, virus_seeds, blacklist = parse_intact(database_file, tax_id, top_interactors, same, top_interactions)
+def get_virfil_data(tax_id, database_file, human_file, output_dir, top_interactors = None, same=False, top_interactions=False, suffix='', add_human=False, add_virus=False):
+    interactions, human_seeds, virus_seeds, blacklist = parse_intact(database_file, tax_id, top_interactors, same, top_interactions, add_human, add_virus)
 
-    human_ppi = pd.read_csv(human_file, sep='\t', header=None, names=['protein_a', 'protein_b'])
+    print(f"Found {len(interactions)} interactions for organism with taxid {tax_id}")
+
+    human_ppi = pd.read_csv(human_file, sep='\t', header=None, names=['protein_a', 'protein_b'])    
 
     ppi_plus_virus = pd.concat([human_ppi, interactions], ignore_index=True)
     
-    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus_intact.csv", index=False, header=False)
-    virus_seeds.to_csv(f"{output_dir}/virus_seeds_intact.txt", index=False, header=False)
-    human_seeds.to_csv(f"{output_dir}/human_seeds_intact.txt", index=False, header=False)
-    blacklist.to_csv(f"{output_dir}/blacklist_intact.txt", index=False, header=False)
+    sorted_pairs = np.sort(ppi_plus_virus[['protein_a', 'protein_b']].values, axis=1)
+    ppi_plus_virus['protein_a'] = sorted_pairs[:, 0]
+    ppi_plus_virus['protein_b'] = sorted_pairs[:, 1]
+
+    print(f"Found {len(ppi_plus_virus)} interactions in total (including human PPI and virus-host interactions)")
+    
+    ppi_plus_virus = ppi_plus_virus.drop_duplicates().reset_index(drop=True)
+    
+    print(f"Found {len(ppi_plus_virus)} unique interactions in total (including human PPI and virus-host interactions)")
+    
+    ppi_plus_virus.to_csv(f"{output_dir}/ppi_plus_virus_intact.{suffix}.csv", index=False, header=False)
+    virus_seeds.to_csv(f"{output_dir}/virus_seeds_intact.{suffix}.txt", index=False, header=False)
+    human_seeds.to_csv(f"{output_dir}/human_seeds_intact.{suffix}.txt", index=False, header=False)
+    blacklist.to_csv(f"{output_dir}/blacklist_intact.{suffix}.txt", index=False, header=False)
 
 
-def parse_intact(database_file, tax_id, top_interactors = None, same=False, top_interactions=False):
+def parse_intact(database_file, tax_id, top_interactors = None, same=False, top_interactions=False, add_human=False, add_virus=False):
     intact = pd.read_csv(database_file, sep='\t')
 
     intact['taxid_a'] = intact['Taxid interactor A'].str.extract(r'^taxid:(\d+)')
@@ -81,24 +95,28 @@ def parse_intact(database_file, tax_id, top_interactors = None, same=False, top_
     virus_interactions = pd.DataFrame(columns=['protein_a', 'protein_b'])
     
     if not top_interactions:
-        human_interactions = get_organism_interactions(intact, "9606")
-        virus_interactions = get_organism_interactions(intact, tax_id)
+        if add_human:
+            human_interactions = get_organism_interactions(intact, "9606")
+        if add_virus:
+            virus_interactions = get_organism_interactions(intact, tax_id)
     
     interactions = human_intact[['virus_protein', 'human_protein']].copy()
-    
     interactions = interactions.rename(columns={
         'virus_protein': 'protein_a',
         'human_protein': 'protein_b'
     })
-    
+
+    virus_host_virus_proteins = interactions['protein_a'].copy()
+
     interactions = pd.concat([interactions, human_interactions, virus_interactions], ignore_index=True)
+    interactions = interactions[interactions['protein_a'] != interactions['protein_b']].copy()
 
     blacklist = pd.concat([
-        interactions['protein_a'],
-        virus_interactions['protein_a'],
-        virus_interactions['protein_b']
+        virus_host_virus_proteins,
+        virus_interactions['protein_a'] if add_virus else pd.Series(),
+        virus_interactions['protein_b'] if add_virus else pd.Series(),
     ], ignore_index=True)
-    
+
     blacklist = blacklist.drop_duplicates().reset_index(drop=True)
     
     return interactions, human_seeds, virus_seeds, blacklist
@@ -108,6 +126,7 @@ def get_organism_interactions(intact, org_taxid):
     interactions = intact[(intact['taxid_a'] == org_taxid) & (intact['taxid_b'] == org_taxid)].copy()
     interactions['protein_a'] = interactions['#ID(s) interactor A']
     interactions['protein_b'] = interactions['ID(s) interactor B']
+    
     interactions = interactions[interactions['protein_a'].str.startswith('uniprotkb:') & 
                                 interactions['protein_b'].str.startswith('uniprotkb:')].copy()
     
@@ -115,6 +134,8 @@ def get_organism_interactions(intact, org_taxid):
     interactions['protein_b'] = interactions['protein_b'].str.replace(r'^uniprotkb:', '', regex=True)
     interactions['protein_a'] = interactions['protein_a'].str.replace(r'-PRO_.*$', '', regex=True)
     interactions['protein_b'] = interactions['protein_b'].str.replace(r'-PRO_.*$', '', regex=True)
+    
+    print(f"Found {len(interactions)} interactions for organism with taxid {org_taxid}")
     
     return interactions[['protein_a', 'protein_b']]
 
@@ -140,6 +161,9 @@ if __name__ == "__main__":
     cmd.add_argument('--same', action='store_true', help='Flag to extract same number of virus and human seeds')
     cmd.add_argument('--top_interactors', type=int, default=None, help='Top N human proteins per virus for filtering interactions (applicable for IntAct)')
     cmd.add_argument('--top_interactions', type=int, default=None, help='Top N interactions for filtering interactions (applicable for IntAct)')
+    cmd.add_argument('--suffix', type=str, default='', help='Suffix for output files')
+    cmd.add_argument('--add_human', action='store_true', help='Flag to add human interactions (applicable for IntAct)')
+    cmd.add_argument('--add_virus', action='store_true', help='Flag to add virus interactions (applicable for IntAct)')
 
     args = cmd.parse_args()
     
@@ -149,4 +173,7 @@ if __name__ == "__main__":
                     args.output_dir, 
                     args.top_interactors,
                     args.same,
-                    args.top_interactions)
+                    args.top_interactions,
+                    args.suffix,
+                    args.add_human,
+                    args.add_virus)

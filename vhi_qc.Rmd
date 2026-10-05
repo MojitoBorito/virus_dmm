@@ -14,6 +14,8 @@ library(patchwork)
 library(ComplexUpset)
 library(ggrepel)
 library(RColorBrewer)
+library(ggh4x)
+library(eulerr)
 
 hvidb <- read_tsv("data/hvidb.tsv") %>% 
   mutate(Organism_Interactor_virus = as.character(Organism_Interactor_virus),
@@ -26,16 +28,25 @@ intact <- read_tsv("data/intact.tsv")
 
 viruses <- read_tsv("data/virus_taxids.txt", col_names = FALSE)[[1]]
 
-corona_proteins_all <- read_tsv("data/corona_proteins.tsv") 
+corona_proteins_all <- read_tsv("data/corona_uniprot.tsv") %>% filter(`Organism (ID)` == 2697049)
 corona_proteins_swiss <- corona_proteins_all %>% filter(Reviewed == "reviewed")
 corona_proteins_trembl <- corona_proteins_all %>% filter(Reviewed != "reviewed")
+corona_ot <- read_tsv("data/covid_targets_uniprot.tsv", col_names = c("id"))
 
 
-hhv_proteins_all <- read_tsv("data/hhv_proteins.tsv")
+hhv_proteins_all <- read_tsv("data/hsv_uniprot.tsv") %>% filter(`Organism (ID)` == 10298)
 hhv_proteins_swiss <- hhv_proteins_all %>% filter(Reviewed == "reviewed")
 hhv_proteins_trembl <- hhv_proteins_all %>% filter(Reviewed != "reviewed")
+hsv_ot <- read_tsv("data/hsv_targets_uniprot.tsv", col_names = c("id"))
 
-nrow(corona_proteins_all)
+hiv_proteins_all <- read_tsv("data/hiv_uniprot.tsv") %>% filter(`Organism (ID)` == 11676)
+hiv_proteins_swiss <- hiv_proteins_all %>% filter(Reviewed == "reviewed")
+hiv_proteins_trembl <- hiv_proteins_all %>% filter(Reviewed != "reviewed")
+hiv_ot <- read_tsv("data/hiv_targets_uniprot.tsv", col_names = c("id"))
+
+string_700 <- read_tsv("data/string_700.tsv", col_names = c("A", "B"))
+
+string_700_proteins <- unique(append(unique(string_700$A), unique(string_700$B)))
 ```
 
 # Intact
@@ -69,22 +80,16 @@ homo_intact %>%
   geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
   theme_bw()
 
-ggsave("plots/virphi_dist_intact.png", dpi = 500)
+#ggsave("plots/virphi_dist_intact.png", dpi = 500)
 
 species_counts %>% ggplot(aes(x = n)) + 
   geom_histogram(color = "gray", fill = "steelblue", bins = 20, alpha = 0.4) + 
   labs(x = "taxon id frequency", title = "Distribution of interactions with human per organism (IntAct)") + 
   geom_freqpoly(color = "black", binwidth=1, boundary = 0, linewidth = 1) + 
   theme_bw()
-ggsave("plots/phi_dist_intact.png", dpi = 500)
+#ggsave("plots/phi_dist_intact.png", dpi = 500)
 
 print(paste("number of taxon ids in IntAct:", nrow(species_counts), "(contains organisms like mouse, rat and guinea pig)"))
-
-hosts %>% filter(organism_a == "10298", organism_b == "10298")
-
-hosts %>% filter(organism_a == "2697049", organism_b == "2697049")
-
-hosts %>% filter(organism_a == "11676", organism_b == "11676")
 
 ```
 
@@ -97,8 +102,7 @@ homo_intact_unique <- homo_intact %>%
   ) %>%
   group_by(virus_taxid, human_protein, virus_protein) %>%
   slice_max(miscore, n = 1, with_ties = FALSE) %>%
-  ungroup() %>%
-  select(organism_a, organism_b, virus_taxid, virus_protein, human_protein, miscore)
+  ungroup() 
 
 print(paste("Number of virus taxon ids in in IntAct:", homo_intact_unique %>% select(virus_taxid) %>% distinct() %>% nrow()))
 print(paste("Total number of interactions between human and all viruses in IntAct:", nrow(homo_intact)))
@@ -120,7 +124,47 @@ corona_intact_seeds <- corona_intact %>%
 
 corona_intact_interactors <- corona_intact %>% distinct(human_protein) %>% pull(human_protein)
 
+hiv_intact_seeds <- hiv_intact %>%
+  distinct(virus_protein) %>%
+  pull(virus_protein)
+
+hiv_intact_interactors <- hiv_intact %>% distinct(human_protein) %>% pull(human_protein)
 ```
+
+```{r}
+corona_int_filter <- corona_intact %>% filter(str_detect(`Interaction type(s)`, "direct interaction"))
+hsv_int_filter <- hsv_intact %>% filter(str_detect(`Interaction type(s)`, "direct interaction"))
+hiv_int_filter <- hiv_intact %>% filter(str_detect(`Interaction type(s)`, "direct interaction"))
+
+corona_exp_filter <- corona_intact %>% 
+  filter(`Expansion method(s)` == "-") %>% 
+  group_by(human_protein) %>% 
+  slice_max(miscore, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  slice_max(miscore, n = 100, with_ties = FALSE)
+hsv_exp_filter <- hsv_intact %>% filter(`Expansion method(s)` == "-")
+hiv_exp_filter <- hiv_intact %>% filter(`Expansion method(s)` == "-")
+
+```
+
+```{r}
+write(unique(corona_int_filter$human_protein), "data/categories/corona/corona_interaction_type_filter.txt")
+write(unique(hsv_int_filter$human_protein), "data/categories/hsv/hsv_interaction_type_filter.txt")
+write(unique(hiv_int_filter$human_protein), "data/categories/hiv/hiv_interaction_type_filter.txt")
+
+write(unique(corona_exp_filter$human_protein), "data/categories/corona/corona_expansion_filter.txt")
+write(unique(hsv_exp_filter$human_protein), "data/categories/hsv/hsv_expansion_filter.txt")
+write(unique(hiv_exp_filter$human_protein), "data/categories/hiv/hiv_expansion_filter.txt")
+
+write(unique(corona_int_filter$virus_protein), "data/virus_categories/corona_interaction_type_filter.txt")
+write(unique(hsv_int_filter$virus_protein), "data/virus_categories/hsv_interaction_type_filter.txt")
+write(unique(hiv_int_filter$virus_protein), "data/virus_categories/hiv_interaction_type_filter.txt")
+
+write(unique(corona_exp_filter$virus_protein), "data/virus_categories/corona_expansion_filter.txt")
+write(unique(hsv_exp_filter$virus_protein), "data/virus_categories/hsv_expansion_filter.txt")
+write(unique(hiv_exp_filter$virus_protein), "data/virus_categories/hiv_expansion_filter.txt")
+```
+
 
 ```{r}
 homo_intact_unique %>%
@@ -189,7 +233,8 @@ corona_hvidb_seeds <- corona_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_
 corona_hvidb_interactors <- corona_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
 
 hiv_hvidb <- hvidb %>% filter(Organism_Interactor_virus == "11676")
-
+hiv_hvidb_seeds <- hiv_hvidb %>% distinct(Uniprot_virus) %>% pull(Uniprot_virus)
+hiv_hvidb_interactors <- hiv_hvidb %>% distinct(Uniprot_human) %>% pull(Uniprot_human)
 ```
 
 
@@ -377,34 +422,49 @@ ggVennDiagram(list(IntAct = hsv_intact_seeds,
                    SwissProt = hhv_proteins_swiss$Entry),
               label = "count") +
   scale_fill_gradient(low = "lightblue", high = "steelblue")
-ggsave("plots/hhv_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
+ggsave("plots/seed_sizehhv_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
 
 ggVennDiagram(list(IntAct = corona_intact_seeds, 
                    HVIDB = corona_hvidb_seeds,
                    SwissProt = corona_proteins_swiss$Entry),
               label = "count") +
   scale_fill_gradient(low = "#FC5F64", high = "darkred")
-ggsave("plots/corona_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
+ggsave("plots/seed_sizecorona_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
+
+ggVennDiagram(list(IntAct = hiv_intact_seeds, 
+                   HVIDB = hiv_hvidb_seeds,
+                   SwissProt = hiv_proteins_swiss$Entry),
+              label = "count") +
+  scale_fill_gradient(low = "lightgreen", high = "darkgreen")
+ggsave("plots/seed_sizehiv_seed_venn.jpeg", dpi = 2400, height = 5, width = 5)
 
 ```
+
+
 ```{r}
-setdiff(hhv_hvidb_seeds, hhv_proteins_all$Entry)
+plot_venn <- function(set_list, low, high, outfile) {
+  p <- ggVennDiagram(set_list, label = "count") +
+    scale_fill_gradient(low = low, high = high) +
+    coord_cartesian(clip = "off") +           # overrides ggVennDiagram's fixed-ratio coord
+    scale_x_continuous(expand = expansion(mult = .12)) +
+    scale_y_continuous(expand = expansion(mult = .12)) +
+    theme(plot.margin = margin(5, 5, 5, 5))
+  ggsave(outfile, plot = p, width = 5, height = 5, units = "in", dpi = 500, bg = "white")
+}
+
+plot_venn(list(IntAct = hsv_intact_interactors, HVIDB = hhv_hvidb_interactors,
+                "Open Targets" = hsv_ot$id, "String 700" = string_700_proteins),
+          "lightblue", "steelblue", "plots/seed_size/hhv_inter_venn.png")
+
+plot_venn(list(IntAct = corona_intact_interactors, HVIDB = corona_hvidb_interactors,
+                "Open Targets" = corona_ot$id, "String 700" = string_700_proteins),
+          "#FC5F64", "darkred", "plots/seed_size/corona_inter_venn.png")
+
+plot_venn(list(IntAct = hiv_intact_interactors, HVIDB = hiv_hvidb_interactors,
+                "Open Targets" = hiv_ot$id, "String 700" = string_700_proteins),
+          "lightgreen", "darkgreen", "plots/seed_size/hiv_inter_venn.png")
 ```
 
-
-```{r}
-ggVennDiagram(list(intact = hsv_intact_interactors, hvidb = hhv_hvidb_interactors)) + 
-  ggtitle("Human interactors overlap for Herpes Simplex") + 
-  coord_cartesian(clip = "off")+ 
-  scale_fill_gradient(low = "lightblue", high = "steelblue")
-ggsave("plots/hhv_inter_venn.png", dpi = 500)
-  
-ggVennDiagram(list(intact = corona_intact_interactors, hvidb = corona_hvidb_interactors)) + 
-  ggtitle("Human interactors overlap for Corona") + 
-  coord_cartesian(clip = "off")+ 
-  scale_fill_gradient(low = "lightblue", high = "steelblue")
-ggsave("plots/corona_inter_venn.png", dpi = 500)
-```
 
 
 ```{r}
@@ -526,6 +586,8 @@ corona_intact %>%
   stat_ecdf(aes(y = 1 - after_stat(y))) + 
   theme_bw()
 ```
+
+
 ```{r}
 get_cdf_intact <- function(intact_df, disease_name = "a disease"){
   q_cutoffs <- tibble(
@@ -618,5 +680,283 @@ get_cdf_intact(hsv_intact, "HSV-1")
 ggsave("plots/cdf_intact_hsv.jpeg", dpi=300)
 get_cdf_intact(hiv_intact, "HIV-1")
 ggsave("plots/cdf_intact_hiv.jpeg", dpi=300)
+```
+
+```{r}
+new_top_100 <- read_csv("data/same_n/corona/ppi_plus_virus_intact.csv", col_names = c("protein_a", "protein_b"))
+# Create a "normalized" pair column - sort the two protein IDs alphabetically
+# so that (A,B) and (B,A) map to the same key
+new_top_100 <- new_top_100 %>%
+  mutate(
+    pair_key = paste(pmin(protein_a, protein_b), pmax(protein_a, protein_b), sep = "_")
+  )
+
+# Count how many rows share the same normalized pair_key
+duplicate_check <- new_top_100 %>%
+  count(pair_key) %>%
+  filter(n > 1)
+
+nrow(duplicate_check)  # if > 0, you have directional duplicates
+```
+
+
+```{r}
+summary_df_intact <- bind_rows(list(corona_intact, hsv_intact, hiv_intact)) %>% 
+  group_by(virus_taxid) %>%
+  summarise(Interactions = n(), 
+            "Viral Seeds" = n_distinct(virus_protein), 
+            "Human Seeds" = n_distinct(human_protein)) %>%
+  mutate(virus_name = case_when(
+    virus_taxid == "10298" ~ "HSV-1",
+    virus_taxid == "11676" ~ "HIV-1",
+    .default = "SARS-CoV-2"
+  )) %>%
+  mutate(db = "IntAct") %>% 
+  pivot_longer(cols = c("Interactions", "Viral Seeds", "Human Seeds"),
+               names_to = "metric",
+               values_to = "value") %>%
+  select(!virus_taxid)
+
+summary_df_hvidb <- bind_rows(list(corona_hvidb, hhv_hvidb, hiv_hvidb)) %>%
+  group_by(Organism_Interactor_virus) %>%
+  summarise(Interactions = n(), 
+            "Viral Seeds" = n_distinct(Uniprot_virus), 
+            "Human Seeds" = n_distinct(Uniprot_human)) %>%
+  mutate(virus_name = case_when(
+    Organism_Interactor_virus == "10298" ~ "HSV-1",
+    Organism_Interactor_virus == "11676" ~ "HIV-1",
+    .default = "SARS-CoV-2"
+  )) %>%
+  mutate(db = "HVIDB") %>% 
+  pivot_longer(cols = c("Interactions", "Viral Seeds", "Human Seeds"),
+               names_to = "metric",
+               values_to = "value") %>%
+  select(!Organism_Interactor_virus)
+
+
+summary_ot <- bind_rows(
+  list(
+    corona_ot %>% mutate(virus_name = "SARS-CoV-2"),
+    hsv_ot %>% mutate(virus_name = "HSV-1"),
+    hiv_ot %>% mutate(virus_name = "HIV-1")
+  )
+) %>% 
+  group_by(virus_name) %>%
+  summarise("Human Seeds" = n_distinct(id)) %>%
+  pivot_longer(cols = c("Human Seeds"),
+               names_to = "metric",
+               values_to = "value") %>%
+  mutate(db = "Open Targets")
+
+
+all_summary %>%
+  ggplot(aes(x = db, y = value, fill = virus_name)) + 
+  geom_col(color = "black") + 
+  geom_text(aes(label = value), vjust = -0.5) +
+  facet_grid(virus_name ~ metric, scales = "free") + 
+  scale_fill_manual(values = c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100")) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.22))) +  # <- key change
+  theme_bw() +
+  theme(legend.position = "None",
+        axis.text.x = element_text(angle = 30, hjust = 1))  + 
+  labs(x = "Database", y = "Count")
+
+ggsave("plots/seed_size/final_bar_combi.jpeg", dpi = 300, width = 5, height = 6)
+```
+
+```{r}
+summary_int_intact <- bind_rows(corona_int_filter, hiv_int_filter, hsv_int_filter) %>%
+  group_by(virus_taxid) %>%
+  summarise(Interactions = n(), 
+            "Viral Seeds" = n_distinct(virus_protein), 
+            "Human Seeds" = n_distinct(human_protein)) %>%
+  mutate(virus_name = case_when(
+    virus_taxid == "10298" ~ "HSV-1",
+    virus_taxid == "11676" ~ "HIV-1",
+    .default = "SARS-CoV-2"
+  )) %>%
+  mutate(db = "IntAct") %>% 
+  pivot_longer(cols = c("Interactions", "Viral Seeds", "Human Seeds"),
+               names_to = "metric",
+               values_to = "value") %>%
+  select(!virus_taxid) %>%
+  mutate(filter = "Interaction Type")
+
+summary_exp_intact <- bind_rows(corona_exp_filter, hiv_exp_filter, hsv_exp_filter) %>%
+  group_by(virus_taxid) %>%
+  summarise(Interactions = n(), 
+            "Viral Seeds" = n_distinct(virus_protein), 
+            "Human Seeds" = n_distinct(human_protein)) %>%
+  mutate(virus_name = case_when(
+    virus_taxid == "10298" ~ "HSV-1",
+    virus_taxid == "11676" ~ "HIV-1",
+    .default = "SARS-CoV-2"
+  )) %>%
+  mutate(db = "IntAct") %>% 
+  pivot_longer(cols = c("Interactions", "Viral Seeds", "Human Seeds"),
+               names_to = "metric",
+               values_to = "value") %>%
+  select(!virus_taxid) %>%
+  mutate(filter = "Expansion Method")
+
+ot_filtered_files <- list(
+  list(virus = "HIV-1",      filter = "Tractability", path = "data/categories/hiv/hiv_targets_interactive_filter.txt"),
+  list(virus = "SARS-CoV-2", filter = "Tractability", path = "data/categories/corona/corona_targets_interactive_filter.txt"),
+  list(virus = "HSV-1",      filter = "Tractability", path = "data/categories/hsv/hsv_targets_interactive_filter.txt")
+)
+
+summary_ot_filtered <- map_dfr(ot_filtered_files, function(x) {
+  tibble(
+    virus_name = x$virus,
+    filter = x$filter,
+    metric = "Human Seeds",
+    value = n_distinct(read.table(file = x$path)),
+    db = "Open Targets"
+  )
+})
+
+interaction_filter <- list(
+  list(virus = "HIV-1",      filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/hiv/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "SARS-CoV-2", filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/corona/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "HSV-1",      filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/hsv/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "HIV-1",      filter = "Top 100 Interactions",
+       path = "data/interactions_top_100/hiv/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "SARS-CoV-2", filter = "Top 100 Interactions",  
+       path = "data/interactions_top_100/corona/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "HSV-1",      filter = "Top 100 Interactions",    
+       path = "data/interactions_top_100/hsv/virus_seeds_intact.txt", metric = "Viral Seeds"),
+  list(virus = "HIV-1",      filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/hiv/human_seeds_intact.txt", metric = "Human Seeds"),
+  list(virus = "SARS-CoV-2", filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/corona/human_seeds_intact.txt", metric = "Human Seeds"),
+  list(virus = "HSV-1",      filter = "Top 50 Interactions", 
+       path = "data/interactions_top_50/hsv/human_seeds_intact.txt", metric = "Human Seeds"),
+  list(virus = "HIV-1",      filter = "Top 100 Interactions",    
+       path = "data/interactions_top_100/hiv/human_seeds_intact.txt", metric = "Human Seeds"),
+  list(virus = "SARS-CoV-2", filter = "Top 100 Interactions",    
+       path = "data/interactions_top_100/corona/human_seeds_intact.txt", metric = "Human Seeds"),
+  list(virus = "HSV-1",      filter = "Top 100 Interactions",    
+       path = "data/interactions_top_100/hsv/human_seeds_intact.txt", metric = "Human Seeds")
+)
+
+summary_interactions_filtered <- map_dfr(interaction_filter, function(x) {
+  tibble(
+    virus_name = x$virus,
+    filter = x$filter,
+    metric = x$metric,
+    value = n_distinct(read.table(file = x$path)),  
+    db = "IntAct"
+  )
+})
+
+all_summary_filtered <- bind_rows(
+  summary_int_intact,
+  summary_exp_intact,
+  summary_ot_filtered,
+  summary_interactions_filtered
+) 
+
+
+all_summary_filtered %>%
+  ggplot(aes(x = filter, y = value, fill = virus_name)) +
+  geom_col(color = "black", position = "dodge") +
+  geom_text(aes(label = value), vjust = -0.4) +
+  facet_nested(virus_name ~ metric + db, scales = "free") +
+  scale_fill_manual(values = c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100")) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.22))) +
+  theme_bw() +
+  theme(legend.position = "None",
+        axis.text.x = element_text(angle = 50, hjust = 1),
+        plot.margin = margin(t = 5, r = 5, b = 15, l = 5)) +
+  labs(x = "Filtering Method", y = "Count")
+
+ggsave("plots/seed_size/final_bar_combi_filtered.jpeg", dpi = 300, width = 5, height = 6)
+
+```
+
+```{r}
+get_organism_interactions <- function(intact, org_taxid) {
+  interactions <- intact %>%
+    filter(`Taxid interactor A` == `Taxid interactor B`, str_detect(`Taxid interactor A`, org_taxid)) %>%
+    mutate(
+      protein_a = `#ID(s) interactor A`,
+      protein_b = `ID(s) interactor B`
+    ) %>%
+    filter(
+      str_starts(protein_a, "uniprotkb:"),
+      str_starts(protein_b, "uniprotkb:")
+    ) %>%
+    mutate(
+      protein_a = str_remove(protein_a, "^uniprotkb:"),
+      protein_b = str_remove(protein_b, "^uniprotkb:"),
+      protein_a = str_remove(protein_a, "-PRO_.*$"),
+      protein_b = str_remove(protein_b, "-PRO_.*$")
+    ) %>%
+    select(protein_a, protein_b) %>%
+    filter(protein_a != protein_b) %>%
+    mutate(
+      p1 = pmin(protein_a, protein_b),
+      p2 = pmax(protein_a, protein_b)
+    ) %>%
+    distinct(p1, p2) %>%
+    rename(protein_a = p1, protein_b = p2)
+
+  interactions
+}
+
+taxids <- c("9606", "10298", "11676", "2697049")
+
+org_org <- map_dfr(taxids, function(tid) {
+  tibble(taxid = tid, count = nrow(get_organism_interactions(intact, tid)))
+}) %>%
+  mutate(virus_name = case_when(
+    taxid == "10298" ~ "HSV-1",
+    taxid == "11676" ~ "HIV-1",
+    taxid == "9606" ~ "Human",
+    .default = "SARS-CoV-2"
+  ),
+  virus_name = fct_relevel(virus_name, "Human", after = Inf))
+
+
+org_org %>%
+  ggplot(aes(x = virus_name, y = count, fill = virus_name)) +
+  geom_col(colour = "black") + 
+  geom_text(aes(label = count), vjust = -0.4) +
+  scale_fill_manual(values = c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100", "Human" = "magenta")) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.22))) +
+  theme_bw() +
+  theme(legend.position = "None",
+        axis.text.x = element_text(angle = 30, hjust = 1)) + 
+  labs(x = "Organism name",y = "Count")
+
+ggsave("plots/seed_size/intra_org_bar.jpeg", dpi = 300)
+```
+
+```{r}
+human <- get_organism_interactions(intact, "9606")
+corona <- get_organism_interactions(intact, "2697049")
+canonicalize_pairs <- function(df, col_a, col_b) {
+  df %>%
+    mutate(
+      p1 = pmin({{ col_a }}, {{ col_b }}),
+      p2 = pmax({{ col_a }}, {{ col_b }}),
+      pair_id = paste(p1, p2, sep = "-")
+    )
+}
+
+human_set <- canonicalize_pairs(human, protein_a, protein_b)
+corona_set <- canonicalize_pairs(corona, protein_a, protein_b)
+string_set <- canonicalize_pairs(string_700, A, B)
+
+nrow(corona_set)
+length(unique(corona_set$pair_id))
+
+nrow(human_set)
+length(unique(human_set$pair_id))
+
+ggVennDiagram(x=list(string = string_set$pair_id, human_intact = human_set$pair_id))
 ```
 

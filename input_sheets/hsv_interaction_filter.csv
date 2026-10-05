@@ -1,0 +1,5 @@
+seeds,network,blacklist
+./data/interactions_top_50/hsv/human_seeds_intact.top_50.txt,./data/string_700.tsv,
+./data/interactions_top_50/hsv/virus_seeds_intact.top_50.txt,./data/interactions_top_50/hsv/ppi_plus_virus_intact.top_50.csv,./data/interactions_top_50/hsv/blacklist_intact.top_50.txt
+./data/interactions_top_100/hsv/human_seeds_intact.top_100.txt,./data/string_700.tsv,
+./data/interactions_top_100/hsv/virus_seeds_intact.top_100.txt,./data/interactions_top_100/hsv/ppi_plus_virus_intact.top_100.csv,./data/interactions_top_100/hsv/blacklist_intact.top_100.txt

@@ -1,0 +1,6 @@
+seeds,network,blacklist
+./data/out_hsv_hvidb_filter/virus_seeds_hvidb.txt,./data/out_hsv_hvidb_filter/ppi_plus_virus_hvidb.csv,./data/out_hsv_hvidb_filter/virus_seeds_hvidb.txt
+./data/out_hsv_intact_filter/virus_seeds_intact.txt,./data/out_hsv_intact_filter/ppi_plus_virus_intact.csv,./data/out_hsv_intact_filter/virus_seeds_intact.txt
+./data/out_hsv_hvidb_filter/human_seeds_hvidb.txt,./data/string_700.tsv,
+./data/out_hsv_intact_filter/human_seeds_intact.txt,./data/string_700.tsv,
+./data/hsv_targets_uniprot_filtered.tsv,./data/string_700.tsv,

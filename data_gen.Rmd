@@ -13,6 +13,7 @@ library(biomaRt)
 covid_targets <- read_tsv("data/covid_19_targets.tsv")
 hiv_targets <- read_tsv("data/hiv_targets.tsv")
 hsv_targets <- read_tsv("data/hsv_targets.tsv")
+
 ```
 
 
@@ -135,11 +136,18 @@ filter_by_percentile <- function(df, score_col, percentile = 0.75) {
   df %>% filter(.data[[score_col]] >= threshold)
 }
 
+hsv_targets %>% 
+  filter(maxClinicalStage != "No data") %>% 
+  mutate(maxClinicalStage = as.numeric(maxClinicalStage)) %>%
+  filter(hasLigand == "1", hasSmallMoleculeBinder == "1", hasPocket == "1") 
 ```
 
 
 ```{r}
 mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+
+mart <- useEnsembl(biomart = "genes", dataset = "hsapiens_gene_ensembl", mirror = "asia")
+
 
 hiv_targets_uniport <- getBM(
   attributes = c("hgnc_symbol", "uniprotswissprot", "uniprotsptrembl"),
@@ -200,6 +208,45 @@ covid_new <- join_filter(covid_targets_uniprot, covid_targets)
 ```
 
 ```{r}
+#interactivity based category
+hiv_interactive <- hiv_new %>% 
+  filter(hasLigand == "1", hasSmallMoleculeBinder == "1", hasPocket == "1") %>%
+  slice_max(globalScore, n = 100, with_ties = FALSE)
+
+covid_interactive <- covid_new %>% 
+  filter(hasLigand == "1", hasSmallMoleculeBinder == "1", hasPocket == "1") %>%
+  slice_max(globalScore, n = 100, with_ties = FALSE)
+
+hsv_interactive <- hsv_new %>% 
+  filter(hasLigand == "1", hasSmallMoleculeBinder == "1", hasPocket == "1") %>%
+  slice_max(globalScore, n = 100, with_ties = FALSE)
+
+#clinical success based category
+hiv_clinical <- hiv_new %>% 
+  mutate(clinicalPrecedence = ifelse(clinicalPrecedence == "No data", 0, as.numeric(clinicalPrecedence))) %>%
+  slice_max(clinicalPrecedence, n=100, with_ties = FALSE)
+
+covid_clinical <- covid_new %>% 
+  mutate(clinicalPrecedence = ifelse(clinicalPrecedence == "No data", 0, as.numeric(clinicalPrecedence))) %>%
+  slice_max(clinicalPrecedence, n=100, with_ties = FALSE)
+
+hsv_clinical <- hsv_new %>% 
+  mutate(clinicalPrecedence = ifelse(clinicalPrecedence == "No data", 0, as.numeric(clinicalPrecedence))) %>%
+  slice_max(clinicalPrecedence, n=100, with_ties = FALSE)
+
+```
+
+```{r}
+write(hiv_interactive$uniprot, file = "data/categories/hiv/hiv_targets_interactive_filter.txt")
+write(covid_interactive$uniprot, file = "data/categories/corona/corona_targets_interactive_filter.txt")
+write(hsv_interactive$uniprot, file = "data/categories/hsv/hsv_targets_interactive_filter.txt")
+
+write(hiv_clinical$uniprot, file = "data/categories/hiv/hiv_targets_clinical_filter.txt")
+write(covid_clinical$uniprot, file = "data/categories/corona/corona_targets_clinical_filter.txt")
+write(hsv_clinical$uniprot, file = "data/categories/hsv/hsv_targets_clinical_filter.txt")
+```
+
+```{r}
 hiv_50 <- hiv_new %>% slice_max(globalScore, n = 50, with_ties = FALSE)
 hiv_100 <- hiv_new %>% slice_max(globalScore, n = 100, with_ties = FALSE)
 
@@ -216,21 +263,21 @@ hiv_same <- hiv_new %>% slice_max(globalScore, n = 5, with_ties = FALSE)
 
 
 ```{r}
-write(hiv_new, file = "data/hiv_targets_uniprot_filtered.tsv")
-write(covid_new, file = "data/covid_targets_uniprot_filtered.tsv")
-write(hsv_new, file = "data/hsv_targets_uniprot_filtered.tsv")
+write(hiv_new$uniprot, file = "data/hiv_targets_uniprot_filtered.txt")
+write(covid_new$uniprot, file = "data/covid_targets_uniprot_filtered.txt")
+write(hsv_new$uniprot, file = "data/hsv_targets_uniprot_filtered.txt")
 
-write(hiv_50$uniprot, file = "data/top_50/hiv_targets.txt")
-write(hsv_50$uniprot, file = "data/top_50/hsv_targets.txt")
-write(covid_50$uniprot, file = "data/top_50/covid_targets.txt")
+write(hiv_50$uniprot, file = "data/standard_filtered/top_50/hiv/hiv_targets.txt")
+write(hsv_50$uniprot, file = "data/standard_filtered/top_50/hsv/hsv_targets.txt")
+write(covid_50$uniprot, file = "data/standard_filtered/top_50/corona/covid_targets.txt")
 
-write(hiv_100$uniprot, file = "data/top_100/hiv_targets.txt")
-write(hsv_100$uniprot, file = "data/top_100/hsv_targets.txt")
-write(covid_100$uniprot, file = "data/top_100/covid_targets.txt")
+write(hiv_100$uniprot, file = "data/standard_filtered/top_100/hiv/hiv_targets.txt")
+write(hsv_100$uniprot, file = "data/standard_filtered/top_100/hsv/hsv_targets.txt")
+write(covid_100$uniprot, file = "data/standard_filtered/top_100/corona/covid_targets.txt")
 
-write(hiv_same$uniprot, file = "data/same_n/hiv_targets.txt")
-write(hsv_same$uniprot, file = "data/same_n/hsv_targets.txt")
-write(covid_same$uniprot, file = "data/same_n/covid_targets.txt")
+write(hiv_same$uniprot, file = "data/standard_filtered/same_n/hiv/hiv_targets.txt")
+write(hsv_same$uniprot, file = "data/standard_filtered/same_n/hsv/hsv_targets.txt")
+write(covid_same$uniprot, file = "data/standard_filtered/same_n/corona/covid_targets.txt")
 
 ```
 
@@ -243,7 +290,7 @@ get_cdf_targets <- function(ot_df, disease_name = "a disease"){
     cutoff = quantile(ot_df$globalScore, pct, na.rm = TRUE),
     label = paste0(pct * 100, "th pct")) %>%
     arrange(cutoff) %>%
-    mutate(y_pos = seq(0.75, 0.45, length.out = n()))  # spread labels vertically
+    mutate(y_pos = seq(0.75, 0.45, length.out = n()))
   
   sorted_scores <- sort(ot_df$globalScore, decreasing = TRUE)
     top_n_cutoffs <- tibble(

@@ -1,0 +1,228 @@
+<!--
+  ~ Copyright 2013-2026, Seqera Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<pre class="mermaid" style="text-align: center;">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#B6ECE2',
+      'primaryTextColor': '#160F26',
+      'primaryBorderColor': '#065647',
+      'lineColor': '#545555',
+      'clusterBkg': '#BABCBD22',
+      'clusterBorder': '#DDDEDE',
+      'fontFamily': 'arial'
+    }
+  }
+}%%
+flowchart TB
+    subgraph " "
+    v0["channel.empty"]
+    v2["channel.empty"]
+    v4["channel.empty"]
+    v6["channel.empty"]
+    v8["channel.empty"]
+    v10["channel.empty"]
+    v12["channel.fromList"]
+    v31["channel.empty"]
+    v32["channel.empty"]
+    v33["channel.empty"]
+    v34["channel.empty"]
+    v36["channel.empty"]
+    v37["channel.empty"]
+    v38["channel.empty"]
+    v39["format"]
+    v63[" "]
+    v66[" "]
+    v69["channel.empty"]
+    v70["channel.empty"]
+    v71["channel.empty"]
+    v72["channel.empty"]
+    v140["id_space"]
+    v152[" "]
+    v162["channel.of"]
+    v167[" "]
+    v170[" "]
+    end
+    subgraph " "
+    v1["versions"]
+    v3["ch_seeds"]
+    v5["ch_network"]
+    v7["ch_shortest_paths"]
+    v9["ch_perturbed_networks"]
+    v11["ch_blacklist"]
+    v27["ch_shortest_paths"]
+    v29["ch_perturbed_networks"]
+    v35["ch_seeds_empty_status"]
+    v53[" "]
+    v54[" "]
+    v65["rwr_scaling"]
+    v68["rwr_symmetrical"]
+    v115[" "]
+    v116[" "]
+    v118["ch_nodes_tsv_not_empty"]
+    v177[" "]
+    v178[" "]
+    v179[" "]
+    v183["versions"]
+    v185[" "]
+    v187[" "]
+    v189[" "]
+    v191[" "]
+    v193[" "]
+    end
+    subgraph "NFCORE_DISEASEMODULEDISCOVERY [NFCORE_DISEASEMODULEDISCOVERY]"
+    subgraph "NFCORE_DISEASEMODULEDISCOVERY:DISEASEMODULEDISCOVERY [DISEASEMODULEDISCOVERY]"
+    v40(["GRAPHTOOLPARSER"])
+    v52(["INPUTCHECK"])
+    subgraph "NFCORE_DISEASEMODULEDISCOVERY:DISEASEMODULEDISCOVERY:NETWORKEXPANSION [NETWORKEXPANSION]"
+    subgraph "NFCORE_DISEASEMODULEDISCOVERY:DISEASEMODULEDISCOVERY:NETWORKEXPANSION:GT_FIRSTNEIGHBOR [GT_FIRSTNEIGHBOR]"
+    v77(["FIRSTNEIGHBOR"])
+    v73(( ))
+    v78(( ))
+    end
+    v91(["MODULEPARSER"])
+    v64(( ))
+    v67(( ))
+    v80(( ))
+    v81(( ))
+    v94(( ))
+    end
+    v97(["TOPOLOGY"])
+    v112(["NETWORKANNOTATION"])
+    v114(["SAVEMODULES"])
+    v141(["DRUGSTONEEXPORT"])
+    v149(["MULTIQCFORMATTER"])
+    v176(["MULTIQC"])
+    v41(( ))
+    v45(( ))
+    v62(( ))
+    v117(( ))
+    v146(( ))
+    v180(( ))
+    end
+    v182(( ))
+    end
+    subgraph "PIPELINE_INITIALISATION [PIPELINE_INITIALISATION]"
+    v13(( ))
+    end
+    subgraph "PIPELINE_COMPLETION [PIPELINE_COMPLETION]"
+    v184(( ))
+    v186(( ))
+    v188(( ))
+    v190(( ))
+    v192(( ))
+    end
+    v0 --> v1
+    v2 --> v3
+    v4 --> v5
+    v6 --> v7
+    v8 --> v9
+    v10 --> v11
+    v12 --> v13
+    v13 --> v27
+    v13 --> v29
+    v31 --> v182
+    v32 --> v41
+    v33 --> v41
+    v34 --> v35
+    v36 --> v41
+    v37 --> v190
+    v38 --> v41
+    v39 --> v40
+    v13 --> v40
+    v40 --> v41
+    v40 --> v45
+    v40 --> v62
+    v40 --> v73
+    v40 --> v81
+    v40 --> v146
+    v45 --> v52
+    v52 --> v54
+    v52 --> v53
+    v52 --> v41
+    v52 --> v45
+    v52 --> v62
+    v52 --> v73
+    v52 --> v81
+    v63 --> v64
+    v64 --> v65
+    v66 --> v67
+    v67 --> v68
+    v69 --> v80
+    v70 --> v94
+    v71 --> v81
+    v72 --> v78
+    v73 --> v77
+    v77 --> v78
+    v77 --> v81
+    v81 --> v91
+    v91 --> v80
+    v91 --> v94
+    v62 --> v97
+    v97 --> v41
+    v97 --> v62
+    v62 --> v112
+    v112 --> v114
+    v112 --> v41
+    v114 --> v116
+    v114 --> v115
+    v114 --> v41
+    v114 --> v117
+    v117 --> v118
+    v140 --> v141
+    v41 --> v141
+    v141 --> v41
+    v146 --> v149
+    v149 --> v41
+    v152 --> v41
+    v162 --> v41
+    v167 --> v41
+    v170 --> v41
+    v41 --> v176
+    v176 --> v179
+    v176 --> v178
+    v176 --> v177
+    v176 --> v180
+    v182 --> v183
+    v184 --> v185
+    v186 --> v187
+    v188 --> v189
+    v190 --> v191
+    v192 --> v193
+    v13 --> v45
+    v13 --> v81
+    v80 --> v41
+    v41 --> v182
+    v41 --> v188
+    v41 --> v192
+    v45 --> v186
+    v94 --> v62
+    v78 --> v80
+    v180 --> v184
+
+</pre>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, maxTextSize: Number.MAX_SAFE_INTEGER, maxEdges: Number.MAX_SAFE_INTEGER });
+</script>
+</body>
+</html>

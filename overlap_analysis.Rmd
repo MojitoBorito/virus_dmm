@@ -1,0 +1,1191 @@
+---
+title: "overlap analysis"
+author: "Mohit"
+date: "2026-08-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(tidyverse)
+library(pheatmap)
+library(RColorBrewer)
+library(ggVennDiagram)
+rdylbu_cols <- colorRampPalette(
+  rev(brewer.pal(n = 7, name = "RdYlBu"))
+)(100)
+```
+
+```{r}
+simplify_data <- function(dataset){
+  methods <- c("diamond", "domino", "no_tool", "rwr", "robust",
+               "robust_bias_aware", "firstneighbor")
+  method_pattern <- paste0("(", paste(methods, collapse = "|"), ")$")
+  
+  dataset %>% 
+    rownames_to_column("ID") %>% 
+    mutate(seed_type = case_when(
+    str_detect(ID, "targets") ~ "Open targets",
+    str_detect(ID, "human") ~ "Human Seeds",
+    str_detect(ID, "virus") ~ "Virus Seeds"
+  )) %>% 
+    mutate(method = str_extract(ID, method_pattern))%>%
+    mutate(dataset = case_when(
+      str_detect(ID, "hvidb") ~ "HVIDB",
+      str_detect(ID, "intact") ~ "IntAct",
+      .default = "Open targets"
+    )) %>%
+    column_to_rownames("ID") %>%
+  mutate(group = if_else(seed_type == "Open targets",
+                         "Open targets",
+                         paste(seed_type, dataset, sep = " - ")))
+}
+
+simplify_data_categories <- function(dataset, seed){
+  methods <- c("diamond", "domino", "no_tool", "rwr", "robust",
+               "robust_bias_aware", "firstneighbor")
+  categories <- c("expansion", "interaction_type", "clinical", "interactive")
+  method_pattern <- paste0("(", paste(methods, collapse = "|"), ")$")
+  
+  dataset %>% 
+    rownames_to_column("ID") %>% 
+    mutate(categorised_by = str_extract(ID, paste(categories, collapse = "|"))) %>% 
+    mutate(method = str_extract(ID, method_pattern))%>%
+    mutate(dataset = case_when(
+      str_detect(ID, "expansion|interaction_type") ~ seed,
+      str_detect(ID, "clinical|interactive") ~ "Open targets",
+      .default = NA
+    )) %>%
+    drop_na(dataset) %>%
+    column_to_rownames("ID") %>%
+    mutate(group = paste(paste0(categorised_by, "_filter") , dataset, sep = " - "))
+}
+
+clean_labels <- function(m) {
+  simple <- sapply(strsplit(rownames(m), "\\."), function(p) paste(p[-c(1, 2)], collapse = "."))
+  rownames(m) <- colnames(m) <- simple
+  m
+}
+```
+
+```{r}
+process_simple <- function(dataset){
+  groups <- unique(dataset$group)
+  matrix_list <- setNames(
+    lapply(groups, function(g) {
+      ids <- rownames(dataset)[dataset$group == g]
+      methods <- dataset %>% filter(group == g) %>% pull(method)
+      sub <- dataset %>% filter(group == g) %>% select(all_of(ids))
+      rownames(sub) <- methods
+      colnames(sub) <- methods
+      sub %>% as.matrix()
+    }),
+    groups
+  )
+  return(matrix_list)
+}
+```
+
+
+```{r}
+generate_heatmaps <- function(matrix_list, disease){
+  for (g in names(matrix_list)) {
+    m <- matrix_list[[g]]
+    if (nrow(m) < 2) next 
+    clean_name <- gsub("[^A-Za-z0-9]", "_", g) %>%
+      gsub("_+", "_", .) %>%          
+      gsub("^_|_$", "", .) 
+    pheatmap(
+      m,
+      clustering_method  = "average",
+      breaks             = seq(0, 1, length.out = 101), 
+      display_numbers    = TRUE,
+      main               = paste(disease, "- Module overlap -", g),
+      filename           = paste0("plots/", disease,"_overlap_", clean_name, ".png"),
+      width = 7, height = 6
+    )
+  }
+}
+```
+
+```{r}
+corona_orignal <- read.delim("combi_out_ot/corona/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
+                             row.names = 1)
+corona_orignal <- simplify_data(corona_orignal)
+corona_orignal_list <- process_simple(corona_orignal)
+generate_heatmaps(corona_orignal_list, "SARS-CoV-2")
+
+hsv_orignal <- read.delim("combi_out_ot/hsv/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
+                          row.names = 1)
+hsv_orignal <- simplify_data(hsv_orignal)
+hsv_orignal_list <- process_simple(hsv_orignal)
+generate_heatmaps(hsv_orignal_list, "HSV-1")
+
+hiv_orignal <- read.delim("combi_out_ot/hiv/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
+                             row.names = 1)
+hiv_orignal <- simplify_data(hiv_orignal)
+hiv_orignal_list <- process_simple(hiv_orignal)
+generate_heatmaps(hiv_orignal_list, "HIV-1")
+
+```
+
+```{r}
+corona_categories_human <- read.delim("category_filter/corona/mqc_summaries/jaccard_similarity_matrix_mqc.tsv",
+                                      row.names = 1)
+corona_categories_virus <- read.delim("viral_categories/corona/mqc_summaries/jaccard_similarity_matrix_mqc.tsv",
+                                      row.names = 1)
+corona_categories_human <- simplify_data_categories(corona_categories_human, "Human Intact")
+corona_categories_virus <- simplify_data_categories(corona_categories_virus, "Virus Intact")
+corona_categories_list <- append(process_simple(corona_categories_human), process_simple(corona_categories_virus))
+generate_heatmaps(corona_categories_list, "SARS-CoV-2")
+```
+
+
+```{r}
+extract_method <- function(filename) {
+  base <- str_remove(filename, "\\.nodes\\.tsv$")
+  tok  <- str_split(base, "\\.")[[1]]
+  last <- tok[length(tok)]
+  if (last %in% methods) last else NA_character_
+}
+extract_filter <- function(filename) {
+  hits <- filter_keywords[sapply(filter_keywords, function(k) str_detect(filename, fixed(k)))]
+  if (length(hits) == 0) "unfiltered" else hits[1]
+}
+ 
+strip_method_suffix <- function(filename, method) {
+  base <- str_remove(filename, "\\.nodes\\.tsv$")
+  str_remove(base, paste0("\\.", method, "$"))
+}
+
+extract_seed_type <- function(filename) {
+  if (str_detect(filename, "virus_seeds_intact")) {
+    "Virus IntAct"
+  } else if (str_detect(filename, "virus_seeds_hvidb")) {
+    "Virus HVIDB"
+  } else if (str_detect(filename, "human_seeds_hvidb")) {
+    "Human HVIDB" 
+  } else if (str_detect(filename, "targets")) {
+    "Open targets"
+  } else {
+    "Human IntAct"
+  }
+}
+
+read_module_nodes <- function(file) {
+  df <- tryCatch(read.delim(file, header = TRUE), error = function(e) NULL)
+  if (is.null(df) || !"name" %in% colnames(df)) {
+    warning("Skipping '", file, "' -- no readable 'name' column.")
+    return(character(0))
+  }
+  unique(as.character(df$name))
+}
+
+jaccard_matrix <- function(module_list) {
+  ids <- names(module_list)
+  n   <- length(ids)
+  mat <- matrix(1, n, n, dimnames = list(ids, ids))
+  if (n < 2) return(mat)
+  for (i in 1:(n - 1)) {
+    for (j in (i + 1):n) {
+      a <- module_list[[i]]; b <- module_list[[j]]
+      val <- if (length(union(a, b)) == 0) NA_real_ else length(intersect(a, b)) / length(union(a, b))
+      mat[i, j] <- mat[j, i] <- val
+    }
+  }
+  mat
+}
+```
+
+
+```{r}
+methods <- c("diamond", "domino", "no_tool", "rwr", "robust",
+             "robust_bias_aware", "firstneighbor")
+ 
+filter_keywords <- c("top_100", "top_50", "same_n",
+                      "expansion", "interaction_type", "clinical", "interactive")
+
+split_by_disease <- FALSE
+ 
+top_dirs <- c("combi_out_ot", "new_filtered_outputs", "category_filter", "viral_categories")
+ 
+node_dir_map <- top_dirs %>%
+  map_dfr(function(td) {
+    dirs <- list.dirs(td, recursive = TRUE, full.names = TRUE)
+    dirs <- keep(dirs, ~ str_detect(.x, "(disease_)?modules/tsv_nodes$"))
+    tibble(node_dir = dirs, top_dir = td)
+  })
+ 
+node_dir_map
+ 
+
+```
+
+```{r}
+all_files <- node_dir_map %>%
+  pmap_dfr(function(node_dir, top_dir) {
+    files   <- list.files(node_dir, pattern = "\\.nodes\\.tsv$", full.names = TRUE)
+    disease <- basename(str_remove(node_dir, "/(disease_)?modules/tsv_nodes$"))
+    tibble(file = files, disease = disease, top_dir = top_dir)
+  }) %>%
+  mutate(
+    fname       = basename(file),
+    method      = map_chr(fname, extract_method),
+    filter_type = map_chr(fname, extract_filter),
+    seed_type   = map_chr(fname, extract_seed_type)
+  ) %>%
+  filter(!is.na(method)) %>%                          
+  mutate(prefix = map2_chr(fname, method, strip_method_suffix)) %>%
+  filter(top_dir != "viral_categories" | filter_type %in% c("expansion", "interaction_type"))
+ 
+same_n_files <- all_files %>% filter(top_dir == "new_filtered_outputs", filter_type == "same_n")
+top_100_files <- all_files %>% filter(top_dir == "new_filtered_outputs", filter_type == "top_100")
+top_50_files <- all_files %>% filter(top_dir == "new_filtered_outputs", filter_type == "top_50")
+unfiltered_files <- all_files %>% filter(top_dir == "combi_out_ot", filter_type == "unfiltered")
+```
+
+```{r}
+seed_types_standard <- c(
+  "Virus IntAct",
+  "Human IntAct",
+  "Open Targets"
+)
+
+calc_similarity <- function(nodes, metric = c("jaccard", "overlap"), seed_types = seed_types_standard) {
+
+  metric <- match.arg(metric)
+
+  mat <- matrix(
+    NA_real_,
+    nrow = length(seed_types),
+    ncol = length(seed_types),
+    dimnames = list(seed_types, seed_types)
+  )
+
+  for (i in seq_along(seed_types)) {
+    for (j in seq_along(seed_types)) {
+
+      a <- nodes[[seed_types[i]]]
+      b <- nodes[[seed_types[j]]]
+
+      intersection <- length(intersect(a, b))
+
+      if (metric == "jaccard") {
+        value <- intersection / length(union(a, b))
+      } else {
+        value <- intersection / min(length(a), length(b))
+      }
+
+      mat[i, j] <- value
+    }
+  }
+
+  mat
+}
+```
+
+# Same n
+
+```{r}
+similarity_results_same_n <- same_n_files %>%
+  filter(
+    disease %in% c("hsv", "corona", "hiv"),
+    method %in% methods
+  ) %>%
+  group_by(disease, method, seed_type) %>%
+  summarise(
+    nodes = list(unique(unlist(map(file, read_module_nodes)))),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = seed_type,
+    values_from = nodes
+  )
+
+jaccard_results_same_n <- similarity_results_same_n %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "jaccard"
+      )
+    )
+  )
+
+overlap_results_same_n <- similarity_results_same_n %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "overlap"
+      )
+    )
+  )
+```
+
+```{r}
+jaccard_plot_data_same_n <- jaccard_results_same_n %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    jaccard = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 == seed_2, 1, jaccard)) %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 != seed_2, 0, jaccard))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+disease_top_n <- list("corona" = "15", 
+                      "hiv" = "5", 
+                      "hsv" = "2")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- jaccard_plot_data_same_n %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = jaccard)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", jaccard)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Jaccard",
+        title = paste("Jaccard Similarity Index -", disease_names[d], "- Top", disease_top_n[d])
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/jaccard_same_n_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+```{r}
+overlap_plot_data_same_n <- overlap_results_same_n %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    overlap = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 == seed_2, 1, overlap)) %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 != seed_2, 0, overlap))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+disease_top_n <- list("corona" = "15", 
+                      "hiv" = "5", 
+                      "hsv" = "2")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- overlap_plot_data_same_n %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = overlap)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", overlap)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Overlap Coeff.",
+        title = paste("Overlap Coefficient -", disease_names[d], "- Top", disease_top_n[d])
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/overlap_same_n_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+
+# Top 100
+
+```{r}
+similarity_results_top_100 <- top_100_files %>%
+  filter(
+    disease %in% c("hsv", "corona", "hiv"),
+    method %in% methods
+  ) %>%
+  group_by(disease, method, seed_type) %>%
+  summarise(
+    nodes = list(unique(unlist(map(file, read_module_nodes)))),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = seed_type,
+    values_from = nodes
+  )
+
+jaccard_results_top_100 <- similarity_results_top_100 %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "jaccard"
+      )
+    )
+  )
+
+overlap_results_top_100 <- similarity_results_top_100 %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "overlap"
+      )
+    )
+  )
+```
+
+```{r}
+jaccard_plot_data_top_100 <- jaccard_results_top_100 %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    jaccard = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 == seed_2, 1, jaccard)) %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 != seed_2, 0, jaccard))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- jaccard_plot_data_top_100 %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = jaccard)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", jaccard)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Jaccard",
+        title = paste("Jaccard Similarity Index -", disease_names[d], "- Top 100")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/jaccard_top_100_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+```{r}
+overlap_plot_data_top_100 <- overlap_results_top_100 %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    overlap = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 == seed_2, 1, overlap)) %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 != seed_2, 0, overlap))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+disease_top_n <- list("corona" = "15", 
+                      "hiv" = "5", 
+                      "hsv" = "2")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- overlap_plot_data_top_100 %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = overlap)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", overlap)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Overlap Coeff.",
+        title = paste("Overlap Coefficient -", disease_names[d], "- Top 100")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/overlap_top_100_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+
+# Top 50
+
+```{r}
+similarity_results_top_50 <- top_50_files %>%
+  filter(
+    disease %in% c("hsv", "corona", "hiv"),
+    method %in% methods
+  ) %>%
+  group_by(disease, method, seed_type) %>%
+  summarise(
+    nodes = list(unique(unlist(map(file, read_module_nodes)))),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = seed_type,
+    values_from = nodes
+  )
+
+jaccard_results_top_50 <- similarity_results_top_50 %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "jaccard"
+      )
+    )
+  )
+
+overlap_results_top_50 <- similarity_results_top_50 %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3
+        ),
+        metric = "overlap"
+      )
+    )
+  )
+```
+
+```{r}
+jaccard_plot_data_top_50 <- jaccard_results_top_50 %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    jaccard = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 == seed_2, 1, jaccard)) %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 != seed_2, 0, jaccard))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- jaccard_plot_data_top_50 %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = jaccard)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", jaccard)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Jaccard",
+        title = paste("Jaccard Similarity Index -", disease_names[d], "- Top 50")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/jaccard_top_50_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+```{r}
+overlap_plot_data_top_50 <- overlap_results_top_50 %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    overlap = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 == seed_2, 1, overlap)) %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 != seed_2, 0, overlap))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+disease_top_n <- list("corona" = "15", 
+                      "hiv" = "5", 
+                      "hsv" = "2")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- overlap_plot_data_top_50 %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = overlap)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", overlap)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(c(
+          "Virus IntAct",
+          "Human IntAct",
+          "Open Targets"
+        ))
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Overlap Coeff.",
+        title = paste("Overlap Coefficient -", disease_names[d], "- Top 50")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/overlap_top_50_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+# Unfiltered
+
+```{r}
+seed_types_unfiltered <- c(
+  "Virus IntAct",
+  "Human IntAct",
+  "Open Targets",
+  "Human HVIDB",
+  "Virus HVIDB"
+)
+
+
+similarity_results_unfiltered <- unfiltered_files %>%
+  filter(
+    disease %in% c("hsv", "corona", "hiv"),
+    method %in% methods
+  ) %>%
+  group_by(disease, method, seed_type) %>%
+  summarise(
+    nodes = list(unique(unlist(map(file, read_module_nodes)))),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    names_from = seed_type,
+    values_from = nodes
+  )
+
+jaccard_results_unfiltered <- similarity_results_unfiltered %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`,
+        `Virus HVIDB`,
+        `Human HVIDB`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3,
+          `Virus HVIDB` = ..4, 
+          `Human HVIDB` = ..5
+        ),
+        metric = "jaccard",
+        seed_types = seed_types_unfiltered
+      )
+    )
+  )
+
+overlap_results_unfiltered <- similarity_results_unfiltered %>%
+  mutate(
+    matrix = pmap(
+      list(
+        `Virus IntAct`,
+        `Human IntAct`,
+        `Open targets`,
+        `Virus HVIDB`,
+        `Human HVIDB`
+      ),
+      ~ calc_similarity(
+        list(
+          `Virus IntAct` = ..1,
+          `Human IntAct` = ..2,
+          `Open Targets` = ..3,
+          `Virus HVIDB` = ..4, 
+          `Human HVIDB` = ..5
+        ),
+        metric = "overlap",
+        seed_types = seed_types_unfiltered
+      )
+    )
+  )
+```
+
+```{r}
+jaccard_plot_data_unfiltered <- jaccard_results_unfiltered %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    jaccard = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 == seed_2, 1, jaccard)) %>%
+  mutate(jaccard = ifelse(is.na(jaccard) & seed_1 != seed_2, 0, jaccard))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- jaccard_plot_data_unfiltered %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = jaccard)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", jaccard)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(seed_types_unfiltered)
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Jaccard",
+        title = paste("Jaccard Similarity Index -", disease_names[d], "- Unfiltered")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/jaccard_unfiltered_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+
+```
+
+```{r}
+overlap_plot_data_unfiltered <- overlap_results_unfiltered %>%
+  select(disease, method, matrix) %>%
+  mutate(
+    matrix = map(matrix, ~ as.data.frame(as.table(.x)))
+  ) %>%
+  unnest(matrix) %>%
+  rename(
+    seed_1 = Var1,
+    seed_2 = Var2,
+    overlap = Freq
+  ) %>%
+  filter(method != "no_tool") %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 == seed_2, 1, overlap)) %>%
+  mutate(overlap = ifelse(is.na(overlap) & seed_1 != seed_2, 0, overlap))
+
+disease_names <- list("corona" = "SARS-CoV-2", 
+                      "hiv" = "HIV-1", 
+                      "hsv" = "HSV-1")
+disease_top_n <- list("corona" = "15", 
+                      "hiv" = "5", 
+                      "hsv" = "2")
+
+for(d in c("corona", "hiv", "hsv")){
+  p <- overlap_plot_data_unfiltered %>% filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = overlap)) +
+      geom_tile(color = "white") +
+      geom_text( aes(label = sprintf("%.2f", overlap)), size = 4) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn( colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90")+
+      scale_y_discrete(
+        limits = rev(seed_types_unfiltered)
+      ) +
+      labs(
+        x = NULL,
+        y = NULL,
+        fill = "Overlap Coeff.",
+        title = paste("Overlap Coefficient -", disease_names[d], "- Unfiltered")
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 45, hjust = 1)
+      )
+  ggsave(paste0("plots/overlap_unfiltered_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+
+```
+
+```{r}
+combine_triangle_data <- function(jaccard_data, overlap_data, seed_types) {
+  # position of each seed type in the desired display order
+  pos <- setNames(seq_along(seed_types), seed_types)
+
+  jaccard_data %>%
+    rename(value_jaccard = jaccard) %>%
+    left_join(
+      overlap_data %>% rename(value_overlap = overlap),
+      by = c("disease", "method", "seed_1", "seed_2")
+    ) %>%
+    mutate(
+      pos_1 = pos[as.character(seed_1)],
+      pos_2 = pos[as.character(seed_2)],
+      value = case_when(
+        pos_1 == pos_2 ~ 1,        # diagonal: leave blank (or set to 1 if you'd rather show it)
+        pos_1 <  pos_2 ~ value_overlap,   # above diagonal -> overlap
+        pos_1 >  pos_2 ~ value_jaccard    # below diagonal -> jaccard
+      ),
+      metric = case_when(
+        pos_1 == pos_2 ~ "diag",
+        pos_1 <  pos_2 ~ "overlap",
+        pos_1 >  pos_2 ~ "jaccard"
+      )
+    )
+}
+
+make_diagonal_steps <- function(seed_types) {
+  n <- length(seed_types)
+  pts <- data.frame(x = 0.5, y = n + 0.5)  # start: top-left corner of the grid
+
+  for (k in 1:n) {
+    y_top <- n - k + 1.5  # top edge of diagonal cell k
+    y_bot <- n - k + 0.5  # bottom edge of diagonal cell k
+    pts <- rbind(
+      pts,
+      data.frame(x = k + 0.5, y = y_top),  # across the top of cell k
+      data.frame(x = k + 0.5, y = y_bot)   # down the right side of cell k
+    )
+  }
+  pts
+}
+```
+
+
+```{r}
+combined_plot_data_unfiltered <- combine_triangle_data(
+  jaccard_plot_data_unfiltered,
+  overlap_plot_data_unfiltered,
+  seed_types_unfiltered
+)
+
+for (d in c("corona", "hiv", "hsv")) {
+  diag_cells <- data.frame(
+    seed_1 = seed_types_unfiltered,
+    seed_2 = seed_types_unfiltered
+  )
+
+  p <- combined_plot_data_unfiltered %>%
+    filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = value)) +
+      geom_tile(color = "white") +
+      geom_text(aes(label = ifelse(is.na(value), "", sprintf("%.2f", value))), size = 4) +
+      geom_tile(
+        data = diag_cells,
+        aes(x = seed_2, y = seed_1),
+        inherit.aes = FALSE,
+        fill = NA,
+        color = "black",
+        linewidth = 0.8
+      ) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn(colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90") +
+      scale_x_discrete(limits = seed_types_unfiltered) +
+      scale_y_discrete(limits = rev(seed_types_unfiltered)) +
+      labs(
+        x = NULL, y = NULL, fill = "Similarity",
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(panel.grid = element_blank(), 
+            axis.text.x = element_text(angle = 45, hjust = 1),
+            strip.text = element_text(size = 13),
+            axis.text = element_text(size = 12))
+
+  ggsave(paste0("plots/module_overlap/combined_unfiltered_", d, ".jpeg"), width = 9, height = 6)
+  print(p)
+}
+```
+
+
+```{r}
+combined_plot_data_top_100 <- combine_triangle_data(
+  jaccard_plot_data_top_100,
+  overlap_plot_data_top_100,
+  seed_types_standard
+)
+
+for (d in c("corona", "hiv", "hsv")) {
+  diag_cells <- data.frame(
+    seed_1 = seed_types_standard,
+    seed_2 = seed_types_standard
+  )
+
+  p <- combined_plot_data_top_100 %>%
+    filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = value)) +
+      geom_tile(color = "white") +
+      geom_text(aes(label = ifelse(is.na(value), "", sprintf("%.2f", value))), size = 4) +
+      geom_tile(
+        data = diag_cells,
+        aes(x = seed_2, y = seed_1),
+        inherit.aes = FALSE,
+        fill = NA,
+        color = "black",
+        linewidth = 0.8
+      ) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn(colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90") +
+      scale_x_discrete(limits = seed_types_standard) +
+      scale_y_discrete(limits = rev(seed_types_standard)) +
+      labs(
+        x = NULL, y = NULL, fill = "Similarity",
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(panel.grid = element_blank(), 
+            axis.text.x = element_text(angle = 45, hjust = 1),
+            strip.text = element_text(size = 9))
+
+  ggsave(paste0("plots/module_overlap/combined_top_100_", d, ".jpeg"), width = 6, height = 4)
+  print(p)
+}
+```
+
+```{r}
+combined_plot_data_top_50 <- combine_triangle_data(
+  jaccard_plot_data_top_50,
+  overlap_plot_data_top_50,
+  seed_types_standard
+)
+
+for (d in c("corona", "hiv", "hsv")) {
+  diag_cells <- data.frame(
+    seed_1 = seed_types_standard,
+    seed_2 = seed_types_standard
+  )
+
+  p <- combined_plot_data_top_50 %>%
+    filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = value)) +
+      geom_tile(color = "white") +
+      geom_text(aes(label = ifelse(is.na(value), "", sprintf("%.2f", value))), size = 4) +
+      geom_tile(
+        data = diag_cells,
+        aes(x = seed_2, y = seed_1),
+        inherit.aes = FALSE,
+        fill = NA,
+        color = "black",
+        linewidth = 0.8
+      ) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn(colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90") +
+      scale_x_discrete(limits = seed_types_standard) +
+      scale_y_discrete(limits = rev(seed_types_standard)) +
+      labs(
+        x = NULL, y = NULL, fill = "Similarity",
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(panel.grid = element_blank(), 
+            axis.text.x = element_text(angle = 45, hjust = 1),
+            strip.text = element_text(size = 9))
+
+  ggsave(paste0("plots/module_overlap/combined_top_50_", d, ".jpeg"), width = 6, height = 4)
+  print(p)
+}
+```
+
+
+```{r}
+combined_plot_data_same_n <- combine_triangle_data(
+  jaccard_plot_data_same_n,
+  overlap_plot_data_same_n,
+  seed_types_standard
+)
+
+for (d in c("corona", "hiv", "hsv")) {
+  diag_cells <- data.frame(
+    seed_1 = seed_types_standard,
+    seed_2 = seed_types_standard
+  )
+
+  p <- combined_plot_data_same_n %>%
+    filter(disease == d) %>%
+    ggplot(aes(x = seed_2, y = seed_1, fill = value)) +
+      geom_tile(color = "white") +
+      geom_text(aes(label = ifelse(is.na(value), "", sprintf("%.2f", value))), size = 4) +
+      geom_tile(
+        data = diag_cells,
+        aes(x = seed_2, y = seed_1),
+        inherit.aes = FALSE,
+        fill = NA,
+        color = "black",
+        linewidth = 0.8
+      ) +
+      facet_wrap(~ method, ncol = 3, nrow = 2) +
+      scale_fill_gradientn(colours = rdylbu_cols, limits = c(0, 1), na.value = "grey90") +
+      scale_x_discrete(limits = seed_types_standard) +
+      scale_y_discrete(limits = rev(seed_types_standard)) +
+      labs(
+        x = NULL, y = NULL, fill = "Similarity",
+      ) +
+      coord_fixed() +
+      theme_bw() +
+      theme(panel.grid = element_blank(), 
+            axis.text.x = element_text(angle = 45, hjust = 1),
+            strip.text = element_text(size = 9))
+
+  ggsave(paste0("plots/module_overlap/combined_same_n_", d, ".jpeg"), width = 6, height = 4)
+  print(p)
+}
+```
+
+

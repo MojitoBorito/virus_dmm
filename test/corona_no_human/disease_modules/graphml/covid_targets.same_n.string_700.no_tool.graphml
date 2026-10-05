@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+
+  <!-- property keys -->
+  <key id="key0" for="node" attr.name="component_id" attr.type="int" />
+  <key id="key1" for="node" attr.name="degree_in_full_network" attr.type="int" />
+  <key id="key2" for="node" attr.name="degree_in_module" attr.type="int" />
+  <key id="key3" for="node" attr.name="is_seed" attr.type="boolean" />
+  <key id="key4" for="node" attr.name="name" attr.type="string" />
+  <key id="key5" for="node" attr.name="spd" attr.type="float" />
+
+  <graph id="G" edgedefault="undirected" parse.nodeids="canonical" parse.edgeids="canonical" parse.order="nodesfirst">
+
+   <!-- graph properties -->
+
+   <!-- vertices -->
+    <node id="n0">
+      <data key="key0">0</data>
+      <data key="key1">26</data>
+      <data key="key2">1</data>
+      <data key="key3">1</data>
+      <data key="key4">Q9BYF1</data>
+      <data key="key5">0.038461538461538464</data>
+    </node>
+    <node id="n1">
+      <data key="key0">1</data>
+      <data key="key1">64</data>
+      <data key="key2">3</data>
+      <data key="key3">1</data>
+      <data key="key4">P23458</data>
+      <data key="key5">0.046875</data>
+    </node>
+    <node id="n2">
+      <data key="key0">1</data>
+      <data key="key1">44</data>
+      <data key="key2">3</data>
+      <data key="key3">1</data>
+      <data key="key4">P29597</data>
+      <data key="key5">0.068181818181818177</data>
+    </node>
+    <node id="n3">
+      <data key="key0">2</data>
+      <data key="key1">31</data>
+      <data key="key2">0</data>
+      <data key="key3">1</data>
+      <data key="key4">P18827</data>
+      <data key="key5">0</data>
+    </node>
+    <node id="n4">
+      <data key="key0">1</data>
+      <data key="key1">17</data>
+      <data key="key2">2</data>
+      <data key="key3">1</data>
+      <data key="key4">P48551</data>
+      <data key="key5">0.11764705882352941</data>
+    </node>
+    <node id="n5">
+      <data key="key0">1</data>
+      <data key="key1">13</data>
+      <data key="key2">2</data>
+      <data key="key3">1</data>
+      <data key="key4">Q08334</data>
+      <data key="key5">0.15384615384615385</data>
+    </node>
+    <node id="n6">
+      <data key="key0">3</data>
+      <data key="key1">9</data>
+      <data key="key2">0</data>
+      <data key="key3">1</data>
+      <data key="key4">O00468</data>
+      <data key="key5">0</data>
+    </node>
+    <node id="n7">
+      <data key="key0">4</data>
+      <data key="key1">3</data>
+      <data key="key2">0</data>
+      <data key="key3">1</data>
+      <data key="key4">P35247</data>
+      <data key="key5">0</data>
+    </node>
+    <node id="n8">
+      <data key="key0">0</data>
+      <data key="key1">4</data>
+      <data key="key2">1</data>
+      <data key="key3">1</data>
+      <data key="key4">O15393</data>
+      <data key="key5">0.25</data>
+    </node>
+    <node id="n9">
+      <data key="key0">5</data>
+      <data key="key1">1</data>
+      <data key="key2">0</data>
+      <data key="key3">1</data>
+      <data key="key4">P15907</data>
+      <data key="key5">0</data>
+    </node>
+    <node id="n10">
+      <data key="key0">6</data>
+      <data key="key1">2</data>
+      <data key="key2">1</data>
+      <data key="key3">1</data>
+      <data key="key4">Q9Y6K5</data>
+      <data key="key5">0.5</data>
+    </node>
+    <node id="n11">
+      <data key="key0">6</data>
+      <data key="key1">2</data>
+      <data key="key2">1</data>
+      <data key="key3">1</data>
+      <data key="key4">P00973</data>
+      <data key="key5">0.5</data>
+    </node>
+    <node id="n12">
+      <data key="key0">7</data>
+      <data key="key1">6</data>
+      <data key="key2">0</data>
+      <data key="key3">1</data>
+      <data key="key4">Q9NQ48</data>
+      <data key="key5">0</data>
+    </node>
+
+   <!-- edges -->
+    <edge id="e0" source="n1" target="n4">
+    </edge>
+    <edge id="e1" source="n1" target="n2">
+    </edge>
+    <edge id="e2" source="n1" target="n5">
+    </edge>
+    <edge id="e3" source="n2" target="n4">
+    </edge>
+    <edge id="e4" source="n2" target="n5">
+    </edge>
+    <edge id="e5" source="n8" target="n0">
+    </edge>
+    <edge id="e6" source="n11" target="n10">
+    </edge>
+
+  </graph>
+</graphml>

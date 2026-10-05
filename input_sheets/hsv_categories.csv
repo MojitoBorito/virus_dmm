@@ -1,0 +1,5 @@
+seeds,network
+./data/categories/hsv/hsv_expansion_filter.txt,./data/string_700.tsv
+./data/categories/hsv/hsv_interaction_type_filter.txt,./data/string_700.tsv
+./data/categories/hsv/hsv_targets_clinical_filter.txt,./data/string_700.tsv
+./data/categories/hsv/hsv_targets_interactive_filter.txt,./data/string_700.tsv

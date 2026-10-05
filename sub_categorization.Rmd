@@ -1,0 +1,489 @@
+---
+title: "Categorization"
+author: "Mohit"
+date: "2026-08-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(GO.db)
+library(org.Hs.eg.db)
+library(AnnotationDbi)
+library(dplyr)
+library(tidyverse)
+library(readr)
+library(httr2)
+
+library(ggh4x)
+library(ggplot2)
+library(fs)
+```
+
+```{r}
+viral_process_root <- "GO:0016032"
+
+descendants <- GOBPOFFSPRING[[viral_process_root]]
+viral_terms <- tibble(go_id = c(viral_process_root, descendants)) %>%
+  mutate(go_term = Term(go_id))
+
+entry_uncoating <- c(
+  "GO:0019061","GO:0019062","GO:0019064","GO:0019065",
+  "GO:0039638","GO:0039654","GO:0039663","GO:0039664","GO:0039665","GO:0039666",
+  "GO:0039678","GO:0039680","GO:0044694",
+  "GO:0046596","GO:0046598","GO:0046718","GO:0046813","GO:0046814",
+  "GO:0075502","GO:0075503","GO:0075504","GO:0075505","GO:0075506","GO:0075507","GO:0075508",
+  "GO:0075509","GO:0075510","GO:0075511","GO:0075512","GO:0075513","GO:0075514",
+  "GO:0075519","GO:0075520","GO:0075521","GO:0075606","GO:0075732","GO:0075733",
+  "GO:0085017","GO:0098001","GO:0098002","GO:0098670","GO:0098671",
+  "GO:0098931","GO:0098932","GO:0098994","GO:0098995","GO:0098996","GO:0098997",
+  "GO:0099000","GO:0099001","GO:0099002","GO:0099006","GO:0099008","GO:0140267",
+  "GO:1901252","GO:1901253","GO:1901254","GO:1902734","GO:1902735","GO:1902736",
+  "GO:1903913","GO:1903914","GO:1903915","GO:0019060"
+)
+
+replication_transcription <- c(
+  "GO:0019042","GO:0019043","GO:0019044","GO:0019045","GO:0019046",
+  "GO:0019079","GO:0019080","GO:0019081","GO:0019082","GO:0019083","GO:0019084","GO:0019085","GO:0019086",
+  "GO:0032359","GO:0032897",
+  "GO:0039682","GO:0039683","GO:0039684","GO:0039685","GO:0039686","GO:0039687","GO:0039688",
+  "GO:0039689","GO:0039690","GO:0039691","GO:0039692","GO:0039693","GO:0039694",
+  "GO:0039695","GO:0039696","GO:0039697","GO:0039698","GO:0039704","GO:0039705",
+  "GO:0044826","GO:0045069","GO:0045070","GO:0045071","GO:0045091","GO:0045869","GO:0045870",
+  "GO:0046719","GO:0046725","GO:0046726","GO:0046782","GO:0046784","GO:0046786","GO:0046787",
+  "GO:0050434","GO:0075522","GO:0075523","GO:0075524","GO:0075525","GO:0075526","GO:0075527",
+  "GO:0075529","GO:0075530","GO:0075713","GO:0075720",
+  "GO:0098689","GO:0099009","GO:0140755",
+  "GO:1904971","GO:1904972","GO:1904973"
+)
+
+assembly_packaging <- c(
+  "GO:0019068","GO:0019069","GO:0019070","GO:0019072","GO:0019073","GO:0019074","GO:0019075",
+  "GO:0039708","GO:0039709","GO:0039710","GO:0039711",
+  "GO:0046797","GO:0046807",
+  "GO:0098003","GO:0098004","GO:0098005","GO:0098006","GO:0098035","GO:0098036","GO:0098037","GO:0098045",
+  "GO:0098677","GO:1905137","GO:1905138"
+)
+
+egress_envelopment <- c(
+  "GO:0019076",
+  "GO:0039640","GO:0039674","GO:0039675","GO:0039677","GO:0039700","GO:0039701","GO:0039702",
+  "GO:0044659","GO:0044660",
+  "GO:0046739","GO:0046740","GO:0046741","GO:0046745","GO:0046753","GO:0046754","GO:0046755",
+  "GO:0046760","GO:0046761","GO:0046762","GO:0046765","GO:0046771","GO:0046772",
+  "GO:0046794","GO:0046802","GO:0090680","GO:0099045","GO:0140913",
+  "GO:1903772","GO:1903773","GO:1903774"
+)
+
+immune_evasion <- c(
+  "GO:0039639",  
+  "GO:0044828",  
+  "GO:0044830",  
+  "GO:0044871",  
+  "GO:0098669",  
+  "GO:0099015"   
+)
+```
+
+```{r}
+categorised_viral_terms <- viral_terms %>% mutate(category = case_when(
+  go_id %in% entry_uncoating ~ "entry_uncoating",
+  go_id %in% replication_transcription ~ "replication_transcription",
+  go_id %in% assembly_packaging ~ "assembly_packaging",
+  go_id %in% egress_envelopment ~ "egress_envelopment",
+  go_id %in% immune_evasion ~ "immune_evasion",
+  .default = NA
+  )
+) %>% drop_na(category)
+
+category_seeds <- list(
+  entry_uncoating = entry_uncoating,
+  replication_transcription = replication_transcription,
+  assembly_packaging = assembly_packaging,
+  egress_envelopment = egress_envelopment,
+  immune_evasion = immune_evasion
+)
+
+get_descendants <- function(go_ids) {
+  unique(c(
+    go_ids,
+    unlist(
+      lapply(go_ids, function(go_id) {
+        GOBPOFFSPRING[[go_id]]
+      })
+    )
+  ))
+}
+
+#alternative
+
+categorised_viral_terms <- purrr::imap_dfr(
+  category_seeds,
+  ~ tibble(
+    category = .y,
+    go_id = get_descendants(.x)
+  )
+) %>% drop_na(go_id)
+
+
+```
+
+
+```{r, include = FALSE}
+intact_corona <- read_tsv("data/same_n/corona/virus_seeds_intact.same_n.txt", col_names = FALSE) %>% pull(X1)
+intact_hsv <- read_tsv("data/same_n/hsv/virus_seeds_intact.same_n.txt", col_names = FALSE) %>% pull(X1)
+intact_hiv <- read_tsv("data/same_n/hiv/virus_seeds_intact.same_n.txt", col_names = FALSE) %>% pull(X1)
+
+hvidb_corona <- read_tsv("data/out_corona_hvidb/virus_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+hvidb_hsv <- read_tsv("data/out_hsv_hvidb/virus_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+hvidb_hiv <- read_tsv("data/out_hiv_hvidb/virus_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+```
+
+```{r, include = FALSE}
+intact_corona_human <- read_tsv("data/out_corona_intact/human_seeds_intact.txt", col_names = FALSE) %>% pull(X1)
+intact_hsv_human <- read_tsv("data/out_hsv_intact/human_seeds_intact.txt", col_names = FALSE) %>% pull(X1)
+intact_hiv_human <- read_tsv("data/out_hiv_intact/human_seeds_intact.txt", col_names = FALSE) %>% pull(X1)
+
+hvidb_corona_human <- read_tsv("data/out_corona_hvidb/human_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+hvidb_hsv_human <- read_tsv("data/out_hsv_hvidb/human_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+hvidb_hiv_human <- read_tsv("data/out_hiv_hvidb/human_seeds_hvidb.txt", col_names = FALSE) %>% pull(X1)
+```
+
+```{r}
+
+get_uniprot_go <- function(uniprot_ids) {
+
+  query <- paste0(
+    "(", 
+    paste0("accession:", uniprot_ids, collapse = " OR "),
+    ")"
+  )
+
+  url <- "https://rest.uniprot.org/uniprotkb/search"
+
+  res <- request(url) %>%
+    req_url_query(
+      query = query,
+      format = "tsv",
+      fields = "accession,go_id,go_p,go_f"
+    ) %>%
+    req_perform()
+
+  uniprot_go <- read_tsv(
+    resp_body_string(res),
+    show_col_types = FALSE
+  )
+  uniprot_go %>%
+    dplyr::select(Entry, `Gene Ontology IDs`) %>%
+    dplyr::rename(uniprot_id = Entry) %>%
+    separate_rows(`Gene Ontology IDs`, sep = ";") %>%
+    dplyr::rename(go_id = `Gene Ontology IDs`) %>%
+    mutate(go_id = trimws(go_id))
+  }
+
+get_human_go <- function(uniprot_ids) {
+
+  AnnotationDbi::select(
+    org.Hs.eg.db,
+    keys = unique(uniprot_ids),
+    keytype = "UNIPROT",
+    columns = c("UNIPROT", "GO", "ONTOLOGY")
+  ) %>%
+    filter(
+      ONTOLOGY == "BP",
+      !is.na(GO)
+    ) %>%
+    distinct(UNIPROT, GO) %>%
+    dplyr::rename(
+      uniprot_id = UNIPROT,
+      go_id = GO
+    )
+}
+
+
+  protein_ids<-intact_corona
+  go_annotations<-intact_corona_go
+  category_terms<-categorised_viral_terms
+
+categorize_go <- function(protein_ids, go_annotations, category_terms) {
+
+  categories <- go_annotations %>%
+    inner_join(
+      category_terms %>% dplyr::select(go_id, category),
+      by = "go_id"
+    ) %>%
+    distinct(uniprot_id, category)
+
+  all_ids <- unique(protein_ids)
+
+  ids_with_category   <- unique(categories$uniprot_id)
+  ids_with_go_terms   <- unique(go_annotations$uniprot_id)
+
+  ids_uncategorised <- setdiff(intersect(all_ids, ids_with_go_terms), ids_with_category)
+
+  ids_unannotated <- setdiff(all_ids, ids_with_go_terms)
+
+  bind_rows(
+    categories %>% filter(uniprot_id %in% all_ids),
+    tibble(uniprot_id = ids_uncategorised, category = "uncategorised"),
+    tibble(uniprot_id = ids_unannotated,   category = "unannotated")
+  ) %>%
+    distinct(uniprot_id, category)
+}
+```
+
+```{r}
+intact_corona_go <- get_uniprot_go(intact_corona)
+intact_hsv_go <- get_uniprot_go(intact_hsv)
+intact_hiv_go <- get_uniprot_go(intact_hiv)
+
+hvidb_corona_go <- get_uniprot_go(hvidb_corona)
+hvidb_hsv_go <- get_uniprot_go(hvidb_hsv)
+hvidb_hiv_go <- get_uniprot_go(hvidb_hiv)
+
+
+intact_corona_categories <- categorize_go(
+  intact_corona,
+  intact_corona_go,
+  categorised_viral_terms
+)
+
+intact_hsv_categories <- categorize_go(
+  intact_hsv,
+  intact_hsv_go,
+  categorised_viral_terms
+)
+
+intact_hiv_categories <- categorize_go(
+  intact_hiv,
+  intact_hiv_go,
+  categorised_viral_terms
+)
+
+hvidb_corona_categories <- categorize_go(
+  hvidb_corona,
+  hvidb_corona_go,
+  categorised_viral_terms
+)
+
+hvidb_hsv_categories <- categorize_go(
+  hvidb_hsv,
+  hvidb_hsv_go,
+  categorised_viral_terms
+)
+
+hvidb_hiv_categories <- categorize_go(
+  hvidb_hiv,
+  hvidb_hiv_go,
+  categorised_viral_terms
+)
+```
+
+```{r}
+intact_corona_categories
+intact_hsv_categories
+intact_hiv_categories
+
+hvidb_corona_categories
+hvidb_hsv_categories
+hvidb_hiv_categories
+```
+
+
+
+```{r}
+intact_corona_human_go <- get_human_go(intact_corona_human)
+intact_hsv_human_go <- get_human_go(intact_hsv_human)
+intact_hiv_human_go <- get_human_go(intact_hiv_human)
+
+hvidb_corona_human_go <- get_human_go(hvidb_corona_human)
+hvidb_hsv_human_go <- get_human_go(hvidb_hsv_human)
+hvidb_hiv_human_go <- get_human_go(hvidb_hiv_human)
+
+intact_corona_human_categories <- categorize_go(
+  intact_corona_human,
+  intact_corona_human_go,
+  categorised_viral_terms
+)
+
+intact_hsv_human_categories <- categorize_go(
+  intact_hsv_human,
+  intact_hsv_human_go,
+  categorised_viral_terms
+)
+
+intact_hiv_human_categories <- categorize_go(
+  intact_hiv_human,
+  intact_hiv_human_go,
+  categorised_viral_terms
+)
+
+hvidb_corona_human_categories <- categorize_go(
+  hvidb_corona_human,
+  hvidb_corona_human_go,
+  categorised_viral_terms
+)
+
+hvidb_hsv_human_categories <- categorize_go(
+  hvidb_hsv_human,
+  hvidb_hsv_human_go,
+  categorised_viral_terms
+)
+
+hvidb_hiv_human_categories <- categorize_go(
+  hvidb_hiv_human,
+  hvidb_hiv_human_go,
+  categorised_viral_terms
+)
+```
+
+```{r}
+intact_corona_human_categories
+intact_hsv_human_categories
+intact_hiv_human_categories
+
+hvidb_corona_human_categories
+hvidb_hsv_human_categories
+hvidb_hiv_human_categories
+```
+
+```{r}
+all_categories <- bind_rows(
+  intact_corona_categories = intact_corona_categories,
+  intact_hsv_categories = intact_hsv_categories,
+  intact_hiv_categories = intact_hiv_categories,
+  hvidb_corona_categories = hvidb_corona_categories,
+  hvidb_hsv_categories = hvidb_hsv_categories,
+  hvidb_hiv_categories = hvidb_hiv_categories,
+  intact_corona_human_categories = intact_corona_human_categories,
+  intact_hsv_human_categories = intact_hsv_human_categories,
+  intact_hiv_human_categories = intact_hiv_human_categories,
+  hvidb_corona_human_categories = hvidb_corona_human_categories,
+  hvidb_hsv_human_categories = hvidb_hsv_human_categories,
+  hvidb_hiv_human_categories = hvidb_hiv_human_categories,
+  .id = "id"
+)
+
+all_categories <- all_categories %>%
+  tidyr::extract(
+    id,
+    into = c("dataset", "disease", "organism"),
+    regex = "^(intact|hvidb)_(corona|hsv|hiv)(?:_(human))?",
+    remove = FALSE
+  ) %>%
+  mutate(
+    organism = if_else(str_detect(id, "human"), "Human Seeds", "Viral Seeds")
+  )
+
+category_counts <- all_categories %>%
+  group_by(
+    organism,
+    disease,
+    dataset,
+    category
+  ) %>%
+  summarise(
+    n_proteins = n_distinct(uniprot_id),
+    .groups = "drop"
+  )
+
+category_counts <- category_counts %>%
+  mutate(
+    dataset = recode(
+      dataset,
+      hvidb = "HVIDB",
+      intact = "IntAct"
+    ),
+    disease = recode(
+      disease,
+      corona = "SARS-CoV-2",
+      hiv = "HIV-1",
+      hsv = "HSV-1"
+    )
+  )
+```
+
+```{r}
+category_counts %>%
+  ggplot(aes(x = category, y = n_proteins, fill = disease)) +
+  geom_col(color = "black") +
+  geom_text(aes(label = n_proteins), vjust = -0.4, size = 3.2) +
+  facet_nested(disease ~ dataset + organism, scales = "free_y") + 
+  theme_bw() + 
+  scale_fill_manual(values = c("SARS-CoV-2" = "#F6656A", "HSV-1" = "#31ABE8", "HIV-1" = "#00D100")) + 
+  scale_y_continuous(expand = expansion(mult = c(0, 0.22))) +
+  theme(
+    axis.text.x = element_text(
+      angle = 50,
+      hjust = 1
+    ),
+    legend.position = "none"
+  ) + 
+  labs(y = "Count", x = "Category")
+  
+ggsave("plots/seed_size/categorised_summary.jpeg", dpi = 300, width = 8.2, height = 6)
+```
+
+```{r}
+all_categories %>%
+  group_by(disease, category, dataset, organism) %>%
+  group_walk(function(df, keys) {
+    dir_path <- file.path("data/subcategories", keys$disease)
+    dir_create(dir_path)
+    file_name <- paste(keys$category, keys$dataset, keys$organism, sep = "_")
+    write_lines(df$uniprot_id, file.path(dir_path, paste0(file_name, ".txt")))
+  })
+```
+
+```{r}
+base_path     <- "/nfs/home/students/m.patil/ba/data"
+subcat_dir    <- file.path(base_path, "subcategories")
+human_network <- file.path(base_path, "string_700.tsv")
+
+combos <- all_categories %>%
+  distinct(disease, category, dataset, organism)
+
+build_samplesheet <- function(dz) {
+  dz_dir <- file.path(subcat_dir, dz)
+  cc <- combos %>% filter(disease == dz)
+
+  category_rows <- cc %>%
+    mutate(
+      seeds = file.path(dz_dir, paste0(category, "_", dataset, "_", organism, ".txt")),
+      network = if_else(
+        organism == "virus",
+        file.path(dz_dir, paste0("ppi_plus_virus_", dataset, ".csv")),
+        human_network
+      ),
+      blacklist = if_else(
+        organism == "virus",
+        file.path(dz_dir, paste0("virus_seeds_", dataset, ".txt")),
+        NA_character_
+      )
+    ) %>%
+    select(seeds, network, blacklist)
+
+  virus_seed_rows <- cc %>%
+    filter(organism == "virus") %>%
+    distinct(dataset) %>%
+    mutate(
+      seeds     = file.path(dz_dir, paste0("virus_seeds_", dataset, ".txt")),
+      network   = file.path(dz_dir, paste0("ppi_plus_virus_", dataset, ".csv")),
+      blacklist = NA_character_
+    ) %>%
+    select(seeds, network, blacklist)
+
+  bind_rows(category_rows, virus_seed_rows)
+}
+
+diseases <- unique(all_categories$disease)
+samplesheets <- set_names(diseases) %>% map(build_samplesheet)
+
+out_dir <- file.path("data/", "input_sheets")
+
+iwalk(samplesheets, function(df, dz) {
+  write_csv(df, file.path(out_dir, paste0(dz, "_samplesheet_subcategories.csv")), na = "")
+})
+```
+
