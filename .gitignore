@@ -1,5 +1,4 @@
 # TSV files
-*.tsv
 
 # ── Python ────────────────────────────────────────────────────────────────────
 
@@ -156,6 +155,7 @@ $RECYCLE.BIN/
 
 # VS Code
 .vscode/
+.nextflow/
 
 # JetBrains IDEs
 .idea/
@@ -163,11 +163,8 @@ $RECYCLE.BIN/
 # Vim swap files
 *.swp
 *.swo
-BA
-*.tsv
 *.pdf
 *.dmp
-*.txt
 tests
 combi_out_ot
 filtered_outputs
