@@ -89,44 +89,20 @@ process_simple <- function(dataset){
 
 
 ```{r}
-generate_heatmaps <- function(matrix_list, disease){
-  for (g in names(matrix_list)) {
-    m <- matrix_list[[g]]
-    if (nrow(m) < 2) next 
-    clean_name <- gsub("[^A-Za-z0-9]", "_", g) %>%
-      gsub("_+", "_", .) %>%          
-      gsub("^_|_$", "", .) 
-    pheatmap(
-      m,
-      clustering_method  = "average",
-      breaks             = seq(0, 1, length.out = 101), 
-      display_numbers    = TRUE,
-      main               = paste(disease, "- Module overlap -", g),
-      filename           = paste0("plots/", disease,"_overlap_", clean_name, ".png"),
-      width = 7, height = 6
-    )
-  }
-}
-```
-
-```{r}
 corona_orignal <- read.delim("combi_out_ot/corona/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
                              row.names = 1)
 corona_orignal <- simplify_data(corona_orignal)
 corona_orignal_list <- process_simple(corona_orignal)
-generate_heatmaps(corona_orignal_list, "SARS-CoV-2")
 
 hsv_orignal <- read.delim("combi_out_ot/hsv/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
                           row.names = 1)
 hsv_orignal <- simplify_data(hsv_orignal)
 hsv_orignal_list <- process_simple(hsv_orignal)
-generate_heatmaps(hsv_orignal_list, "HSV-1")
 
 hiv_orignal <- read.delim("combi_out_ot/hiv/mqc_summaries/jaccard_similarity_matrix_mqc.tsv", 
                              row.names = 1)
 hiv_orignal <- simplify_data(hiv_orignal)
 hiv_orignal_list <- process_simple(hiv_orignal)
-generate_heatmaps(hiv_orignal_list, "HIV-1")
 
 ```
 
