@@ -3,9 +3,11 @@
 ## Setup
 To use the nf-core/diseasemodulediscovery pipeline with the blacklist integration, please use the version under https://github.com/MojitoBorito/diseasemodulediscovery. For the running scripts and sample sheets to work follow the following file structure:
 
+```
 .
 ├── virus_dmm (this repository)
-├── diseasemodulediscovery (https://github.com/MojitoBorito/diseasemodulediscovery)
+└── diseasemodulediscovery (https://github.com/MojitoBorito/diseasemodulediscovery)
+```
 
 ### Requirements
 - R version 4.6.1 (newer versions should also be compatible)
