@@ -24,12 +24,11 @@ echo "=========================================="
 echo "Starting HIV run -- $(date)"
 echo "=========================================="
 nextflow run ../diseasemodulediscovery/. \
-    -profile daisybio,singularity \
+    -profile daisybio,singularity,keep_work \
     --skip_annotation \
     --skip_digest \
     --input input_sheets/hiv_input.csv \
     --id_space uniprot \
-    --outdir outputs/hiv_new2 \
-    --run_seed_perturbation \
-    --skip_gprofiler
+    --outdir combi_out_ot/hiv \
+    --publish_dir_mode symlink
 echo "HIV done -- $(date)"

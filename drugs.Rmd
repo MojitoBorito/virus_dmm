@@ -9,7 +9,6 @@ output: html_document
 library(tidyverse)
 library(ggplot2)
 library(patchwork)
-library(yardstick)
 library(ggh4x)
 
 get_predictions <- function(path, ending){

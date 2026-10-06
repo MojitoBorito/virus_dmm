@@ -15,10 +15,10 @@ mkdir -p /nfs/scratch/singularity_tmp/m.patil
 source /opt/mambaforge/etc/profile.d/conda.sh
 conda activate daisy-env
 
-#export TMPDIR=/nfs/scratch/singularity_tmp/m.patil
-#export NXF_SINGULARITY_CACHEDIR=/nfs/home/students/m.patil/ba/apptainer_cache
-#export SINGULARITY_TMPDIR=/nfs/scratch/singularity_tmp/m.patil
-#export SINGULARITY_LOCALCACHEDIR=/nfs/scratch/singularity_tmp/m.patil
+export TMPDIR=/nfs/scratch/singularity_tmp/m.patil
+export NXF_SINGULARITY_CACHEDIR=/nfs/home/students/m.patil/ba/apptainer_cache
+export SINGULARITY_TMPDIR=/nfs/scratch/singularity_tmp/m.patil
+export SINGULARITY_LOCALCACHEDIR=/nfs/scratch/singularity_tmp/m.patil
 
 echo "=========================================="
 echo "Starting hsv run -- $(date)"

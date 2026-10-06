@@ -9,9 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(tidyverse)
-library(pheatmap)
 library(RColorBrewer)
-library(ggVennDiagram)
 rdylbu_cols <- colorRampPalette(
   rev(brewer.pal(n = 7, name = "RdYlBu"))
 )(100)
