@@ -443,7 +443,7 @@ recall_all_ot %>%
   mutate(filter = factor(filter, levels = c("initial", "same_n", "top_50", "top_100"))) %>%
   ggplot(aes(x = recall, y = method, fill = virus)) + 
   geom_col(color = "black") +
-  facet_nested(organism + dataset + filter + set ~ virus, scales = "free_y", space = "free_y") + 
+  facet_nested(filter + set ~ virus, scales = "free_y", space = "free_y") + 
   scale_fill_manual(values = virus_colors, guide = "none") +
   theme_bw() + 
   labs(y = "Method", x = "Recall") 
@@ -492,7 +492,7 @@ drug_counts <- tibble(
     nrow(hsv_drugs), nrow(hsv_drugs_approved),    nrow(hsv_drugs_clinical)
   )
 )%>%
-  mutate(status = factor(status, levels = c("All", "Clinical\nTrial", "Approved")))
+  mutate(status = factor(status, levels = c("Approved", "Clinical\nTrial", "All")))
 
 ggplot(drug_counts, aes(x = status, y = n, fill = virus)) +
   geom_col(position = "dodge", width = 0.7, color = "black") +

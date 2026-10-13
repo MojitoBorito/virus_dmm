@@ -1,0 +1,1252 @@
+Entry	Reviewed	Entry Name	Protein names	Gene Names	Organism	Length	Organism (ID)
+P03170	reviewed	ICP47_HHV11	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	88	10299
+P04289	reviewed	CEP3_HHV11	Cytoplasmic envelopment protein 3	UL11	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	96	10299
+P04290	reviewed	UL13_HHV11	Serine/threonine-protein kinase UL13 (EC 2.7.11.1) (Virion protein VMW57)	UL13	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	518	10299
+P04293	reviewed	DPOL_HHV11	DNA polymerase catalytic subunit (EC 2.7.7.7) (EC 3.1.26.4)	UL30	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1235	10299
+P04296	reviewed	DNBI_HHV11	Major DNA-binding protein	DBP ICP8 UL29	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1196	10299
+P04413	reviewed	US03_HHV11	Serine/threonine-protein kinase US3 (EC 2.7.11.1)	US3	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	481	10299
+P04485	reviewed	ICP22_HHV11	Transcriptional regulator ICP22 (Immediate-early protein IE68) (Infected cell protein 22) (ICP22)	ICP22 US1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	420	10299
+P04487	reviewed	RNB_HHV11	Accessory factor US11 (Vmw21)	US11	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	161	10299
+P04488	reviewed	GE_HHV11	Envelope glycoprotein E (gE) (gE-1)	gE US8	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	550	10299
+P06436	reviewed	GB_HHV1F	Envelope glycoprotein B (gB)	gB UL27	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	903	10304
+P06437	reviewed	GB_HHV1K	Envelope glycoprotein B (gB)	gB UL27	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	904	10306
+P06487	reviewed	GI_HHV11	Envelope glycoprotein I (gI)	gI US7	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	390	10299
+P06492	reviewed	VP16_HHV11	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	490	10299
+P08353	reviewed	ICP34_HHV1F	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 ICP34.5	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	263	10304
+P08392	reviewed	ICP4_HHV11	Major viral transcription factor ICP4 (Alpha-4 protein) (Infected cell protein 4) (Transcriptional activator IE175)	ICP4 IE175 RS1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1298	10299
+P08393	reviewed	ICP0_HHV11	E3 ubiquitin-protein ligase ICP0 (EC 2.3.2.27) (Alpha-0 protein) (Immediate-early protein IE110) (RING-type E3 ubiquitin transferase ICP0) (Trans-acting transcriptional protein ICP0) (VMW110)	ICP0 IE110	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	775	10299
+P08543	reviewed	RIR1_HHV11	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	RIR1 ICP6 UL39	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1137	10299
+P10185	reviewed	GL_HHV11	Envelope glycoprotein L (gL)	gL UL1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	224	10299
+P10186	reviewed	UNG_HHV11	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	334	10299
+P10210	reviewed	SCAF_HHV11	Capsid scaffolding protein (Capsid protein P40) (Protease precursor) (pPR) (Virion structural protein UL26) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	635	10299
+P10211	reviewed	GB_HHV11	Envelope glycoprotein B (gB)	gB UL27	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	904	10299
+P10220	reviewed	LTP_HHV11	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	3164	10299
+P10221	reviewed	ITP_HHV11	Inner tegument protein (EC 3.5.1.-) (EC 3.5.1.44) (Viral deamidase UL37)	UL37	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1123	10299
+P10226	reviewed	PAP_HHV11	DNA polymerase processivity factor (DNA-binding protein UL42) (Polymerase accessory protein) (PAP)	UL42	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	488	10299
+P10233	reviewed	VP22_HHV11	Tegument protein VP22	UL49	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	301	10299
+P10238	reviewed	ICP27_HHV11	mRNA export factor (Immediate-early protein IE63) (Infected cell protein 27) (ICP27) (VMW63)	UL54	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	512	10299
+P57083	reviewed	GD_HHV1P	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain Patton) (HHV-1) (Human herpes simplex virus 1)	394	10308
+P68331	reviewed	GK_HHV11	Envelope glycoprotein K (Syncytial protein)	gK UL53	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	338	10299
+Q69091	reviewed	GD_HHV11	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	394	10299
+Q703F0	reviewed	GE_HHV1F	Envelope glycoprotein E (gE) (gE-1)	gE US8	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	552	10304
+Q82171	reviewed	SHUT_HHV1K	Virion host shutoff protein (Vhs) (EC 3.1.27.-)	UL41	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	489	10306
+Q9QNF7	reviewed	KITH_HHV1	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A1D9CK15	unreviewed	A0A1D9CK15_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+A0A2Z4H7H1	unreviewed	A0A2Z4H7H1_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+A0A5P8I1E3	unreviewed	A0A5P8I1E3_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+A1Z0Q5	reviewed	GD_HHV1K	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	394	10306
+F8RDC3	unreviewed	F8RDC3_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26 HHV1gp037	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+G8HBD9	unreviewed	G8HBD9_HHV11	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	635	10299
+I3TC84	unreviewed	I3TC84_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26 HHV1gp037 hmpv214_0026	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+L0N6J3	unreviewed	L0N6J3_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]	UL26	Human alphaherpesvirus 1 strain RH2	635	946522
+O09800	reviewed	GN_HHV11	Envelope glycoprotein N	gN UL49.5 UL49A	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	91	10299
+P04288	reviewed	GM_HHV11	Envelope glycoprotein M (gM)	gM UL10	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	473	10299
+P04291	reviewed	TEG3_HHV11	Tegument protein UL14	UL14	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	219	10299
+P04294	reviewed	AN_HHV11	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	626	10299
+P04295	reviewed	TRM3_HHV11	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	TRM3 UL15	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	735	10299
+P04486	reviewed	VP16_HHV1F	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	490	10304
+P06477	reviewed	GH_HHV11	Envelope glycoprotein H (gH)	gH UL22	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	838	10299
+P06481	reviewed	US9_HHV11	Envelope protein US9 (10 kDa protein)	US9	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	90	10299
+P08665	reviewed	GB_HHV1P	Envelope glycoprotein B (gB)	gB UL27	Human herpesvirus 1 (strain Patton) (HHV-1) (Human herpes simplex virus 1)	904	10308
+P10190	reviewed	PORTL_HHV11	Portal protein	UL6	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	676	10299
+P10192	reviewed	HEPA_HHV11	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	750	10299
+P10193	reviewed	OBP_HHV11	Replication origin-binding protein (OBP) (OriBP)	UL9	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	851	10299
+P10200	reviewed	CEP2_HHV11	Cytoplasmic envelopment protein 2	UL16	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	373	10299
+P10215	reviewed	NEC1_HHV11	Nuclear egress protein 1	NEC1 UL31	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	306	10299
+P10218	reviewed	NEC2_HHV11	Nuclear egress protein 2	NEC2 UL34	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	275	10299
+P10225	reviewed	SHUT_HHV11	Virion host shutoff protein (Vhs) (EC 3.1.27.-)	UL41	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	489	10299
+P10228	reviewed	GC_HHV11	Envelope glycoprotein C	gC UL44	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	511	10299
+P10230	reviewed	TEG1_HHV11	Tegument protein UL46 (Tegument protein VP11/12)	UL46	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	718	10299
+P10231	reviewed	TEG5_HHV11	Tegument protein UL47 (82/81 kDa tegument protein) (VMW82/81) (VP13/14)	UL47	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	693	10299
+P10235	reviewed	TEG7_HHV11	Tegument protein UL51	UL51	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	244	10299
+P10236	reviewed	PRIM_HHV11	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1058	10299
+P28986	reviewed	GC_HHV1K	Envelope glycoprotein C	gC UL44	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	511	10306
+P36295	reviewed	ICP27_HHV1E	mRNA export factor (Immediate-early protein IE63) (Infected cell protein 27) (ICP27)	UL54	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	511	10303
+P36313	reviewed	ICP34_HHV11	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	ICP34.5 RL1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	248	10299
+Q05059	reviewed	GD_HHV1F	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	394	10304
+Q09IA7	unreviewed	Q09IA7_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+Q69087	unreviewed	Q69087_HHV1	Capsid scaffolding protein (Protease precursor) (pPR) [Cleaved into: Assemblin (EC 3.4.21.97) (Protease) (Pr); Assembly protein (AP) (Capsid assembly protein)]		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	635	10298
+Q96912	reviewed	GL_HHV1K	Envelope glycoprotein L (gL)	gL UL1	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	224	10306
+Q9DHD5	reviewed	GH_HHV1F	Envelope glycoprotein H (gH)	gH UL22	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	838	10304
+A0A089YQM2	unreviewed	A0A089YQM2_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A0A0B5EB06	unreviewed	A0A0B5EB06_HHV1	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1137	10298
+A0A0F7GTY2	unreviewed	A0A0F7GTY2_HHV1	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2 HHV1gp058 hmpv205_0041 hmpv206_0041 hmpv207_0040 hmpv208_0041 hmpv214_0041	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	340	10298
+A0A0K0MMY1	unreviewed	A0A0K0MMY1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A0K0MNI2	unreviewed	A0A0K0MNI2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A0S2I704	unreviewed	A0A0S2I704_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3134	10298
+A0A0S2I7M2	unreviewed	A0A0S2I7M2_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3133	10298
+A0A0U2UZK2	unreviewed	A0A0U2UZK2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A0U2V9J7	unreviewed	A0A0U2V9J7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A140GKJ0	unreviewed	A0A140GKJ0_HHV1	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	88	10298
+A0A1W6QD77	unreviewed	A0A1W6QD77_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A0A1W6QD87	unreviewed	A0A1W6QD87_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A0A1W6QDC6	unreviewed	A0A1W6QDC6_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A0A2U9ABQ2	unreviewed	A0A2U9ABQ2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A2Z4H443	unreviewed	A0A2Z4H443_HHV1	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2 HHV1gp058	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	340	10298
+A0A2Z4H751	unreviewed	A0A2Z4H751_HHV1	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1137	10298
+A0A2Z4H785	unreviewed	A0A2Z4H785_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A2Z4H798	unreviewed	A0A2Z4H798_HHV1	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	340	10298
+A0A2Z4LE33	unreviewed	A0A2Z4LE33_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3094	10298
+A0A2Z4LER8	unreviewed	A0A2Z4LER8_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3090	10298
+A0A2Z4LFA8	unreviewed	A0A2Z4LFA8_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3086	10298
+A0A4Y5QKG7	unreviewed	A0A4Y5QKG7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	341	10298
+A0A4Y5QKI5	unreviewed	A0A4Y5QKI5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKI7	unreviewed	A0A4Y5QKI7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKI9	unreviewed	A0A4Y5QKI9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKJ5	unreviewed	A0A4Y5QKJ5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKJ8	unreviewed	A0A4Y5QKJ8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKK7	unreviewed	A0A4Y5QKK7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKK9	unreviewed	A0A4Y5QKK9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKM0	unreviewed	A0A4Y5QKM0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QKN6	unreviewed	A0A4Y5QKN6_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QKP6	unreviewed	A0A4Y5QKP6_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QKQ2	unreviewed	A0A4Y5QKQ2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QKQ8	unreviewed	A0A4Y5QKQ8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	604	10298
+A0A4Y5QKW4	unreviewed	A0A4Y5QKW4_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QLL3	unreviewed	A0A4Y5QLL3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QLP2	unreviewed	A0A4Y5QLP2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QLQ4	unreviewed	A0A4Y5QLQ4_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5QLR1	unreviewed	A0A4Y5QLR1_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1237	10298
+A0A4Y5QN75	unreviewed	A0A4Y5QN75_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A4Y5R3Q7	unreviewed	A0A4Y5R3Q7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A5P8I1D4	unreviewed	A0A5P8I1D4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A5P8I1E4	unreviewed	A0A5P8I1E4_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A0A5P8I1M8	unreviewed	A0A5P8I1M8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+A0A5P8I1N8	unreviewed	A0A5P8I1N8_HHV1	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	340	10298
+A0A5P8I1P3	unreviewed	A0A5P8I1P3_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3098	10298
+A0ACM8RH25	unreviewed	A0ACM8RH25_HHV11	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	340	10299
+A1Z0P5	unreviewed	A1Z0P5_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A1Z0P6	unreviewed	A1Z0P6_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A1Z0P7	unreviewed	A1Z0P7_HHV1	Envelope glycoprotein B (gB)	UL27 gB HHV1gp041	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A2I997	unreviewed	A2I997_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+A2I998	unreviewed	A2I998_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+B2CPP5	unreviewed	B2CPP5_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2CPP6	unreviewed	B2CPP6_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2CPP7	unreviewed	B2CPP7_HHV1	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2CPP8	unreviewed	B2CPP8_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	375	10298
+B2CPP9	unreviewed	B2CPP9_HHV1	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2CPQ0	unreviewed	B2CPQ0_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	375	10298
+B2CPQ4	unreviewed	B2CPQ4_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2CPQ5	unreviewed	B2CPQ5_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+B2ZUN5	unreviewed	B2ZUN5_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+C0L2Z8	unreviewed	C0L2Z8_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	375	10298
+C0L2Z9	unreviewed	C0L2Z9_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L301	unreviewed	C0L301_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L304	unreviewed	C0L304_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L305	unreviewed	C0L305_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	375	10298
+C0L306	unreviewed	C0L306_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK hmpv208_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L307	unreviewed	C0L307_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L308	unreviewed	C0L308_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L309	unreviewed	C0L309_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L311	unreviewed	C0L311_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L312	unreviewed	C0L312_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L313	unreviewed	C0L313_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L314	unreviewed	C0L314_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK hmpv207_0022 hmpv213_0022 hmpv214_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L315	unreviewed	C0L315_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK HHV1gp034 hmpv205_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L316	unreviewed	C0L316_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L318	unreviewed	C0L318_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L319	unreviewed	C0L319_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L323	unreviewed	C0L323_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L324	unreviewed	C0L324_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L325	unreviewed	C0L325_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L327	unreviewed	C0L327_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	341	10298
+C0L328	unreviewed	C0L328_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L329	unreviewed	C0L329_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L334	unreviewed	C0L334_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L335	unreviewed	C0L335_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L336	unreviewed	C0L336_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L337	unreviewed	C0L337_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L338	unreviewed	C0L338_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L339	unreviewed	C0L339_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L341	unreviewed	C0L341_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L346	unreviewed	C0L346_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L347	unreviewed	C0L347_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L348	unreviewed	C0L348_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L349	unreviewed	C0L349_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L350	unreviewed	C0L350_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L351	unreviewed	C0L351_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L354	unreviewed	C0L354_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	341	10298
+C0L357	unreviewed	C0L357_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L358	unreviewed	C0L358_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L360	unreviewed	C0L360_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	309	10298
+C0L362	unreviewed	C0L362_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L363	unreviewed	C0L363_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L366	unreviewed	C0L366_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L368	unreviewed	C0L368_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+D3YPI8	unreviewed	D3YPI8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+D3YPJ7	unreviewed	D3YPJ7_HHV1	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1 HHV1gp057 hmpv207_0039	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1137	10298
+E1B1P6	unreviewed	E1B1P6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1P7	unreviewed	E1B1P7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1P8	unreviewed	E1B1P8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1P9	unreviewed	E1B1P9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q0	unreviewed	E1B1Q0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q1	unreviewed	E1B1Q1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q3	unreviewed	E1B1Q3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q4	unreviewed	E1B1Q4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q5	unreviewed	E1B1Q5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Q9	unreviewed	E1B1Q9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1R1	unreviewed	E1B1R1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1R2	unreviewed	E1B1R2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1T8	unreviewed	E1B1T8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1T9	unreviewed	E1B1T9_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U0	unreviewed	E1B1U0_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U1	unreviewed	E1B1U1_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U2	unreviewed	E1B1U2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U3	unreviewed	E1B1U3_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U4	unreviewed	E1B1U4_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U5	unreviewed	E1B1U5_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U8	unreviewed	E1B1U8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1U9	unreviewed	E1B1U9_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1V0	unreviewed	E1B1V0_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1V1	unreviewed	E1B1V1_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1V2	unreviewed	E1B1V2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Y5	unreviewed	E1B1Y5_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Y7	unreviewed	E1B1Y7_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Y8	unreviewed	E1B1Y8_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Y9	unreviewed	E1B1Y9_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Z0	unreviewed	E1B1Z0_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Z1	unreviewed	E1B1Z1_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Z2	unreviewed	E1B1Z2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Z4	unreviewed	E1B1Z4_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+E1B1Z5	unreviewed	E1B1Z5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Z6	unreviewed	E1B1Z6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Z7	unreviewed	E1B1Z7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B1Z8	unreviewed	E1B1Z8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B213	unreviewed	E1B213_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+E1B214	unreviewed	E1B214_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+F8REU4	unreviewed	F8REU4_HHV1	Cytoplasmic envelopment protein 3	UL11 HHV1gp020	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	96	10298
+F8REW1	unreviewed	F8REW1_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+F8RF35	unreviewed	F8RF35_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+F8RF95	unreviewed	F8RF95_HHV1	Cytoplasmic envelopment protein 3	UL11 HHV1gp020 hmpv214_0011	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	96	10298
+F8RFB2	unreviewed	F8RFB2_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+G0YEX0	unreviewed	G0YEX0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEX1	unreviewed	G0YEX1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEX2	unreviewed	G0YEX2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEX4	unreviewed	G0YEX4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEX5	unreviewed	G0YEX5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEX9	unreviewed	G0YEX9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEY1	unreviewed	G0YEY1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YEY3	unreviewed	G0YEY3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YG97	unreviewed	G0YG97_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YG98	unreviewed	G0YG98_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YG99	unreviewed	G0YG99_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGA5	unreviewed	G0YGA5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGA9	unreviewed	G0YGA9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB0	unreviewed	G0YGB0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB1	unreviewed	G0YGB1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB2	unreviewed	G0YGB2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB3	unreviewed	G0YGB3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	311	10298
+G0YGB6	unreviewed	G0YGB6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB7	unreviewed	G0YGB7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGB9	unreviewed	G0YGB9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGC5	unreviewed	G0YGC5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGC6	unreviewed	G0YGC6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGC7	unreviewed	G0YGC7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD0	unreviewed	G0YGD0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD1	unreviewed	G0YGD1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD2	unreviewed	G0YGD2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD4	unreviewed	G0YGD4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD5	unreviewed	G0YGD5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD6	unreviewed	G0YGD6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD7	unreviewed	G0YGD7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGD9	unreviewed	G0YGD9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE0	unreviewed	G0YGE0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE1	unreviewed	G0YGE1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE4	unreviewed	G0YGE4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE5	unreviewed	G0YGE5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE6	unreviewed	G0YGE6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGE9	unreviewed	G0YGE9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF0	unreviewed	G0YGF0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF1	unreviewed	G0YGF1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF2	unreviewed	G0YGF2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF4	unreviewed	G0YGF4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF5	unreviewed	G0YGF5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF7	unreviewed	G0YGF7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF8	unreviewed	G0YGF8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGF9	unreviewed	G0YGF9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGG0	unreviewed	G0YGG0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGG1	unreviewed	G0YGG1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGG7	unreviewed	G0YGG7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGG8	unreviewed	G0YGG8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YGG9	unreviewed	G0YGG9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL18	unreviewed	G0YL18_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL19	unreviewed	G0YL19_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL20	unreviewed	G0YL20_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL22	unreviewed	G0YL22_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL23	unreviewed	G0YL23_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL25	unreviewed	G0YL25_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL26	unreviewed	G0YL26_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL28	unreviewed	G0YL28_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL29	unreviewed	G0YL29_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL30	unreviewed	G0YL30_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL31	unreviewed	G0YL31_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL35	unreviewed	G0YL35_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL39	unreviewed	G0YL39_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL40	unreviewed	G0YL40_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL41	unreviewed	G0YL41_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL43	unreviewed	G0YL43_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL44	unreviewed	G0YL44_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL45	unreviewed	G0YL45_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL47	unreviewed	G0YL47_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL48	unreviewed	G0YL48_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL49	unreviewed	G0YL49_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL51	unreviewed	G0YL51_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL53	unreviewed	G0YL53_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL54	unreviewed	G0YL54_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL55	unreviewed	G0YL55_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL56	unreviewed	G0YL56_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL58	unreviewed	G0YL58_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL59	unreviewed	G0YL59_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL60	unreviewed	G0YL60_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL61	unreviewed	G0YL61_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL64	unreviewed	G0YL64_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL65	unreviewed	G0YL65_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL66	unreviewed	G0YL66_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL67	unreviewed	G0YL67_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL69	unreviewed	G0YL69_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL70	unreviewed	G0YL70_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL75	unreviewed	G0YL75_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL76	unreviewed	G0YL76_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0YL79	unreviewed	G0YL79_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0Z0P6	unreviewed	G0Z0P6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G0Z0S0	unreviewed	G0Z0S0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+G8HBC4	unreviewed	G8HBC4_HHV11	Cytoplasmic envelopment protein 3	UL11	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	96	10299
+G8HBD5	unreviewed	G8HBD5_HHV11	Envelope glycoprotein H (gH)	UL22 gH	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	838	10299
+G8HBE1	unreviewed	G8HBE1_HHV11	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	904	10299
+G8HBE4	unreviewed	G8HBE4_HHV11	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1235	10299
+G8HBF0	unreviewed	G8HBF0_HHV11	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	3139	10299
+G8HBF3	unreviewed	G8HBF3_HHV11	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1137	10299
+G8HBG2	unreviewed	G8HBG2_HHV11	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	490	10299
+G8HBI7	unreviewed	G8HBI7_HHV11	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	88	10299
+G9HYD8	unreviewed	G9HYD8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK HHV1gp034	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+H9E937	unreviewed	H9E937_HHV1	DNA polymerase (EC 2.7.7.7)	UL30 HHV1gp046	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+H9E943	unreviewed	H9E943_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36 HHV1gp054	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3136	10298
+H9E946	unreviewed	H9E946_HHV1	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1 HHV1gp057	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1137	10298
+H9ZX85	unreviewed	H9ZX85_HHV1	Envelope glycoprotein B (gB)	gB UL27 HHV1gp041 hmpv214_0028	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+I1UYK0	unreviewed	I1UYK0_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3108	10298
+I1YAC1	unreviewed	I1YAC1_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+I2FEY2	unreviewed	I2FEY2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+I2FEY3	unreviewed	I2FEY3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+I3TC86	unreviewed	I3TC86_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	886	10298
+I3TC89	unreviewed	I3TC89_HHV1	DNA polymerase (EC 2.7.7.7)	UL30 hmpv214_0031	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+I3TC95	unreviewed	I3TC95_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	2775	10298
+I7GY94	unreviewed	I7GY94_HHV1	DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+I7H410	unreviewed	I7H410_HHV1	DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+I7HDG5	unreviewed	I7HDG5_HHV1	DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+J7GV03	unreviewed	J7GV03_HHV1	DNA polymerase (EC 2.7.7.7)	UL30 HHV1gp046	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+J7GY36	unreviewed	J7GY36_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK HHV1gp034	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+J7H234	unreviewed	J7H234_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36 HHV1gp054	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	3139	10298
+K4HV85	unreviewed	K4HV85_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4HVV0	unreviewed	K4HVV0_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4HVV2	unreviewed	K4HVV2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4I2J1	unreviewed	K4I2J1_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JB50	unreviewed	K4JB50_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JB55	unreviewed	K4JB55_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JB59	unreviewed	K4JB59_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JB62	unreviewed	K4JB62_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JBL5	unreviewed	K4JBL5_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JBM0	unreviewed	K4JBM0_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JBM5	unreviewed	K4JBM5_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JBM7	unreviewed	K4JBM7_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JBN1	unreviewed	K4JBN1_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JDM7	unreviewed	K4JDM7_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JDN1	unreviewed	K4JDN1_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JDN4	unreviewed	K4JDN4_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JDN9	unreviewed	K4JDN9_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JEV9	unreviewed	K4JEV9_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JEW2	unreviewed	K4JEW2_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JEW6	unreviewed	K4JEW6_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JEX0	unreviewed	K4JEX0_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JEX2	unreviewed	K4JEX2_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JR12	unreviewed	K4JR12_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JR22	unreviewed	K4JR22_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+K4JR32	unreviewed	K4JR32_HHV1	Thymidine kinase (EC 2.7.1.21)	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+L0N3D9	unreviewed	L0N3D9_HHV1	Ribonucleoside-diphosphate reductase large subunit (R1) (EC 1.17.4.1) (Ribonucleotide reductase large subunit)	UL39 RIR1	Human alphaherpesvirus 1 strain RH2	1137	946522
+L0N5F5	unreviewed	L0N5F5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human alphaherpesvirus 1 strain RH2	376	946522
+L0N5F9	unreviewed	L0N5F9_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human alphaherpesvirus 1 strain RH2	904	946522
+L0N693	unreviewed	L0N693_HHV1	Large tegument protein deneddylase (EC 3.4.19.12) (EC 3.4.22.-)	UL36	Human alphaherpesvirus 1 strain RH2	3124	946522
+L0N6I4	unreviewed	L0N6I4_HHV1	Cytoplasmic envelopment protein 3	UL11	Human alphaherpesvirus 1 strain RH2	96	946522
+L0N6J6	unreviewed	L0N6J6_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human alphaherpesvirus 1 strain RH2	1235	946522
+L0N6K2	unreviewed	L0N6K2_HHV1	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	UL40 RIR2	Human alphaherpesvirus 1 strain RH2	340	946522
+O55259	unreviewed	O55259_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+O72346	unreviewed	O72346_HHV1	Thymidine kinase (EC 2.7.1.21)	tk TK UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+P03178	reviewed	GK_HHV1K	Envelope glycoprotein K (Syncytial protein)	gK UL53	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	338	10306
+P04292	reviewed	DPOL_HHV1K	DNA polymerase catalytic subunit (EC 2.7.7.7) (EC 3.1.26.4)	UL30	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	1235	10306
+P06474	reviewed	RIR2_HHV1K	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	RIR2 UL40	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	340	10306
+P06476	reviewed	GD_HHV1H	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain HZT) (HHV-1) (Human herpes simplex virus 1)	393	10305
+P06478	reviewed	KITH_HHV1C	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (strain CL101) (HHV-1) (Human herpes simplex virus 1)	376	10302
+P06479	reviewed	KITH_HHV1S	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (strain SC16) (HHV-1) (Human herpes simplex virus 1)	376	10309
+P06480	reviewed	GJ_HHV11	Envelope glycoprotein J	gJ US5	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	92	10299
+P06484	reviewed	GG_HHV11	Envelope glycoprotein G (gG) (gG-1)	gG US4	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	238	10299
+P06485	reviewed	US02_HHV11	Protein US2	US2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	291	10299
+P06491	reviewed	MCP_HHV11	Major capsid protein (MCP)	MCP	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1374	10299
+P07917	reviewed	DPOL_HHV1A	DNA polymerase catalytic subunit (EC 2.7.7.7) (EC 3.1.26.4)	UL30	Human herpesvirus 1 (strain Angelotti) (HHV-1) (Human herpes simplex virus 1)	1235	10301
+P08313	reviewed	TEG5_HHV1F	Tegument protein UL47 (82/81 kDa tegument protein) (VMW82/81) (VP13/14)	UL47	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	693	10304
+P08333	reviewed	KITH_HHV1E	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	376	10303
+P08356	reviewed	GH_HHV1E	Envelope glycoprotein H (gH)	gH UL22	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	838	10303
+P09854	reviewed	DPOL_HHV1S	DNA polymerase catalytic subunit (EC 2.7.7.7) (EC 3.1.26.4)	UL30	Human herpesvirus 1 (strain SC16) (HHV-1) (Human herpes simplex virus 1)	1235	10309
+P0DTH5	reviewed	KITH_HHV11	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	376	10299
+P10189	reviewed	HELI_HHV11	DNA replication helicase (EC 3.6.4.-)	HELI UL5	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	882	10299
+P10191	reviewed	CEP1_HHV11	Cytoplasmic envelopment protein 1	UL7	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	296	10299
+P10201	reviewed	CVC1_HHV11	Capsid vertex component 1	CVC1 UL17	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	703	10299
+P10204	reviewed	UL20_HHV11	Protein UL20	UL20	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	222	10299
+P10205	reviewed	TEG4_HHV11	Tegument protein UL21	UL21	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	535	10299
+P10208	reviewed	UL24_HHV11	Protein UL24	UL24	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	269	10299
+P10209	reviewed	CVC2_HHV11	Capsid vertex component 2	CVC2 UL25	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	580	10299
+P10212	reviewed	TRM1_HHV11	Tripartite terminase subunit 1	TRM1 UL28	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	785	10299
+P10216	reviewed	UL32_HHV11	Packaging protein UL32	UL32	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	596	10299
+P10217	reviewed	TRM2_HHV11	Tripartite terminase subunit 2	TRM2 UL33	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	130	10299
+P10219	reviewed	SCP_HHV11	Small capsomere-interacting protein	SCP UL35	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	112	10299
+P10224	reviewed	RIR2_HHV11	Ribonucleoside-diphosphate reductase small subunit (EC 1.17.4.1) (Ribonucleotide reductase small subunit)	RIR2 UL40	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	340	10299
+P10240	reviewed	UL56_HHV11	Protein UL56	UL56	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	234	10299
+P17402	reviewed	KITH_HHV1K	Thymidine kinase (EC 2.7.1.21)	TK UL23	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	376	10306
+P17470	reviewed	DNBI_HHV1K	Major DNA-binding protein	DBP ICP8 UL29	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	1196	10306
+P32888	reviewed	TRX1_HHV11	Triplex capsid protein 1	TRX1 UL38	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	465	10299
+P36318	reviewed	GD_HHV1A	Envelope glycoprotein D (gD)	gD US6	Human herpesvirus 1 (strain Angelotti) (HHV-1) (Human herpes simplex virus 1)	394	10301
+P37318	reviewed	ICP34_HHV1D	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 ICP34.5	Human herpesvirus 1 (strain CVG-2) (HHV-1) (Human herpes simplex virus 1)	252	37106
+P37319	reviewed	ICP34_HHV1N	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 ICP34.5	Human herpesvirus 1 (strain MGH-10) (HHV-1) (Human herpes simplex virus 1)	245	37107
+P56958	reviewed	RNB_HHV1M	RNA-binding protein (Vmw21)	US11	Human herpesvirus 1 (strain MP) (HHV-1) (Human herpes simplex virus 1)	161	10307
+P68332	reviewed	GK_HHV1M	Envelope glycoprotein K (Syncytial protein)	gK UL53	Human herpesvirus 1 (strain MP) (HHV-1) (Human herpes simplex virus 1)	338	10307
+P68333	reviewed	GK_HHV1R	Envelope glycoprotein K (Syncytial protein)	gK UL53	Human herpesvirus 1 (strain R15) (HHV-1) (Human herpes simplex virus 1)	338	36345
+Q07005	reviewed	GK_HHV19	Envelope glycoprotein K (Syncytial protein)	gK UL53	Human herpesvirus 1 (strain R19) (HHV-1) (Human herpes simplex virus 1)	338	36346
+Q68978	unreviewed	Q68978_HHV1	Alkaline nuclease (EC 3.1.-.-)	AE UL12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+Q68980	reviewed	CEP3_HHV1K	Cytoplasmic envelopment protein 3	UL11	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	96	10306
+Q69076	unreviewed	Q69076_HHV1	Envelope glycoprotein B (gB)	gB-1 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	903	10298
+Q69526	unreviewed	Q69526_HHV1	Envelope glycoprotein B (gB)	gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+Q6PVT0	unreviewed	Q6PVT0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT1	unreviewed	Q6PVT1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT2	unreviewed	Q6PVT2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT3	unreviewed	Q6PVT3_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT4	unreviewed	Q6PVT4_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT5	unreviewed	Q6PVT5_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK hmpv206_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT6	unreviewed	Q6PVT6_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT7	unreviewed	Q6PVT7_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVT8	unreviewed	Q6PVT8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVU0	unreviewed	Q6PVU0_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVU1	unreviewed	Q6PVU1_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q6PVU2	unreviewed	Q6PVU2_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q8V6Z9	unreviewed	Q8V6Z9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	331	10298
+Q91CM2	unreviewed	Q91CM2_HHV1	DNA polymerase (EC 2.7.7.7)	UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+Q91CQ6	unreviewed	Q91CQ6_HHV1	DNA polymerase (EC 2.7.7.7)	DNApol	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+Q91CQ7	unreviewed	Q91CQ7_HHV1	DNA polymerase (EC 2.7.7.7)	DNApol UL30	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1235	10298
+Q9DXE4	unreviewed	Q9DXE4_HHV1	Envelope glycoprotein B (gB)	gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+Q9J0X9	unreviewed	Q9J0X9_HHV1	ICP27 (Multifunctional expression regulator) (UL54)	UL54 HHV1gp079	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+Q9QLM8	unreviewed	Q9QLM8_HHV1	Envelope glycoprotein B (gB)	UL27 gB	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	904	10298
+Q9QNF8	unreviewed	Q9QNF8_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+Q9QNF9	unreviewed	Q9QNF9_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+S5PZ67	unreviewed	S5PZ67_HHV1	Thymidine kinase (EC 2.7.1.21)	UL23 TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A076N8J5	unreviewed	A0A076N8J5_HHV1	Packaging protein UL32	UL32	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	595	10298
+A0A076N9T3	unreviewed	A0A076N9T3_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+A0A089WZ14	unreviewed	A0A089WZ14_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	172	10298
+A0A089X2K3	unreviewed	A0A089X2K3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+A0A089YQP9	unreviewed	A0A089YQP9_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A0A0Q590	unreviewed	A0A0A0Q590_HHV1	DNA-directed DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	243	10298
+A0A0B5E4B1	unreviewed	A0A0B5E4B1_HHV1	Envelope glycoprotein D	US6 hmpv213_0059	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A0B5EDD4	unreviewed	A0A0B5EDD4_HHV1	Packaging protein UL32	UL32	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	595	10298
+A0A0F7CY40	unreviewed	A0A0F7CY40_HHV1	Nuclear egress protein 2	UL34 NEC2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	275	10298
+A0A0F7GQM8	unreviewed	A0A0F7GQM8_HHV1	Nuclear egress protein 2	UL34 NEC2 HHV1gp051 hmpv207_0034 hmpv214_0035 HSV-1_37	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	275	10298
+A0A0F7GTP0	unreviewed	A0A0F7GTP0_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0F7MWU0	unreviewed	A0A0F7MWU0_HHV1	Envelope glycoprotein D	US6 HHV1gp096 hmpv214_0064	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A0K0MLZ0	unreviewed	A0A0K0MLZ0_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A0K0MM34	unreviewed	A0A0K0MM34_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A0K0MNG8	unreviewed	A0A0K0MNG8_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A0K0MNG9	unreviewed	A0A0K0MNG9_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A0X8XVM1	unreviewed	A0A0X8XVM1_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8XVS4	unreviewed	A0A0X8XVS4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8Y239	unreviewed	A0A0X8Y239_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8Y291	unreviewed	A0A0X8Y291_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8Y2A4	unreviewed	A0A0X8Y2A4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8Y6V0	unreviewed	A0A0X8Y6V0_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8YFB0	unreviewed	A0A0X8YFB0_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8YFH4	unreviewed	A0A0X8YFH4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8YY56	unreviewed	A0A0X8YY56_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8YYA4	unreviewed	A0A0X8YYA4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8ZP47	unreviewed	A0A0X8ZP47_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8ZP62	unreviewed	A0A0X8ZP62_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8ZP75	unreviewed	A0A0X8ZP75_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X8ZPD5	unreviewed	A0A0X8ZPD5_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8ZXT5	unreviewed	A0A0X8ZXT5_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8ZXU6	unreviewed	A0A0X8ZXU6_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X8ZXV8	unreviewed	A0A0X8ZXV8_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X9A5Z0	unreviewed	A0A0X9A5Z0_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X9A624	unreviewed	A0A0X9A624_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X9BQK9	unreviewed	A0A0X9BQK9_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A0X9BQR3	unreviewed	A0A0X9BQR3_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A0X9CMY4	unreviewed	A0A0X9CMY4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1056	10298
+A0A109NSH4	unreviewed	A0A109NSH4_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A109NSW2	unreviewed	A0A109NSW2_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A109NTA4	unreviewed	A0A109NTA4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A109NUS2	unreviewed	A0A109NUS2_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A109NXI1	unreviewed	A0A109NXI1_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A109W118	unreviewed	A0A109W118_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A109W8A0	unreviewed	A0A109W8A0_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A109W8B6	unreviewed	A0A109W8B6_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A110B828	unreviewed	A0A110B828_HHV1	Envelope glycoprotein L (gL)	UL1 gL hmpv208_0001 hmpv213_0001	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+A0A120GZH8	unreviewed	A0A120GZH8_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A120I2H2	unreviewed	A0A120I2H2_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	172	10298
+A0A125QUS4	unreviewed	A0A125QUS4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A181ZFK4	unreviewed	A0A181ZFK4_HHV11	DNA polymerase processivity factor (Polymerase accessory protein)	P2C_00058	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	505	10299
+A0A181ZFL8	unreviewed	A0A181ZFL8_HHV11	Tripartite terminase subunit 1	UL28 TRM1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	785	10299
+A0A181ZH04	unreviewed	A0A181ZH04_HHV11	Envelope glycoprotein D	gD P17_00088	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	394	10299
+A0A193GSF3	unreviewed	A0A193GSF3_HHV1	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	UL15 TRM3 HHV1gp023 hmpv205_0015 hmpv206_0015 hmpv208_0015	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	735	10298
+A0A193GTR7	unreviewed	A0A193GTR7_HHV1	Cytoplasmic envelopment protein 2 (Tegument protein BGLF2)	UL16 HHV1gp025 hmpv205_0016 hmpv206_0016 hmpv207_0015 hmpv213_0015 hmpv214_0016	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	373	10298
+A0A193GW43	unreviewed	A0A193GW43_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	172	10298
+A0A1C3J6F7	unreviewed	A0A1C3J6F7_HHV1	Replication origin-binding protein (OriBP)	UL9 HHV1gp016 hmpv214_0009	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	851	10298
+A0A1C3J6G7	unreviewed	A0A1C3J6G7_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+A0A1C3J6P7	unreviewed	A0A1C3J6P7_HHV1	Capsid vertex component 2	UL25 CVC2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	580	10298
+A0A1C3J6R4	unreviewed	A0A1C3J6R4_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1C3J765	unreviewed	A0A1C3J765_HHV1	Serine/threonine-protein (EC 2.7.11.1)	US3 HHV1gp089	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	481	10298
+A0A1C3J7F6	unreviewed	A0A1C3J7F6_HHV1	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	490	10298
+A0A1C3J7P6	unreviewed	A0A1C3J7P6_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A1C3J7X2	unreviewed	A0A1C3J7X2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A1C3K974	unreviewed	A0A1C3K974_HHV1	Capsid vertex component 2	UL25 CVC2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	580	10298
+A0A1C3K9E1	unreviewed	A0A1C3K9E1_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+A0A1D9CJZ4	unreviewed	A0A1D9CJZ4_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+A0A1D9CK36	unreviewed	A0A1D9CK36_HHV1	Envelope protein UL43	UL43	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	417	10298
+A0A1W6QD20	unreviewed	A0A1W6QD20_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A1W6QD23	unreviewed	A0A1W6QD23_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A1W6QD25	unreviewed	A0A1W6QD25_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A0A1W6QD93	unreviewed	A0A1W6QD93_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1W6QD96	unreviewed	A0A1W6QD96_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1W6QDA3	unreviewed	A0A1W6QDA3_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1W6QDA9	unreviewed	A0A1W6QDA9_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A1W6QDB1	unreviewed	A0A1W6QDB1_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1W6QDB3	unreviewed	A0A1W6QDB3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A1W6QDB5	unreviewed	A0A1W6QDB5_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A1W6QDC2	unreviewed	A0A1W6QDC2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+A0A1W6QDC3	unreviewed	A0A1W6QDC3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A1W6QDD8	unreviewed	A0A1W6QDD8_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+A0A2U9A5B2	unreviewed	A0A2U9A5B2_HHV1	DNA replication helicase (EC 3.6.4.-)	HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	841	10298
+A0A2U9A692	unreviewed	A0A2U9A692_HHV1	DNA primase (EC 2.7.7.-)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A2Z2D6P0	unreviewed	A0A2Z2D6P0_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13 hmpv205_0013 hmpv213_0012	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	518	10298
+A0A2Z4H3J4	unreviewed	A0A2Z4H3J4_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+A0A2Z4H732	unreviewed	A0A2Z4H732_HHV1	Inner tegument protein	UL37	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1123	10298
+A0A2Z4H983	unreviewed	A0A2Z4H983_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A2Z4H9S0	unreviewed	A0A2Z4H9S0_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12 hmpv205_0012 hmpv206_0012 hmpv213_0011	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+A0A2Z4HD89	unreviewed	A0A2Z4HD89_HHV1	Tegument protein UL47	UL47	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	693	10298
+A0A2Z4HDC3	unreviewed	A0A2Z4HDC3_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	172	10298
+A0A2Z4HDE6	unreviewed	A0A2Z4HDE6_HHV1	Tegument protein VP22	UL49	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	301	10298
+A0A2Z4HDG9	unreviewed	A0A2Z4HDG9_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+A0A2Z4HDW2	unreviewed	A0A2Z4HDW2_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+A0A2Z4LEA2	unreviewed	A0A2Z4LEA2_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	334	10298
+A0A2Z4LEA5	unreviewed	A0A2Z4LEA5_HHV1	Triplex capsid protein 1	UL38 TRX1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	465	10298
+A0A2Z4LEB6	unreviewed	A0A2Z4LEB6_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	245	10298
+A0A2Z4LED9	unreviewed	A0A2Z4LED9_HHV1	Portal protein	UL6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	676	10298
+A0A2Z4LEL6	unreviewed	A0A2Z4LEL6_HHV1	Envelope glycoprotein H (gH)	UL22 gH	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	838	10298
+A0A2Z4LEY6	unreviewed	A0A2Z4LEY6_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A2Z4LF84	unreviewed	A0A2Z4LF84_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+A0A2Z4LFL1	unreviewed	A0A2Z4LFL1_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	263	10298
+A0A5J6DVE7	unreviewed	A0A5J6DVE7_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+A0A5J6DVR7	unreviewed	A0A5J6DVR7_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A5J6DVU3	unreviewed	A0A5J6DVU3_HHV1	Major capsid protein (MCP)	UL19 MCP	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1374	10298
+A0A5J6DWG4	unreviewed	A0A5J6DWG4_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+A0A5P8I168	unreviewed	A0A5P8I168_HHV1	Envelope glycoprotein H (gH)	UL22 gH	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	838	10298
+A0A5P8I169	unreviewed	A0A5P8I169_HHV1	Major DNA-binding protein	UL29 DBP	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1196	10298
+A0A5P8I1C0	unreviewed	A0A5P8I1C0_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	249	10298
+A0A5P8I1C3	unreviewed	A0A5P8I1C3_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+A0A5P8I1C7	unreviewed	A0A5P8I1C7_HHV1	Envelope glycoprotein M (gM)	UL10 gM	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	473	10298
+A0A5P8I1D0	unreviewed	A0A5P8I1D0_HHV1	Replication origin-binding protein (OriBP)	UL9	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	851	10298
+A0A5P8I1P6	unreviewed	A0A5P8I1P6_HHV1	Tegument protein UL47	UL47	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	693	10298
+A1Z0P8	unreviewed	A1Z0P8_HHV1	Envelope glycoprotein C	UL44 HHV1gp063	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A1Z0P9	unreviewed	A1Z0P9_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	427	10298
+A1Z0Q1	unreviewed	A1Z0Q1_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A1Z0Q2	unreviewed	A1Z0Q2_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A1Z0Q6	unreviewed	A1Z0Q6_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A1Z0Q8	unreviewed	A1Z0Q8_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+A1Z0Q9	unreviewed	A1Z0Q9_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+A2I995	unreviewed	A2I995_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+A2I996	unreviewed	A2I996_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+B8XXA7	unreviewed	B8XXA7_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+B8XXA8	unreviewed	B8XXA8_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+B8XXA9	unreviewed	B8XXA9_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	358	10298
+B8XXB0	unreviewed	B8XXB0_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+B8XXB1	unreviewed	B8XXB1_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	386	10298
+B8XXB2	unreviewed	B8XXB2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	453	10298
+B8XXB3	unreviewed	B8XXB3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	453	10298
+B9VQC6	unreviewed	B9VQC6_HHV11	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	248	10299
+B9VQD3	unreviewed	B9VQD3_HHV11	Portal protein	UL6	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	676	10299
+B9VQE2	unreviewed	B9VQE2_HHV11	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	UL15 TRM3	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	735	10299
+B9VQG1	unreviewed	B9VQG1_HHV11	Tripartite terminase subunit 2	UL33 TRM2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	130	10299
+B9VQG6	unreviewed	B9VQG6_HHV11	Triplex capsid protein 1	UL38 TRX1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	465	10299
+B9VQJ7	unreviewed	B9VQJ7_HHV11	Serine/threonine-protein (EC 2.7.11.1)	US3	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	481	10299
+C0LIG6	unreviewed	C0LIG6_HHV1	Capsid vertex component 1	UL17 CVC1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+D3YPD5	reviewed	US10_HHV1F	Virion protein US10	US10	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	303	10304
+D3YPE9	unreviewed	D3YPE9_HHV1F	Replication origin-binding protein (OriBP)	UL9	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	851	10304
+D3YPF9	unreviewed	D3YPF9_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2 hmpv208_0002 hmpv213_0002	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	334	10298
+D3YPG2	unreviewed	D3YPG2_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+D3YPI2	unreviewed	D3YPI2_HHV1	Capsid vertex component 2	UL25 CVC2 HHV1gp036	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	580	10298
+D3YPJ2	unreviewed	D3YPJ2_HHV1	Nuclear egress protein 2	UL34 NEC2 HHV1gp051	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	275	10298
+D3YPK5	unreviewed	D3YPK5_HHV1	Tegument protein UL47	UL47 HHV1gp067 hmpv206_0048 hmpv214_0048	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	693	10298
+D3YPK7	unreviewed	D3YPK7_HHV1	Tegument protein VP22	UL49 HHV1gp072 hmpv205_0050	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	301	10298
+D3YPK9	unreviewed	D3YPK9_HHV1	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	UL50 DUT HHV1gp074	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	371	10298
+D3YPL1	unreviewed	D3YPL1_HHV1	DNA primase (EC 2.7.7.-)	UL52 HHV1gp076 hmpv214_0054	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+D3YPM6	unreviewed	D3YPM6_HHV1	Envelope glycoprotein E	US8 HHV1gp101	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+D3YPN1	unreviewed	D3YPN1_HHV1	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12 HHV1gp106 hmpv207_0069	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	88	10298
+E2D7V0	unreviewed	E2D7V0_HHV1	Envelope glycoprotein E		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+E2D7V3	unreviewed	E2D7V3_HHV1	Envelope glycoprotein E		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+E2D7V5	unreviewed	E2D7V5_HHV1	Envelope glycoprotein I		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+E2D7V6	unreviewed	E2D7V6_HHV1	Envelope glycoprotein E		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+E3UTT9	unreviewed	E3UTT9_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13 HHV1gp018	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	518	10298
+F8RC68	unreviewed	F8RC68_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI HSV-1_8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+F8RCB9	unreviewed	F8RCB9_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53 HHV1gp077 hmpv207_0053	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+F8RD98	unreviewed	F8RD98_HHV1	Envelope glycoprotein L (gL)	UL1 gL hmpv205_0001	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+F8RDA7	unreviewed	F8RDA7_HHV1	Envelope glycoprotein M (gM)	UL10 gM	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	473	10298
+F8RE30	unreviewed	F8RE30_HHV1	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	UL50 DUT HHV1gp074 HSV-1_55	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	371	10298
+F8RET8	unreviewed	F8RET8_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+F8RET9	unreviewed	F8RET9_HHV1	Portal protein	UL6 hmpv205_0006 hmpv206_0006 hmpv207_0006	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	676	10298
+F8REU5	unreviewed	F8REU5_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12 HHV1gp019	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+F8REU6	unreviewed	F8REU6_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13 HHV1gp018 hmpv214_0013	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	518	10298
+F8REV0	unreviewed	F8REV0_HHV1	Capsid vertex component 1	UL17 CVC1 HHV1gp024	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+F8REX2	unreviewed	F8REX2_HHV1	Triplex capsid protein 1	UL38 TRX1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	465	10298
+F8RFA1	unreviewed	F8RFA1_HHV1	Capsid vertex component 1	UL17 CVC1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+F8RFL9	unreviewed	F8RFL9_HHV1	Serine/threonine-protein (EC 2.7.11.1)	US3	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	481	10298
+F8RFM2	unreviewed	F8RFM2_HHV1	Envelope glycoprotein D	US6 HHV1gp096 hmpv205_0067	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+F8RG79	unreviewed	F8RG79_HHV1	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48 HHV1gp070 hmpv205_0049	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	490	10298
+F8RG84	unreviewed	F8RG84_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+F8RGC5	unreviewed	F8RGC5_HHV1	UL20 (Integral membrane protein) (Major capsid protein)	UL20 UL19 HHV1gp031	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	222	10298
+G8H5I1	unreviewed	G8H5I1_HHV1	Envelope protein UL45 (18 kDa protein)	UL45 HHV1gp065 hmpv205_0046	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	172	10298
+G8H5I9	unreviewed	G8H5I9_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+G8H8C7	unreviewed	G8H8C7_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+G8H8D9	unreviewed	G8H8D9_HHV1	Triplex capsid protein 2	UL18 TRX2 HHV1gp030 hmpv207_0017	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	318	10298
+G8H8F3	unreviewed	G8H8F3_HHV1	Nuclear egress protein 1	UL31 NEC1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	306	10298
+G8H8G2	unreviewed	G8H8G2_HHV1	Virion host shutoff protein	UL41	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	489	10298
+G8H8G5	unreviewed	G8H8G5_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+G8H8L9	unreviewed	G8H8L9_HHV1	Tripartite terminase subunit 1	UL28 TRM1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	785	10298
+G8H8R5	unreviewed	G8H8R5_HHV1	Envelope glycoprotein L (gL)	UL1 gL HHV1gp003	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+G8H8V0	unreviewed	G8H8V0_HHV1	Inner tegument protein	UL37	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1123	10298
+G8H8W6	unreviewed	G8H8W6_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+G8H8Y4	unreviewed	G8H8Y4_HHV1	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12 HHV1gp106 hmpv205_0062 hmpv206_0070 hmpv214_0071	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	88	10298
+G8H977	unreviewed	G8H977_HHV1	Envelope glycoprotein H (gH)	UL22 gH HHV1gp033 hmpv205_0022 hmpv206_0022	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	838	10298
+G8HBB4	unreviewed	G8HBB4_HHV11	Envelope glycoprotein L (gL)	UL1 gL	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	224	10299
+G8HBB5	unreviewed	G8HBB5_HHV11	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	334	10299
+G8HBB8	unreviewed	G8HBB8_HHV11	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	882	10299
+G8HBC1	unreviewed	G8HBC1_HHV11	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	750	10299
+G8HBC2	unreviewed	G8HBC2_HHV11	Replication origin-binding protein (OriBP)	UL9	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	851	10299
+G8HBC3	unreviewed	G8HBC3_HHV11	Envelope glycoprotein M (gM)	UL10 gM	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	473	10299
+G8HBC5	unreviewed	G8HBC5_HHV11	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	626	10299
+G8HBC6	unreviewed	G8HBC6_HHV11	Serine/threonine-protein (EC 2.7.11.1)	UL13	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	518	10299
+G8HBC9	unreviewed	G8HBC9_HHV11	Cytoplasmic envelopment protein 2 (Tegument protein BGLF2)	UL16	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	373	10299
+G8HBD0	unreviewed	G8HBD0_HHV11	Capsid vertex component 1	UL17 CVC1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	703	10299
+G8HBD1	unreviewed	G8HBD1_HHV11	Triplex capsid protein 2	UL18 TRX2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	318	10299
+G8HBD2	unreviewed	G8HBD2_HHV11	Major capsid protein (MCP)	UL19 MCP	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1374	10299
+G8HBD8	unreviewed	G8HBD8_HHV11	Capsid vertex component 2	UL25 CVC2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	580	10299
+G8HBE3	unreviewed	G8HBE3_HHV11	Major DNA-binding protein	UL29 DBP	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1196	10299
+G8HBE5	unreviewed	G8HBE5_HHV11	Nuclear egress protein 1	UL31 NEC1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	306	10299
+G8HBE6	unreviewed	G8HBE6_HHV11	Packaging protein UL32	UL32	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	596	10299
+G8HBE8	unreviewed	G8HBE8_HHV11	Nuclear egress protein 2	UL34 NEC2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	275	10299
+G8HBE9	unreviewed	G8HBE9_HHV11	Small capsomere-interacting protein	UL35 SCP	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	112	10299
+G8HBF1	unreviewed	G8HBF1_HHV11	Inner tegument protein	UL37	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1123	10299
+G8HBF6	unreviewed	G8HBF6_HHV11	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	488	10299
+G8HBF7	unreviewed	G8HBF7_HHV11	Envelope protein UL43	UL43	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	417	10299
+G8HBF8	unreviewed	G8HBF8_HHV11	Envelope glycoprotein C	UL44	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	511	10299
+G8HBF9	unreviewed	G8HBF9_HHV11	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	172	10299
+G8HBG1	unreviewed	G8HBG1_HHV11	Tegument protein UL47	UL47	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	693	10299
+G8HBG5	unreviewed	G8HBG5_HHV11	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	UL50 DUT	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	371	10299
+G8HBG7	unreviewed	G8HBG7_HHV11	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1058	10299
+G8HBG8	unreviewed	G8HBG8_HHV11	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	338	10299
+G8HBI0	unreviewed	G8HBI0_HHV11	Envelope glycoprotein D	US6	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	394	10299
+G8HBI1	unreviewed	G8HBI1_HHV11	Envelope glycoprotein I	US7	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	390	10299
+G8HBI2	unreviewed	G8HBI2_HHV11	Envelope glycoprotein E	US8	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	550	10299
+H9E905	unreviewed	H9E905_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 RL1_1 HHV1gp001 HHV1gp083	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+H9E907	unreviewed	H9E907_HHV1	Envelope glycoprotein L (gL)	UL1 gL HHV1gp003	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+H9E908	unreviewed	H9E908_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2 HHV1gp004	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	334	10298
+H9E911	unreviewed	H9E911_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI HHV1gp010	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+H9E912	unreviewed	H9E912_HHV1	Portal protein	UL6 HHV1gp011	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	676	10298
+H9E914	unreviewed	H9E914_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8 HHV1gp015	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+H9E916	unreviewed	H9E916_HHV1	Envelope glycoprotein M (gM)	UL10 gM HHV1gp017	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	473	10298
+H9E925	unreviewed	H9E925_HHV1	Major capsid protein (MCP)	UL19 MCP HHV1gp028	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1374	10298
+H9E936	unreviewed	H9E936_HHV1	Major DNA-binding protein	UL29 DBP HHV1gp41.5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1196	10298
+H9E938	unreviewed	H9E938_HHV1	Nuclear egress protein 1	UL31 NEC1 HHV1gp048	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	306	10298
+H9E939	unreviewed	H9E939_HHV1	Packaging protein UL32	UL32 HHV1gp049	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	596	10298
+H9E944	unreviewed	H9E944_HHV1	Inner tegument protein	UL37 HHV1gp055	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1123	10298
+H9E948	unreviewed	H9E948_HHV1	Virion host shutoff protein	UL41 HHV1gp060	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	489	10298
+H9E949	unreviewed	H9E949_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42 HHV1gp061	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+H9E950	unreviewed	H9E950_HHV1	UL43	UL43 HHV1gp062	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	415	10298
+H9E954	unreviewed	H9E954_HHV1	Tegument protein UL47	UL47 HHV1gp067	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	693	10298
+H9E960	unreviewed	H9E960_HHV1	DNA primase (EC 2.7.7.-)	UL52 HHV1gp076	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1058	10298
+H9E970	unreviewed	H9E970_HHV1	Serine/threonine-protein (EC 2.7.11.1)	US3 HHV1gp089	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	481	10298
+I0CLF3	unreviewed	I0CLF3_HHV1	Envelope glycoprotein C	UL44 HHV1gp063	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+I1UYM4	unreviewed	I1UYM4_HHV1	RS1 (Transcription regulator/activator ICP4) (Transcriptional regulator ICP4)	RS1 RS1_1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1294	10298
+I3PB70	unreviewed	I3PB70_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+I3TC58	unreviewed	I3TC58_HHV1	Envelope glycoprotein L	UL1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	146	10298
+I3TC59	unreviewed	I3TC59_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	244	10298
+I3TC62	unreviewed	I3TC62_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	841	10298
+I3TC63	unreviewed	I3TC63_HHV1	Portal protein	UL6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	640	10298
+I3TC65	unreviewed	I3TC65_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	799	10298
+I3TC67	unreviewed	I3TC67_HHV1	Envelope glycoprotein M (gM)	UL10 gM	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	455	10298
+I3TC69	unreviewed	I3TC69_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12 HHV1gp019	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+I3TC70	unreviewed	I3TC70_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	437	10298
+I3TC73	unreviewed	I3TC73_HHV1	Cytoplasmic envelopment protein 2 (Tegument protein BGLF2)	UL16	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	387	10298
+I3TC74	unreviewed	I3TC74_HHV1	Capsid vertex component 1	UL17 CVC1 hmpv214_0017	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+I3TC77	unreviewed	I3TC77_HHV1	Major capsid protein (MCP)	UL19 MCP HHV1gp028 hmpv214_0019	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1374	10298
+I3TC80	unreviewed	I3TC80_HHV1	Envelope glycoprotein H (gH)	UL22 gH HHV1gp033	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	838	10298
+I3TC88	unreviewed	I3TC88_HHV1	Major DNA-binding protein	UL29 DBP	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1204	10298
+I3TC93	unreviewed	I3TC93_HHV1	Nuclear egress protein 2	UL34 NEC2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	245	10298
+I3TC97	unreviewed	I3TC97_HHV1	Inner tegument protein	UL37	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1136	10298
+I3TCA1	unreviewed	I3TCA1_HHV1	Virion host shutoff protein	UL41	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	487	10298
+I3TCA2	unreviewed	I3TCA2_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42 hmpv214_0043	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+I3TCA3	unreviewed	I3TCA3_HHV1	UL43	UL43 HHV1gp062 hmpv214_0044	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	417	10298
+I3TCA5	unreviewed	I3TCA5_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	197	10298
+I3TCA8	unreviewed	I3TCA8_HHV1	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	526	10298
+I3TCB1	unreviewed	I3TCB1_HHV1	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	UL50 DUT hmpv214_0052	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	371	10298
+I3TCB3	unreviewed	I3TCB3_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1088	10298
+I3TCB4	unreviewed	I3TCB4_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	324	10298
+I3TCB5	unreviewed	I3TCB5_HHV1	ICP27	UL54	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	598	10298
+I3TCC1	unreviewed	I3TCC1_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 ICP34.5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	257	10298
+I3TCC5	unreviewed	I3TCC5_HHV1	Serine/threonine-protein (EC 2.7.11.1)	US3 hmpv214_0061	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	481	10298
+I3TCC8	unreviewed	I3TCC8_HHV1	Envelope glycoprotein D	US6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	387	10298
+I3TCC9	unreviewed	I3TCC9_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	413	10298
+I3TCD0	unreviewed	I3TCD0_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+J7GUI4	unreviewed	J7GUI4_HHV1	Triplex capsid protein 1	UL38 TRX1 HHV1gp056	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	465	10298
+J7GUJ5	unreviewed	J7GUJ5_HHV1	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48 HHV1gp070 hmpv214_0049	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	490	10298
+J7GUQ0	unreviewed	J7GUQ0_HHV1	Envelope glycoprotein E	US8 HHV1gp101	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+J7GUX9	unreviewed	J7GUX9_HHV1	Portal protein	UL6 HHV1gp011	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	676	10298
+J7GY25	unreviewed	J7GY25_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8 HHV1gp015 hmpv214_0008	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	750	10298
+J7GY45	unreviewed	J7GY45_HHV1	Packaging protein UL32	UL32 HHV1gp049	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	596	10298
+J7GY51	unreviewed	J7GY51_HHV1	Inner tegument protein	UL37 HHV1gp055	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1123	10298
+J7GY55	unreviewed	J7GY55_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42 HHV1gp061	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	488	10298
+J7GYA6	unreviewed	J7GYA6_HHV1	Envelope glycoprotein I	US7 HHV1gp098	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+J7H0I3	unreviewed	J7H0I3_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI HHV1gp010	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+J7H0I8	unreviewed	J7H0I8_HHV1	Envelope glycoprotein M (gM)	UL10 gM HHV1gp017 hmpv214_0010	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	473	10298
+J7H0J2	unreviewed	J7H0J2_HHV1	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	UL15 TRM3 HHV1gp023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	735	10298
+J7H0K1	unreviewed	J7H0K1_HHV1	Capsid vertex component 2	UL25 CVC2 HHV1gp036	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	580	10298
+J7H0K4	unreviewed	J7H0K4_HHV1	Major DNA-binding protein	UL29 DBP HHV1gp41.5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1196	10298
+J7H0N6	unreviewed	J7H0N6_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)	RL1 HHV1gp001 HHV1gp083	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+J7H1Z9	unreviewed	J7H1Z9_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2 HHV1gp004 hmpv214_0002	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	334	10298
+J7H214	unreviewed	J7H214_HHV1	Capsid vertex component 1	UL17 CVC1 HHV1gp024	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+L0N3A3	unreviewed	L0N3A3_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI	Human alphaherpesvirus 1 strain RH2	882	946522
+L0N3A9	unreviewed	L0N3A9_HHV1	Envelope glycoprotein M (gM)	UL10 gM	Human alphaherpesvirus 1 strain RH2	473	946522
+L0N3B4	unreviewed	L0N3B4_HHV1	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	UL15 TRM3	Human alphaherpesvirus 1 strain RH2	735	946522
+L0N3C6	unreviewed	L0N3C6_HHV1	Capsid vertex component 2	UL25 CVC2	Human alphaherpesvirus 1 strain RH2	580	946522
+L0N3D0	unreviewed	L0N3D0_HHV1	Major DNA-binding protein	UL29 DBP	Human alphaherpesvirus 1 strain RH2	1196	946522
+L0N3D4	unreviewed	L0N3D4_HHV1	Nuclear egress protein 2	UL34 NEC2	Human alphaherpesvirus 1 strain RH2	275	946522
+L0N3E3	unreviewed	L0N3E3_HHV1	Envelope glycoprotein C	UL44	Human alphaherpesvirus 1 strain RH2	511	946522
+L0N3F0	unreviewed	L0N3F0_HHV1	Tegument protein VP22	UL49	Human alphaherpesvirus 1 strain RH2	301	946522
+L0N3F4	unreviewed	L0N3F4_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human alphaherpesvirus 1 strain RH2	338	946522
+L0N3I7	unreviewed	L0N3I7_HHV1	Envelope glycoprotein D	US6	Human alphaherpesvirus 1 strain RH2	394	946522
+L0N469	unreviewed	L0N469_HHV1	Replication origin-binding protein (OriBP)	UL9	Human alphaherpesvirus 1 strain RH2	851	946522
+L0N478	unreviewed	L0N478_HHV1	Major capsid protein (MCP)	UL19 MCP	Human alphaherpesvirus 1 strain RH2	1374	946522
+L0N487	unreviewed	L0N487_HHV1	Tripartite terminase subunit 1	UL28 TRM1	Human alphaherpesvirus 1 strain RH2	785	946522
+L0N491	unreviewed	L0N491_HHV1	Tripartite terminase subunit 2	UL33 TRM2	Human alphaherpesvirus 1 strain RH2	130	946522
+L0N496	unreviewed	L0N496_HHV1	Triplex capsid protein 1	UL38 TRX1	Human alphaherpesvirus 1 strain RH2	465	946522
+L0N4A1	unreviewed	L0N4A1_HHV1	Envelope protein UL43	UL43	Human alphaherpesvirus 1 strain RH2	417	946522
+L0N4A8	unreviewed	L0N4A8_HHV1	Tegument protein VP16 (Alpha trans-inducing protein) (Alpha-TIF) (ICP25) (Vmw65)	UL48	Human alphaherpesvirus 1 strain RH2	490	946522
+L0N4B5	unreviewed	L0N4B5_HHV1	DNA primase (EC 2.7.7.-)	UL52	Human alphaherpesvirus 1 strain RH2	1058	946522
+L0N5E2	unreviewed	L0N5E2_HHV1	DNA helicase/primase complex-associated protein (HEPA) (Primase-associated factor)	UL8	Human alphaherpesvirus 1 strain RH2	750	946522
+L0N5E5	unreviewed	L0N5E5_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13	Human alphaherpesvirus 1 strain RH2	518	946522
+L0N5F0	unreviewed	L0N5F0_HHV1	Triplex capsid protein 2	UL18 TRX2	Human alphaherpesvirus 1 strain RH2	318	946522
+L0N5G4	unreviewed	L0N5G4_HHV1	Packaging protein UL32	UL32	Human alphaherpesvirus 1 strain RH2	595	946522
+L0N5H0	unreviewed	L0N5H0_HHV1	Inner tegument protein	UL37	Human alphaherpesvirus 1 strain RH2	1123	946522
+L0N5H2	unreviewed	L0N5H2_HHV1	DNA polymerase processivity factor (Polymerase accessory protein)	UL42	Human alphaherpesvirus 1 strain RH2	488	946522
+L0N5H7	unreviewed	L0N5H7_HHV1	Tegument protein UL47	UL47	Human alphaherpesvirus 1 strain RH2	693	946522
+L0N664	unreviewed	L0N664_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human alphaherpesvirus 1 strain RH2	334	946522
+L0N673	unreviewed	L0N673_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12	Human alphaherpesvirus 1 strain RH2	626	946522
+L0N675	unreviewed	L0N675_HHV1	Capsid vertex component 1	UL17 CVC1	Human alphaherpesvirus 1 strain RH2	703	946522
+L0N679	unreviewed	L0N679_HHV1	Envelope glycoprotein H (gH)	UL22 gH	Human alphaherpesvirus 1 strain RH2	838	946522
+L0N688	unreviewed	L0N688_HHV1	Nuclear egress protein 1	UL31 NEC1	Human alphaherpesvirus 1 strain RH2	306	946522
+L0N697	unreviewed	L0N697_HHV1	Virion host shutoff protein	UL41	Human alphaherpesvirus 1 strain RH2	489	946522
+L0N6A5	unreviewed	L0N6A5_HHV1	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	UL50 DUT	Human alphaherpesvirus 1 strain RH2	371	946522
+L0N6C4	unreviewed	L0N6C4_HHV1	Serine/threonine-protein (EC 2.7.11.1)	US3	Human alphaherpesvirus 1 strain RH2	481	946522
+L0N6C7	unreviewed	L0N6C7_HHV1	Envelope glycoprotein E	US8	Human alphaherpesvirus 1 strain RH2	550	946522
+L0N6D1	unreviewed	L0N6D1_HHV1	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12	Human alphaherpesvirus 1 strain RH2	88	946522
+L0N6H8	unreviewed	L0N6H8_HHV1	Envelope glycoprotein L (gL)	UL1 gL	Human alphaherpesvirus 1 strain RH2	224	946522
+L0N6I1	unreviewed	L0N6I1_HHV1	Portal protein	UL6	Human alphaherpesvirus 1 strain RH2	676	946522
+L0N6I7	unreviewed	L0N6I7_HHV1	Cytoplasmic envelopment protein 2 (Tegument protein BGLF2)	UL16	Human alphaherpesvirus 1 strain RH2	373	946522
+L0N6J9	unreviewed	L0N6J9_HHV1	Small capsomere-interacting protein	UL35 SCP	Human alphaherpesvirus 1 strain RH2	112	946522
+L0N6K6	unreviewed	L0N6K6_HHV1	Envelope protein UL45 (18 kDa protein)	UL45	Human alphaherpesvirus 1 strain RH2	172	946522
+L0N6N1	unreviewed	L0N6N1_HHV1	Envelope glycoprotein I	US7	Human alphaherpesvirus 1 strain RH2	383	946522
+O09802	reviewed	US8A_HHV11	Protein US8.5	US8.5	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	159	10299
+P06482	reviewed	EV45_HHV1M	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (strain MP) (HHV-1) (Human herpes simplex virus 1)	172	10307
+P06486	reviewed	US10_HHV11	Virion protein US10	US10	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	312	10299
+P06490	reviewed	TRM1_HHV1F	Tripartite terminase subunit 1	TRM1 UL28	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	780	10304
+P08314	reviewed	TEG1_HHV1F	Tegument protein UL46 (Tegument protein VP11/12)	UL46	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	715	10304
+P09855	reviewed	TEG4_HHV1E	Tegument protein UL21	UL21	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	535	10303
+P10187	reviewed	NP03_HHV11	Nuclear phosphoprotein UL3	UL3	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	235	10299
+P10202	reviewed	TRX2_HHV11	Triplex capsid protein 2	TRX2 UL18	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	318	10299
+P10227	reviewed	MB43_HHV11	Membrane protein UL43	UL43	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	417	10299
+P10229	reviewed	EV45_HHV11	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	172	10299
+P10234	reviewed	DUT_HHV11	Deoxyuridine 5'-triphosphate nucleotidohydrolase (dUTPase) (EC 3.6.1.23) (dUTP pyrophosphatase)	DUT UL50	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	371	10299
+P10239	reviewed	TEG6_HHV11	Tegument protein UL55	UL55	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	186	10299
+P12835	reviewed	TRM1_HHV1A	Tripartite terminase subunit 1	TRM1 UL28	Human herpesvirus 1 (strain Angelotti) (HHV-1) (Human herpes simplex virus 1)	785	10301
+P17469	reviewed	DNBI_HHV1F	Major DNA-binding protein	DBP ICP8 UL29	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	1196	10304
+P17586	reviewed	TRX1_HHV14	Triplex capsid protein 1	TRX1 UL38	Human herpesvirus 1 (strain A44) (HHV-1) (Human herpes simplex virus 1)	465	10300
+P23210	reviewed	VP19_HHV1K	Triplex capsid protein VP19C (Virion protein UL38)	UL38	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	6	10306
+P28987	reviewed	EV45_HHV1K	Envelope protein UL45 (18 kDa protein)	UL45	Human herpesvirus 1 (strain KOS) (HHV-1) (Human herpes simplex virus 1)	172	10306
+P36296	reviewed	TEG6_HHV1E	Tegument protein UL55	UL55	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	186	10303
+Q09I64	unreviewed	Q09I64_HHV1	ICP47 protein (Immediate-early protein IE12) (Immediate-early-5) (Infected cell protein 47) (US12 protein) (Vmw12)	US12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	88	10298
+Q09I74	unreviewed	Q09I74_HHV1	Serine/threonine-protein (EC 2.7.11.1)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	481	10298
+Q09I78	unreviewed	Q09I78_HHV1	Neurovirulence factor ICP34.5 (Infected cell protein 34.5) (protein gamma(1)34.5)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	249	10298
+Q09I90	unreviewed	Q09I90_HHV1	Envelope glycoprotein C		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q09I95	unreviewed	Q09I95_HHV1	Triplex capsid protein 1	UL38 TRX1 hmpv214_0039	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	465	10298
+Q09I96	unreviewed	Q09I96_HHV1	Inner tegument protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1123	10298
+Q09I99	unreviewed	Q09I99_HHV1	Nuclear egress protein 2	NEC2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	275	10298
+Q09IA1	unreviewed	Q09IA1_HHV1	Packaging protein UL32		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	595	10298
+Q09IA5	unreviewed	Q09IA5_HHV1	Tripartite terminase subunit 1	TRM1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	785	10298
+Q09IA8	unreviewed	Q09IA8_HHV1	Capsid vertex component 2	UL25 CVC2 hmpv207_0024	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	580	10298
+Q09IB4	unreviewed	Q09IB4_HHV1	Major capsid protein (MCP)	MCP	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1374	10298
+Q09IB5	unreviewed	Q09IB5_HHV1	Triplex capsid protein 2	TRX2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	318	10298
+Q09IB6	unreviewed	Q09IB6_HHV1	Capsid vertex component 1	CVC1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	703	10298
+Q09IB7	unreviewed	Q09IB7_HHV1	Cytoplasmic envelopment protein 2 (Tegument protein BGLF2)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	373	10298
+Q09IB8	unreviewed	Q09IB8_HHV1	Tripartite terminase subunit 3 (EC 3.1.-.-) (Terminase large subunit)	TRM3	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	735	10298
+Q09IC7	unreviewed	Q09IC7_HHV1	Portal protein	UL6	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	676	10298
+Q1T724	unreviewed	Q1T724_HHV1	Triplex capsid protein 1	UL38 TRX1 VP19C HHV1gp056	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	465	10298
+Q1XBW5	reviewed	NP03_HHV1F	Nuclear phosphoprotein UL3	UL3	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	235	10304
+Q25BW6	unreviewed	Q25BW6_HHV1	Small capsomere-interacting protein	UL35 SCP HHV1gp052 hmpv206_0036	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	112	10298
+Q25BW8	unreviewed	Q25BW8_HHV1	Tripartite terminase subunit 2	UL33 TRM2 HHV1gp050 hmpv207_0033	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	130	10298
+Q25BW9	unreviewed	Q25BW9_HHV1	Packaging protein UL32	UL32 hmpv214_0033	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	596	10298
+Q25BX0	unreviewed	Q25BX0_HHV1	Nuclear egress protein 1	UL31 NEC1 HHV1gp048 hmpv208_0032	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	306	10298
+Q25BY8	unreviewed	Q25BY8_HHV1	Tripartite terminase subunit 1	UL28 TRM1 HHV1gp040	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	785	10298
+Q2MGU6	unreviewed	Q2MGU6_HHV1	Major DNA-binding protein	UL29 DBP	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1196	10298
+Q68979	unreviewed	Q68979_HHV1	Alkaline nuclease (EC 3.1.-.-)	AE	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	500	10298
+Q68981	unreviewed	Q68981_HHV1	Glycoprotein B		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	583	10298
+Q69472	unreviewed	Q69472_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53 HHV1gp077	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q6GYI9	unreviewed	Q6GYI9_HHV1	Tegument protein VP22	UL49 HHV1gp072	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	301	10298
+Q702W3	unreviewed	Q702W3_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	425	10298
+Q702W4	unreviewed	Q702W4_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+Q702W5	unreviewed	Q702W5_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+Q702W6	unreviewed	Q702W6_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+Q702W7	unreviewed	Q702W7_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+Q702W8	unreviewed	Q702W8_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	403	10298
+Q702W9	unreviewed	Q702W9_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+Q702X0	unreviewed	Q702X0_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+Q702X1	unreviewed	Q702X1_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+Q702X3	unreviewed	Q702X3_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+Q702X4	unreviewed	Q702X4_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	411	10298
+Q702X5	unreviewed	Q702X5_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+Q702X6	unreviewed	Q702X6_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+Q702X7	unreviewed	Q702X7_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	390	10298
+Q702X8	unreviewed	Q702X8_HHV1	Envelope glycoprotein I	US7 hmpv213_0060	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+Q702X9	unreviewed	Q702X9_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	411	10298
+Q702Y0	unreviewed	Q702Y0_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+Q702Y3	unreviewed	Q702Y3_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+Q702Y4	unreviewed	Q702Y4_HHV1	Envelope glycoprotein I	US7 HHV1gp098	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+Q702Y5	unreviewed	Q702Y5_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	397	10298
+Q702Y6	unreviewed	Q702Y6_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	404	10298
+Q702Y9	unreviewed	Q702Y9_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	383	10298
+Q702Z0	unreviewed	Q702Z0_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	395	10298
+Q702Z1	unreviewed	Q702Z1_HHV1	Envelope glycoprotein I	US7	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	384	10298
+Q703C1	unreviewed	Q703C1_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C2	unreviewed	Q703C2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C3	unreviewed	Q703C3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703C4	unreviewed	Q703C4_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C5	unreviewed	Q703C5_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C6	unreviewed	Q703C6_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703C7	unreviewed	Q703C7_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C8	unreviewed	Q703C8_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703C9	unreviewed	Q703C9_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D0	unreviewed	Q703D0_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D1	unreviewed	Q703D1_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D2	unreviewed	Q703D2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	548	10298
+Q703D3	unreviewed	Q703D3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D4	unreviewed	Q703D4_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D5	unreviewed	Q703D5_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703D6	unreviewed	Q703D6_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703D7	unreviewed	Q703D7_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703D8	unreviewed	Q703D8_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703D9	unreviewed	Q703D9_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703E0	unreviewed	Q703E0_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E1	unreviewed	Q703E1_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E2	unreviewed	Q703E2_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E3	unreviewed	Q703E3_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E4	unreviewed	Q703E4_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703E5	unreviewed	Q703E5_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E6	unreviewed	Q703E6_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703E7	unreviewed	Q703E7_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q703E8	unreviewed	Q703E8_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	552	10298
+Q703E9	unreviewed	Q703E9_HHV1	Envelope glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	550	10298
+Q76WT6	unreviewed	Q76WT6_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	334	10298
+Q80E40	unreviewed	Q80E40_HHV1	Envelope glycoprotein D	US6 gD	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	133	10298
+Q86703	unreviewed	Q86703_HHV1	DNA-directed DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	64	10298
+Q8UYA4	unreviewed	Q8UYA4_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UYA8	unreviewed	Q8UYA8_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UYE2	unreviewed	Q8UYE2_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UYF2	unreviewed	Q8UYF2_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ60	unreviewed	Q8UZ60_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ61	unreviewed	Q8UZ61_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ62	unreviewed	Q8UZ62_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ63	unreviewed	Q8UZ63_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ64	unreviewed	Q8UZ64_HHV1	Envelope glycoprotein C	gC-1 UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ65	unreviewed	Q8UZ65_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ66	unreviewed	Q8UZ66_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ67	unreviewed	Q8UZ67_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ68	unreviewed	Q8UZ68_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ69	unreviewed	Q8UZ69_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ70	unreviewed	Q8UZ70_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q8UZ71	unreviewed	Q8UZ71_HHV1	Envelope glycoprotein C	gC-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q96913	unreviewed	Q96913_HHV1	Envelope glycoprotein L (gL)	UL1 gL	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+Q96918	unreviewed	Q96918_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q96919	unreviewed	Q96919_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q98049	unreviewed	Q98049_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q98050	unreviewed	Q98050_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q98831	unreviewed	Q98831_HHV1	Envelope glycoprotein K (Syncytial protein)	UL53	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	338	10298
+Q991M3	unreviewed	Q991M3_HHV1	Envelope glycoprotein D		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	394	10298
+Q9QNF2	unreviewed	Q9QNF2_HHV1	Serine/threonine-protein (EC 2.7.11.1)	UL13	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	518	10298
+Q9QNF3	unreviewed	Q9QNF3_HHV1	Virion host shutoff protein	UL41 HHV1gp060 hmpv205_0042 hmpv206_0042 hmpv214_0042 HSV-1_46	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	489	10298
+Q9QNF4	unreviewed	Q9QNF4_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+Q9QNF5	unreviewed	Q9QNF5_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+Q9QNF6	unreviewed	Q9QNF6_HHV1	Alkaline nuclease (EC 3.1.-.-)	UL12	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	626	10298
+Q9WIW3	unreviewed	Q9WIW3_HHV1	Envelope glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+Q9YPJ3	unreviewed	Q9YPJ3_HHV1	Uracil-DNA glycosylase (UDG) (EC 3.2.2.27) (UNG)	UL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	244	10298
+U5TQA7	unreviewed	U5TQA7_HHV1	DNA replication helicase (EC 3.6.4.-)	UL5 HELI hmpv214_0005	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	882	10298
+A0A076N1M8	unreviewed	A0A076N1M8_HHV1	PUL54	UL54	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+A0A076N474	unreviewed	A0A076N474_HHV1	PUL15	UL15	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	392	10298
+A0A0B5EBS7	unreviewed	A0A0B5EBS7_HHV1	UL24	UL24	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+A0A0F7CWX6	unreviewed	A0A0F7CWX6_HHV1	UL55	UL55 HHV1gp080 hmpv208_0057	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	186	10298
+A0A0F7GSA6	unreviewed	A0A0F7GSA6_HHV1	Envelope glycoprotein J (GJ) (US5)	US5 HHV1gp094 hmpv214_0063	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	92	10298
+A0A0K0MNJ0	unreviewed	A0A0K0MNJ0_HHV1	Glycoprotein C	UL44	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	511	10298
+A0A0S1TJL6	unreviewed	A0A0S1TJL6_HHV1	UL3	UL3	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+A0A0S2I6L3	unreviewed	A0A0S2I6L3_HHV1	Ubiquitin E3 ligase ICP0	RL2 RL2_1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	782	10298
+A0A0S2I717	unreviewed	A0A0S2I717_HHV1	Envelope glycoprotein J	US5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	128	10298
+A0A0S2I7P8	unreviewed	A0A0S2I7P8_HHV1	Membrane protein US9	US9	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	110	10298
+A0A110B4Q7	unreviewed	A0A110B4Q7_HHV1	Cytoplasmic envelopment protein 1	UL7 HHV1gp012 hmpv205_0007 hmpv206_0007	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	296	10298
+A0A181ZHB1	unreviewed	A0A181ZHB1_HHV11	Regulatory protein ICP22	US1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	420	10299
+A0A193GSD2	unreviewed	A0A193GSD2_HHV1	US10	US10	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	306	10298
+A0A1C3J614	unreviewed	A0A1C3J614_HHV1	UL3	UL3	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+A0A1C3J6R6	unreviewed	A0A1C3J6R6_HHV1	Nuclear protein UL24	UL24	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+A0A1C3J7D8	unreviewed	A0A1C3J7D8_HHV1	Tegument protein VP11/12 (UL46)	UL46	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	718	10298
+A0A1C3J7M0	unreviewed	A0A1C3J7M0_HHV1	Multifunctional expression regulator (UL54)	UL54	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+A0A1C3J7S0	unreviewed	A0A1C3J7S0_HHV1	US9	US9 hmpv208_0067	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	90	10298
+A0A2Z2D1Y3	unreviewed	A0A2Z2D1Y3_HHV1	Envelope glycoprotein N (UL49A)	UL49A HHV1gp073	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	91	10298
+A0A2Z2D2K6	unreviewed	A0A2Z2D2K6_HHV1	UL51	UL51 HHV1gp075 hmpv213_0048 hmpv214_0053	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	244	10298
+A0A2Z4H6V6	unreviewed	A0A2Z4H6V6_HHV1	RS1 (RS1-2)	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1297	10298
+A0A2Z4H777	unreviewed	A0A2Z4H777_HHV1	UL21	UL21	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	535	10298
+A0A2Z4HBT2	unreviewed	A0A2Z4HBT2_HHV1	UL24	UL24 hmpv213_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+A0A2Z4LE53	unreviewed	A0A2Z4LE53_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1299	10298
+A0A2Z4LE94	unreviewed	A0A2Z4LE94_HHV1	UL26.5	UL26.5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	329	10298
+A0A2Z4LEB3	unreviewed	A0A2Z4LEB3_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1299	10298
+A0A2Z4LED5	unreviewed	A0A2Z4LED5_HHV1	UL46	UL46	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	717	10298
+A0A2Z4LEI0	unreviewed	A0A2Z4LEI0_HHV1	US11	US11	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	149	10298
+A0A2Z4LEV5	unreviewed	A0A2Z4LEV5_HHV1	UL43	UL43	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	415	10298
+A0A2Z4LF41	unreviewed	A0A2Z4LF41_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1299	10298
+A0A2Z4LF63	unreviewed	A0A2Z4LF63_HHV1	UL54	UL54	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+A0A2Z4LFE8	unreviewed	A0A2Z4LFE8_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1299	10298
+A0A2Z4LFT4	unreviewed	A0A2Z4LFT4_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1299	10298
+A0A3G1LBW6	unreviewed	A0A3G1LBW6_HHV1	US8A	US8A HHV1gp102 hmpv207_0065 hmpv213_0062 hmpv214_0067	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	159	10298
+A0A4Y5QKH3	unreviewed	A0A4Y5QKH3_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	266	10298
+A0A4Y5QLK4	unreviewed	A0A4Y5QLK4_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+A0A4Y5QN21	unreviewed	A0A4Y5QN21_HHV1	Thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+A0A4Y5QN31	unreviewed	A0A4Y5QN31_HHV1	Thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	357	10298
+A0A4Y5R469	unreviewed	A0A4Y5R469_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+A0A4Y5R477	unreviewed	A0A4Y5R477_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+A0A5C2GZ02	unreviewed	A0A5C2GZ02_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2GZ04	unreviewed	A0A5C2GZ04_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2GZ12	unreviewed	A0A5C2GZ12_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2GZ17	unreviewed	A0A5C2GZ17_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2GZ34	unreviewed	A0A5C2GZ34_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2GZ37	unreviewed	A0A5C2GZ37_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2GZ44	unreviewed	A0A5C2GZ44_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2GZ46	unreviewed	A0A5C2GZ46_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2GZ51	unreviewed	A0A5C2GZ51_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2GZ58	unreviewed	A0A5C2GZ58_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2GZ72	unreviewed	A0A5C2GZ72_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2GZV5	unreviewed	A0A5C2GZV5_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H020	unreviewed	A0A5C2H020_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	241	10298
+A0A5C2H038	unreviewed	A0A5C2H038_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H054	unreviewed	A0A5C2H054_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H0W5	unreviewed	A0A5C2H0W5_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H0Y3	unreviewed	A0A5C2H0Y3_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H104	unreviewed	A0A5C2H104_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H1I2	unreviewed	A0A5C2H1I2_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H1L4	unreviewed	A0A5C2H1L4_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H1N7	unreviewed	A0A5C2H1N7_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H353	unreviewed	A0A5C2H353_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H373	unreviewed	A0A5C2H373_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H3A8	unreviewed	A0A5C2H3A8_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H3E0	unreviewed	A0A5C2H3E0_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H3T7	unreviewed	A0A5C2H3T7_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H3W6	unreviewed	A0A5C2H3W6_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	235	10298
+A0A5C2H3Z8	unreviewed	A0A5C2H3Z8_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H435	unreviewed	A0A5C2H435_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H4R8	unreviewed	A0A5C2H4R8_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H4T7	unreviewed	A0A5C2H4T7_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+A0A5C2H4W9	unreviewed	A0A5C2H4W9_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H518	unreviewed	A0A5C2H518_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+A0A5C2H6M4	unreviewed	A0A5C2H6M4_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H6P3	unreviewed	A0A5C2H6P3_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H6Q8	unreviewed	A0A5C2H6Q8_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5C2H6S3	unreviewed	A0A5C2H6S3_HHV1	Envelope glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	240	10298
+A0A5P8I1A1	unreviewed	A0A5P8I1A1_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1301	10298
+A0A5P8I1A3	unreviewed	A0A5P8I1A3_HHV1	ICP22 (US1)	US1 hmpv213_0054	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+A0A5P8I1B1	unreviewed	A0A5P8I1B1_HHV1	US2	US2 hmpv207_0058	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	291	10298
+A0A5P8I1D5	unreviewed	A0A5P8I1D5_HHV1	UL20	UL20	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	222	10298
+A0A5P8I1F6	unreviewed	A0A5P8I1F6_HHV1	UL43	UL43	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	417	10298
+A0A5P8I1H6	unreviewed	A0A5P8I1H6_HHV1	RL2	RL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	776	10298
+A0A5P8I1I7	unreviewed	A0A5P8I1I7_HHV1	US11	US11	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	155	10298
+A0A5P8I1I9	unreviewed	A0A5P8I1I9_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1301	10298
+A0A5P8I1N1	unreviewed	A0A5P8I1N1_HHV1	RL2	RL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	776	10298
+A0A5P8I1Q7	unreviewed	A0A5P8I1Q7_HHV1	RS1	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1304	10298
+A0A7T7DMQ5	unreviewed	A0A7T7DMQ5_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	214	10298
+A0A7T7DMS0	unreviewed	A0A7T7DMS0_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	210	10298
+A0A7T7DMS3	unreviewed	A0A7T7DMS3_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A7T7DMT7	unreviewed	A0A7T7DMT7_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	215	10298
+A0A7T7DMU0	unreviewed	A0A7T7DMU0_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	216	10298
+A0A7T7DMU3	unreviewed	A0A7T7DMU3_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A7T7DN15	unreviewed	A0A7T7DN15_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A7T7DN54	unreviewed	A0A7T7DN54_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	205	10298
+A0A7T7IMX4	unreviewed	A0A7T7IMX4_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A7T7IMY0	unreviewed	A0A7T7IMY0_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	209	10298
+A0A7T7IMY7	unreviewed	A0A7T7IMY7_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	215	10298
+A0A7T7IN10	unreviewed	A0A7T7IN10_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A7T7IN30	unreviewed	A0A7T7IN30_HHV1	Single stranded DNA-binding protein	UL29	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	217	10298
+A0A8F5QYA9	unreviewed	A0A8F5QYA9_HHV1	DNA-directed DNA polymerase (EC 2.7.7.7)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	49	10298
+A0ACM8RH24	unreviewed	A0ACM8RH24_HHV11	Tegument protein VP22	UL49	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	301	10299
+A0ACM8RH26	unreviewed	A0ACM8RH26_HHV11	Tegument protein UL51	UL51	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	244	10299
+A2I999	unreviewed	A2I999_HHV1	Glycoprotein B	UL27	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	899	10298
+A2I9A0	unreviewed	A2I9A0_HHV1	Glycoprotein B	UL27	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	899	10298
+B2CPQ2	unreviewed	B2CPQ2_HHV1	Thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+B2CPQ3	unreviewed	B2CPQ3_HHV1	Thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+B9VQC5	unreviewed	B9VQC5_HHV11	Transcriptional regulator ICP4	RS1	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	1298	10299
+B9VQD4	unreviewed	B9VQD4_HHV11	Cytoplasmic envelopment protein 1	UL7	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	296	10299
+C0L303	unreviewed	C0L303_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+C0L317	unreviewed	C0L317_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L320	unreviewed	C0L320_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L321	unreviewed	C0L321_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	53	10298
+C0L322	unreviewed	C0L322_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	119	10298
+C0L326	unreviewed	C0L326_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	260	10298
+C0L331	unreviewed	C0L331_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+C0L332	unreviewed	C0L332_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	110	10298
+C0L333	unreviewed	C0L333_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L340	unreviewed	C0L340_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	280	10298
+C0L342	unreviewed	C0L342_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L352	unreviewed	C0L352_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L353	unreviewed	C0L353_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L355	unreviewed	C0L355_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L356	unreviewed	C0L356_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C0L359	unreviewed	C0L359_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+C0L364	unreviewed	C0L364_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+C0L365	unreviewed	C0L365_HHV1	Truncated thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+C0L367	unreviewed	C0L367_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	376	10298
+C8CBV7	unreviewed	C8CBV7_HHV1	Immediate-early protein ICP27		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+D0V0N2	unreviewed	D0V0N2_HHV1	US11 (Translational regulation) (US11 protein)	US11 hmpv205_0061 hmpv206_0069 hmpv213_0065 hmpv214_0070	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	152	10298
+D3YPG0	unreviewed	D3YPG0_HHV1	UL3	UL3 HHV1gp006 hmpv207_0003	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	235	10298
+D3YPH1	unreviewed	D3YPH1_HHV1	UL14	UL14 hmpv205_0014 hmpv213_0013 HSV-1_16	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	219	10298
+D3YPI1	unreviewed	D3YPI1_HHV1	UL24	UL24 HHV1gp035 hmpv214_0024	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+D3YPL0	unreviewed	D3YPL0_HHV1	UL51	UL51 HHV1gp075 hmpv208_0053	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	244	10298
+D3YPL5	unreviewed	D3YPL5_HHV1	UL56	UL56 hmpv205_0058 hmpv206_0058 hmpv213_0053	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	234	10298
+E0Z2F7	unreviewed	E0Z2F7_HHV1	Glycoprotein E	US8	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	54	10298
+E0Z2F8	unreviewed	E0Z2F8_HHV1	US8A (PUS8A)	US8A HHV1gp102	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	190	10298
+E0Z2F9	unreviewed	E0Z2F9_HHV1	Membrane protein US9 (PUS9) (Truncated US9)	US9 HHV1gp104	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	57	10298
+F5CCK2	unreviewed	F5CCK2_HHV1	ICP22 (US1)	US1 hmpv205_0059 hmpv206_0059	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+F5CCK3	unreviewed	F5CCK3_HHV1	ICP22 (US1)	US1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+F5CCK4	unreviewed	F5CCK4_HHV1	ICP22	US1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+F5CCK5	unreviewed	F5CCK5_HHV1	ICP22	US1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+F5CCK6	unreviewed	F5CCK6_HHV1	ICP22 (US1)	US1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+F8RDF1	unreviewed	F8RDF1_HHV1	UL51	UL51	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	244	10298
+F8RE49	unreviewed	F8RE49_HHV1	US8A	US8A hmpv208_0066	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	159	10298
+F8REB8	unreviewed	F8REB8_HHV1	US2	US2 HHV1gp087 hmpv205_0063 hmpv206_0060	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	291	10298
+F8REZ6	unreviewed	F8REZ6_HHV1	US2	US2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	291	10298
+F8RF98	unreviewed	F8RF98_HHV1	Tegument protein (UL14)	UL14 HHV1gp022 hmpv214_0014	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	219	10298
+F8RFA5	unreviewed	F8RFA5_HHV1	UL21	UL21 HHV1gp032 hmpv207_0020 hmpv214_0021	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	535	10298
+F8RFH9	unreviewed	F8RFH9_HHV1	UL24	UL24 hmpv207_0023	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+F8RFI2	unreviewed	F8RFI2_HHV1	Capsid scaffold protein (UL26.5)	UL26.5 HHV1gp038 hmpv214_0027	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	329	10298
+F8RFN2	unreviewed	F8RFN2_HHV1	UL3	UL3 HHV1gp006	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	235	10298
+F8RG07	unreviewed	F8RG07_HHV1	UL21	UL21 HHV1gp032 hmpv206_0021	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	535	10298
+F8RG13	unreviewed	F8RG13_HHV1	Capsid scaffold protein (UL26.5)	UL26.5	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	329	10298
+G0YGE8	unreviewed	G0YGE8_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+G0YGG6	unreviewed	G0YGG6_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	249	10298
+G0YL21	unreviewed	G0YL21_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+G0YL34	unreviewed	G0YL34_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	280	10298
+G0Z0Q2	unreviewed	G0Z0Q2_HHV1	Truncated thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+G8H8C9	unreviewed	G8H8C9_HHV1	Cytoplasmic envelopment protein 1	UL7 hmpv207_0007	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	296	10298
+G8H8L4	unreviewed	G8H8L4_HHV1	UL24	UL24 HHV1gp035 hmpv205_0024 hmpv206_0024	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	269	10298
+G8H9C4	unreviewed	G8H9C4_HHV1	US11	US11 HHV1gp107	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	161	10298
+G8HBB6	unreviewed	G8HBB6_HHV11	Nuclear protein UL3	UL3	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	224	10299
+G8HBB7	unreviewed	G8HBB7_HHV11	Nuclear protein UL4	UL4	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	199	10299
+G8HBC7	unreviewed	G8HBC7_HHV11	Tegument protein UL14	UL14	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	219	10299
+G8HBD3	unreviewed	G8HBD3_HHV11	Envelope protein UL20	UL20	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	222	10299
+G8HBD4	unreviewed	G8HBD4_HHV11	Tegument protein UL21	UL21	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	535	10299
+G8HBD7	unreviewed	G8HBD7_HHV11	Nuclear protein UL24	UL24	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	269	10299
+G8HBE0	unreviewed	G8HBE0_HHV11	Capsid scaffold protein	UL26.5	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	329	10299
+G8HBF5	unreviewed	G8HBF5_HHV11	Virion host shutoff protein	UL41	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	489	10299
+G8HBG0	unreviewed	G8HBG0_HHV11	Tegument protein VP11/12	UL46	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	718	10299
+G8HBG4	unreviewed	G8HBG4_HHV11	Envelope glycoprotein N	UL49A	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	91	10299
+G8HBG9	unreviewed	G8HBG9_HHV11	Multifunctional expression regulator	UL54	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	512	10299
+G8HBH0	unreviewed	G8HBH0_HHV11	Nuclear protein UL55	UL55	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	186	10299
+G8HBH1	unreviewed	G8HBH1_HHV11	Membrane protein UL56	UL56	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	234	10299
+G8HBH2	unreviewed	G8HBH2_HHV11	Ubiquitin E3 ligase ICP0	RL2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	775	10299
+G8HBH6	unreviewed	G8HBH6_HHV11	Virion protein US2	US2	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	291	10299
+G8HBH8	unreviewed	G8HBH8_HHV11	Envelope glycoprotein G	US4	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	238	10299
+G8HBH9	unreviewed	G8HBH9_HHV11	Envelope glycoprotein J	US5	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	92	10299
+G8HBI3	unreviewed	G8HBI3_HHV11	Membrane protein US8A	US8A	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	159	10299
+G8HBI4	unreviewed	G8HBI4_HHV11	Membrane protein US9	US9	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	90	10299
+G8HBI5	unreviewed	G8HBI5_HHV11	Virion protein US10	US10	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	312	10299
+G8HBI6	unreviewed	G8HBI6_HHV11	Tegument protein US11	US11	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	161	10299
+H9E910	unreviewed	H9E910_HHV1	Capsid portal protein (UL4)	UL4 HHV1gp009	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	199	10298
+H9E920	unreviewed	H9E920_HHV1	UL14	UL14 HHV1gp022	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	219	10298
+H9E953	unreviewed	H9E953_HHV1	Tegument protein VP11/12 (UL46)	UL46 HHV1gp068	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	719	10298
+H9E964	unreviewed	H9E964_HHV1	UL56	UL56 HHV1gp081	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	234	10298
+H9E965	unreviewed	H9E965_HHV1	RL2 (Ubiquitin E3 ligase ICP0)	RL2 RL2_1 HHV1gp002 HHV1gp082	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	776	10298
+H9E968	unreviewed	H9E968_HHV1	Regulatory protein ICP22 (US1)	US1 HHV1gp085	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+H9E969	unreviewed	H9E969_HHV1	US2	US2 HHV1gp087	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	291	10298
+H9E978	unreviewed	H9E978_HHV1	US10	US10 HHV1gp108	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	300	10298
+H9E981	unreviewed	H9E981_HHV1	Transcriptional regulator ICP4	RS1 HHV1gp084 HHV1gp113	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1294	10298
+I3TC55	unreviewed	I3TC55_HHV1	Immediate early protein ICP0 (Ubiquitin E3 ligase ICP0)	RL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	775	10298
+I3TC56	unreviewed	I3TC56_HHV1	Immediate early protein ICP0	RL2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	538	10298
+I3TC57	unreviewed	I3TC57_HHV1	Uncharacterized protein	LAT	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	128	10298
+I3TC60	unreviewed	I3TC60_HHV1	Nuclear phosphoprotein	UL3	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	134	10298
+I3TC64	unreviewed	I3TC64_HHV1	Cytoplasmic envelopment protein 1	UL7 hmpv214_0007	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	296	10298
+I3TC72	unreviewed	I3TC72_HHV1	UL15 terminase (UL15-1) (UL15_1)	UL15-1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	384	10298
+I3TC75	unreviewed	I3TC75_HHV1	UL15 terminase	UL15-2	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	366	10298
+I3TCA6	unreviewed	I3TCA6_HHV1	VP11/12 (UL46)	UL46 HHV1gp068	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	718	10298
+I3TCB0	unreviewed	I3TCB0_HHV1	Envelope glycoprotein N (UL49A)	UL49A	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	38	10298
+I3TCB2	unreviewed	I3TCB2_HHV1	Tegument protein	UL51	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+I3TCB6	unreviewed	I3TCB6_HHV1	Nuclear protein (UL55)	UL55 hmpv214_0057	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	186	10298
+I3TCB7	unreviewed	I3TCB7_HHV1	Membrane protein (UL56)	UL56	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	180	10298
+I3TCC3	unreviewed	I3TCC3_HHV1	Regulatory protein ICP22	US1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	372	10298
+I3TCC4	unreviewed	I3TCC4_HHV1	US2	US2 hmpv214_0060	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	291	10298
+I3TCC6	unreviewed	I3TCC6_HHV1	GC	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	234	10298
+I3TCD1	unreviewed	I3TCD1_HHV1	Membrane protein (US8A)	US8A	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	45	10298
+I3TCD2	unreviewed	I3TCD2_HHV1	Type 2 membrane protein	US9	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	75	10298
+I3TCD3	unreviewed	I3TCD3_HHV1	Virion protein US10	US10	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	507	10298
+I3TCD6	unreviewed	I3TCD6_HHV1	Immediate early protein ICP4 (Transcriptional regulator ICP4)	RS1	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1300	10298
+J7GUK9	unreviewed	J7GUK9_HHV1	Ubiquitin E3 ligase ICP0	RL2 HHV1gp082	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	775	10298
+J7GV19	unreviewed	J7GV19_HHV1	Envelope glycoprotein N (UL49A)	UL49A HHV1gp073 hmpv213_0046 hmpv214_0051	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	91	10298
+J7GV24	unreviewed	J7GV24_HHV1	Multifunctional expression regulator	UL54 HHV1gp079	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	512	10298
+J7GV28	unreviewed	J7GV28_HHV1	Transcriptional regulator ICP4	RS1 HHV1gp084 HHV1gp113	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1301	10298
+J7GV68	unreviewed	J7GV68_HHV1	US9	US9 HHV1gp104 hmpv205_0071	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	90	10298
+J7GY71	unreviewed	J7GY71_HHV1	Membrane protein UL56	UL56 HHV1gp081	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	234	10298
+J7H0H8	unreviewed	J7H0H8_HHV1	Ubiquitin E3 ligase ICP0	RL2 HHV1gp002	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	775	10298
+J7H0Q8	unreviewed	J7H0Q8_HHV1	Envelope glycoprotein G (US4)	US4 HHV1gp091 hmpv214_0062	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+J7H204	unreviewed	J7H204_HHV1	Cytoplasmic envelopment protein 1	UL7 HHV1gp012	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	296	10298
+J7H252	unreviewed	J7H252_HHV1	Nuclear protein UL55	UL55 HHV1gp080	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	186	10298
+J7H257	unreviewed	J7H257_HHV1	Regulatory protein ICP22 (US1)	US1 HHV1gp085 hmpv214_0059	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+J7H292	unreviewed	J7H292_HHV1	Virion protein US10	US10 HHV1gp108	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	312	10298
+L0N398	unreviewed	L0N398_HHV1	Ubiquitin E3 ligase ICP0	RL2	Human alphaherpesvirus 1 strain RH2	361	946522
+L0N3C0	unreviewed	L0N3C0_HHV1	Envelope protein UL20	UL20	Human alphaherpesvirus 1 strain RH2	222	946522
+L0N3H1	unreviewed	L0N3H1_HHV1	Ubiquitin E3 ligase ICP0	RL2	Human alphaherpesvirus 1 strain RH2	398	946522
+L0N3H9	unreviewed	L0N3H9_HHV1	Regulatory protein ICP22	US1	Human alphaherpesvirus 1 strain RH2	420	946522
+L0N3J1	unreviewed	L0N3J1_HHV1	Virion protein US10	US10	Human alphaherpesvirus 1 strain RH2	306	946522
+L0N3J4	unreviewed	L0N3J4_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	484	946522
+L0N460	unreviewed	L0N460_HHV1	Ubiquitin E3 ligase ICP0	RL2	Human alphaherpesvirus 1 strain RH2	398	946522
+L0N464	unreviewed	L0N464_HHV1	Nuclear protein UL4	UL4	Human alphaherpesvirus 1 strain RH2	199	946522
+L0N474	unreviewed	L0N474_HHV1	Tegument protein UL14	UL14	Human alphaherpesvirus 1 strain RH2	219	946522
+L0N481	unreviewed	L0N481_HHV1	Nuclear protein UL24	UL24	Human alphaherpesvirus 1 strain RH2	269	946522
+L0N4D3	unreviewed	L0N4D3_HHV1	Ubiquitin E3 ligase ICP0	RL2	Human alphaherpesvirus 1 strain RH2	361	946522
+L0N4E4	unreviewed	L0N4E4_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	246	946522
+L0N4F0	unreviewed	L0N4F0_HHV1	Envelope glycoprotein J	US5	Human alphaherpesvirus 1 strain RH2	92	946522
+L0N4F5	unreviewed	L0N4F5_HHV1	Membrane protein US9	US9	Human alphaherpesvirus 1 strain RH2	90	946522
+L0N4G0	unreviewed	L0N4G0_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	230	946522
+L0N5D5	unreviewed	L0N5D5_HHV1	Nuclear protein UL3	UL3	Human alphaherpesvirus 1 strain RH2	235	946522
+L0N5I1	unreviewed	L0N5I1_HHV1	Tegument protein UL51	UL51	Human alphaherpesvirus 1 strain RH2	244	946522
+L0N5J6	unreviewed	L0N5J6_HHV1	Membrane protein UL56	UL56	Human alphaherpesvirus 1 strain RH2	234	946522
+L0N5K3	unreviewed	L0N5K3_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	230	946522
+L0N5K5	unreviewed	L0N5K5_HHV1	Envelope glycoprotein G	US4	Human alphaherpesvirus 1 strain RH2	238	946522
+L0N5L0	unreviewed	L0N5L0_HHV1	Membrane protein US8A	US8A	Human alphaherpesvirus 1 strain RH2	159	946522
+L0N5L3	unreviewed	L0N5L3_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	246	946522
+L0N670	unreviewed	L0N670_HHV1	Cytoplasmic envelopment protein 1	UL7	Human alphaherpesvirus 1 strain RH2	296	946522
+L0N684	unreviewed	L0N684_HHV1	Capsid scaffold protein	UL26.5	Human alphaherpesvirus 1 strain RH2	329	946522
+L0N6A1	unreviewed	L0N6A1_HHV1	Tegument protein VP11/12	UL46	Human alphaherpesvirus 1 strain RH2	719	946522
+L0N6B0	unreviewed	L0N6B0_HHV1	Nuclear protein UL55	UL55	Human alphaherpesvirus 1 strain RH2	186	946522
+L0N6C0	unreviewed	L0N6C0_HHV1	Transcriptional regulator ICP4	RS1	Human alphaherpesvirus 1 strain RH2	484	946522
+L0N6J0	unreviewed	L0N6J0_HHV1	Tegument protein UL21	UL21	Human alphaherpesvirus 1 strain RH2	535	946522
+L0N6L1	unreviewed	L0N6L1_HHV1	Envelope glycoprotein N	UL49A	Human alphaherpesvirus 1 strain RH2	91	946522
+L0N6L4	unreviewed	L0N6L4_HHV1	Multifunctional expression regulator	UL54	Human alphaherpesvirus 1 strain RH2	512	946522
+L0N6M9	unreviewed	L0N6M9_HHV1	Virion protein US2	US2	Human alphaherpesvirus 1 strain RH2	291	946522
+L0N6N2	unreviewed	L0N6N2_HHV1	Tegument protein US11	US11	Human alphaherpesvirus 1 strain RH2	155	946522
+O12271	unreviewed	O12271_HHV1	Capsid protein P40 (Virion structural protein UL26)		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+O55260	unreviewed	O55260_HHV1	Thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	280	10298
+P10188	reviewed	NP04_HHV11	Nuclear protein UL4	UL4	Human herpesvirus 1 (strain 17) (HHV-1) (Human herpes simplex virus 1)	199	10299
+P17588	reviewed	LRP1_HHV1F	Latency-related protein 1		Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	340	10304
+P17589	reviewed	LRP2_HHV1F	Latency-related protein 2		Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	107	10304
+P36297	reviewed	UL56_HHV1E	Protein UL56	UL56	Human herpesvirus 1 (strain HFEM) (HHV-1) (Human herpes simplex virus 1)	233	10303
+P87912	unreviewed	P87912_HHV1	ICP0B	alpha 0	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	152	10298
+P87913	unreviewed	P87913_HHV1	ICP0C	alpha 0	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	87	10298
+P87914	unreviewed	P87914_HHV1	ICP0D	alpha 0	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	90	10298
+Q09I65	unreviewed	Q09I65_HHV1	US11	US11	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	155	10298
+Q09I66	unreviewed	Q09I66_HHV1	US10		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	306	10298
+Q09I76	unreviewed	Q09I76_HHV1	US1		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	420	10298
+Q09I77	unreviewed	Q09I77_HHV1	RS1		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	1303	10298
+Q09I79	unreviewed	Q09I79_HHV1	RL2		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	776	10298
+Q09IB3	unreviewed	Q09IB3_HHV1	UL20		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	222	10298
+Q09IC6	unreviewed	Q09IC6_HHV1	Cytoplasmic envelopment protein 1		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	296	10298
+Q1WMJ7	unreviewed	Q1WMJ7_HHV1	UL2		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	86	10298
+Q5MDG9	unreviewed	Q5MDG9_HHV1	US11	US11 HHV1gp107	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	149	10298
+Q66SZ8	unreviewed	Q66SZ8_HHV1	DNA-directed DNA polymerase (EC 2.7.7.7)	pol	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	59	10298
+Q68974	unreviewed	Q68974_HHV1	Uncharacterized protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	57	10298
+Q68975	unreviewed	Q68975_HHV1	Uncharacterized protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	97	10298
+Q68976	unreviewed	Q68976_HHV1	Envelope glycoprotein N domain-containing protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	52	10298
+Q68977	unreviewed	Q68977_HHV1	Capsid protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	124	10298
+Q68988	unreviewed	Q68988_HHV1	Herpes simplex virus type 1 (HSV) DNA for IE mRNA-2 5' terminus		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	22	10298
+Q68989	unreviewed	Q68989_HHV1	Herpes simplex virus type 1 (HSV) DNA for IE mRNA-2 3' terminus		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	47	10298
+Q69072	unreviewed	Q69072_HHV1	Herpes simplex virus gene encoding thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	65	10298
+Q69073	unreviewed	Q69073_HHV1	Herpes simplex virus gene encoding thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	50	10298
+Q69074	unreviewed	Q69074_HHV1	HSV-1 glycoprotein C		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	17	10298
+Q69075	unreviewed	Q69075_HHV1	Glycoprotein H	gH	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	166	10298
+Q69077	unreviewed	Q69077_HHV1	Immediate-early protein ICP27		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	33	10298
+Q69078	unreviewed	Q69078_HHV1	Alpha-ICP0		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	228	10298
+Q69079	unreviewed	Q69079_HHV1	Herpes simplex virus type 1 latency-associated transcript mRNA		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	272	10298
+Q69080	unreviewed	Q69080_HHV1	Herpes simplex virus type 1 latency-associated transcript mRNA		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	107	10298
+Q69084	unreviewed	Q69084_HHV1	Herpes simplex virus type 1 mutant ts1222 ribonucleotide reductase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	76	10298
+Q69085	unreviewed	Q69085_HHV1	Herpes simplex virus type 1 thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	119	10298
+Q69086	unreviewed	Q69086_HHV1	ORF1 cds		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	41	10298
+Q69092	unreviewed	Q69092_HHV1	Immediate-early protein Vmw68	Vmw68	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	53	10298
+Q69343	unreviewed	Q69343_HHV1	Defective glycoprotein C		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	119	10298
+Q69344	unreviewed	Q69344_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	228	10298
+Q69345	unreviewed	Q69345_HHV1	Herpes simplex virus type 1 glycoprotein gH		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	19	10298
+Q69346	unreviewed	Q69346_HHV1	Herpes simplex virus type I major capsid protein protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	22	10298
+Q69347	unreviewed	Q69347_HHV1	Uncharacterized protein		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	10	10298
+Q69348	unreviewed	Q69348_HHV1	Herpes simplex virus type 1 (HSV-1) dbp/pol genes		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	66	10298
+Q69461	unreviewed	Q69461_HHV1	Glycoprotein D		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	33	10298
+Q69473	unreviewed	Q69473_HHV1	Immediate-early transactivator 110	ICP0	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	9	10298
+Q69474	unreviewed	Q69474_HHV1	Immediate-early transactivator 110	ICP0	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	25	10298
+Q6PVS9	unreviewed	Q6PVS9_HHV1	Thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+Q702Z3	unreviewed	Q702Z3_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q702Z4	unreviewed	Q702Z4_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q702Z5	unreviewed	Q702Z5_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q702Z6	unreviewed	Q702Z6_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q702Z7	unreviewed	Q702Z7_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q702Z8	unreviewed	Q702Z8_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q702Z9	unreviewed	Q702Z9_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q703A0	unreviewed	Q703A0_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q703A1	unreviewed	Q703A1_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q703A2	unreviewed	Q703A2_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A3	unreviewed	Q703A3_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A4	unreviewed	Q703A4_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A5	unreviewed	Q703A5_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A6	unreviewed	Q703A6_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q703A7	unreviewed	Q703A7_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A8	unreviewed	Q703A8_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703A9	unreviewed	Q703A9_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B0	unreviewed	Q703B0_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B1	unreviewed	Q703B1_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B2	unreviewed	Q703B2_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B3	unreviewed	Q703B3_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B4	unreviewed	Q703B4_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B5	unreviewed	Q703B5_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B6	unreviewed	Q703B6_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B7	unreviewed	Q703B7_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B8	unreviewed	Q703B8_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q703B9	unreviewed	Q703B9_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	248	10298
+Q703C0	unreviewed	Q703C0_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	247	10298
+Q771P6	unreviewed	Q771P6_HHV1	UL4	UL4 hmpv206_0004	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	199	10298
+Q7LZW5	unreviewed	Q7LZW5_HHV1	Capsid protein VP26		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	19	10298
+Q7LZW6	unreviewed	Q7LZW6_HHV1	Capsid protein VP19C		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	15	10298
+Q7LZZ4	unreviewed	Q7LZZ4_HHV1	Capsid protein VP24		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	50	10298
+Q7T409	unreviewed	Q7T409_HHV1	Capsid portal protein (UL4)	UL4 hmpv208_0004 hmpv213_0004	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	199	10298
+Q7T422	unreviewed	Q7T422_HHV1	Glycoprotein G (US4)	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+Q7T453	unreviewed	Q7T453_HHV1	Envelope glycoprotein J (US5)	US5 HHV1gp094	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	92	10298
+Q7T9A4	unreviewed	Q7T9A4_HHV1	UL24	UL24	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	137	10298
+Q7T9A5	unreviewed	Q7T9A5_HHV1	Glycoprotein H	UL22	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	443	10298
+Q7TL05	unreviewed	Q7TL05_HHV1	UL4	UL4 HHV1gp009 hmpv214_0004	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	199	10298
+Q80E41	unreviewed	Q80E41_HHV1	US6/gD	US6/gD	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	109	10298
+Q80GM4	unreviewed	Q80GM4_HHV1	Glycoprotein B	UL27	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	496	10298
+Q86618	unreviewed	Q86618_HHV1	UL15 protein	UL15	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	28	10298
+Q86625	reviewed	US8A_HHV1F	US8.5 protein	US8.5	Human herpesvirus 1 (strain F) (HHV-1) (Human herpes simplex virus 1)	151	10304
+Q86736	unreviewed	Q86736_HHV1	Thymidine kinase	tk	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	153	10298
+Q86958	unreviewed	Q86958_HHV1	Polymerase protein	polymerase	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	40	10298
+Q90040	unreviewed	Q90040_HHV1	UL56	UL56	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	206	10298
+Q914X7	unreviewed	Q914X7_HHV1	ICP0		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	76	10298
+Q9ENS0	unreviewed	Q9ENS0_HHV1	Thymidine kinase	TK UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	280	10298
+Q9IYZ7	unreviewed	Q9IYZ7_HHV1	Truncated thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+Q9IYZ8	unreviewed	Q9IYZ8_HHV1	Thymidine kinase	UL23	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	227	10298
+Q9IYZ9	unreviewed	Q9IYZ9_HHV1	Truncated thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	181	10298
+Q9IZ02	unreviewed	Q9IZ02_HHV1	Truncated thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	119	10298
+Q9IZ03	unreviewed	Q9IZ03_HHV1	Thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	103	10298
+Q9IZ07	unreviewed	Q9IZ07_HHV1	Truncated thymidine kinase	TK	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	224	10298
+Q9W891	unreviewed	Q9W891_HHV1	Glycoprotein G (US4)	US4 hmpv207_0060	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+Q9W8W3	unreviewed	Q9W8W3_HHV1	Glycoprotein G (US4)	US4 HHV1gp091 hmpv205_0065	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	239	10298
+Q9WFY8	unreviewed	Q9WFY8_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+Q9WFY9	unreviewed	Q9WFY9_HHV1	Glycoprotein G	US4	Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	238	10298
+Q9WHU4	unreviewed	Q9WHU4_HHV1	Thymidine kinase		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	105	10298
+Q9YPF7	unreviewed	Q9YPF7_HHV1	Latency associated transcript		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	305	10298
+Q9YPF8	unreviewed	Q9YPF8_HHV1	Latency associated transcript		Human herpesvirus 1 (HHV-1) (Human herpes simplex virus 1)	69	10298
